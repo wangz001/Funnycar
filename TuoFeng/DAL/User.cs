@@ -28,7 +28,7 @@ namespace Maticsoft.DAL
 		public bool Exists(int Id)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) from User");
+			strSql.Append("select count(1) from UserInfo");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -45,7 +45,7 @@ namespace Maticsoft.DAL
 		public int Add(Maticsoft.Model.User model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into User(");
+            strSql.Append("insert into UserInfo(");
 			strSql.Append("UserName,ShowName,PassWord,Sex,PhoneNum,Email,Age,ImgUrl,IsEnable,CreateTime,UpdateTime)");
 			strSql.Append(" values (");
 			strSql.Append("@UserName,@ShowName,@PassWord,@Sex,@PhoneNum,@Email,@Age,@ImgUrl,@IsEnable,@CreateTime,@UpdateTime)");
@@ -90,7 +90,7 @@ namespace Maticsoft.DAL
 		public bool Update(Maticsoft.Model.User model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update User set ");
+            strSql.Append("update UserInfo set ");
 			strSql.Append("UserName=@UserName,");
 			strSql.Append("ShowName=@ShowName,");
 			strSql.Append("PassWord=@PassWord,");
@@ -147,7 +147,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from User ");
+            strSql.Append("delete from UserInfo ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -170,7 +170,7 @@ namespace Maticsoft.DAL
 		public bool DeleteList(string Idlist )
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from User ");
+            strSql.Append("delete from UserInfo ");
 			strSql.Append(" where Id in ("+Idlist + ")  ");
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
 			if (rows > 0)
@@ -191,7 +191,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,UserName,ShowName,PassWord,Sex,PhoneNum,Email,Age,ImgUrl,IsEnable,CreateTime,UpdateTime from User ");
+            strSql.Append("select  top 1 Id,UserName,ShowName,PassWord,Sex,PhoneNum,Email,Age,ImgUrl,IsEnable,CreateTime,UpdateTime from UserInfo ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -292,7 +292,7 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select Id,UserName,ShowName,PassWord,Sex,PhoneNum,Email,Age,ImgUrl,IsEnable,CreateTime,UpdateTime ");
-			strSql.Append(" FROM User ");
+            strSql.Append(" FROM UserInfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -312,7 +312,7 @@ namespace Maticsoft.DAL
 				strSql.Append(" top "+Top.ToString());
 			}
 			strSql.Append(" Id,UserName,ShowName,PassWord,Sex,PhoneNum,Email,Age,ImgUrl,IsEnable,CreateTime,UpdateTime ");
-			strSql.Append(" FROM User ");
+            strSql.Append(" FROM UserInfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -327,7 +327,7 @@ namespace Maticsoft.DAL
 		public int GetRecordCount(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) FROM User ");
+            strSql.Append("select count(1) FROM UserInfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -358,7 +358,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append("order by T.Id desc");
 			}
-			strSql.Append(")AS Row, T.*  from User T ");
+            strSql.Append(")AS Row, T.*  from UserInfo T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
 			{
 				strSql.Append(" WHERE " + strWhere);

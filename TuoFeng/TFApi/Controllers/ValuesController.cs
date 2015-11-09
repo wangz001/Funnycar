@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Providers.Entities;
+using Maticsoft.BLL;
+using User = Maticsoft.Model.User;
 
 namespace TFApi.Controllers
 {
@@ -18,6 +21,23 @@ namespace TFApi.Controllers
         // GET api/values/5
         public string Get(int id)
         {
+            Maticsoft.BLL.User bll = new Maticsoft.BLL.User();
+            var flag = bll.Exists(5);
+
+            var model = new User();
+            model.UserName = "bwlang";
+
+            model.ShowName="驼峰";
+            model.PassWord="123";
+            model.Sex=true;
+            model.PhoneNum="18911186941";
+            model.Email="bwlang@sian.cn";
+            model.Age=20;
+            model.ImgUrl="";
+            model.IsEnable=true;
+            model.CreateTime=DateTime.Now;
+            model.UpdateTime=DateTime.Now;
+            var result = bll.Add(model);
             return "value";
         }
 

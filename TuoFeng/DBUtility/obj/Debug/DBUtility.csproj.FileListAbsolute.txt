@@ -5,3 +5,10 @@ D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\bin\Debug\System.Data.SQLite.DLL
 D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\obj\Debug\Maticsoft.DBUtility.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\obj\Debug\Maticsoft.DBUtility.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\bin\Debug\Maticsoft.DBUtility.dll
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\bin\Debug\Maticsoft.DBUtility.pdb
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\bin\Debug\MySql.Data.dll
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\bin\Debug\System.Data.SQLite.DLL
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\obj\Debug\Maticsoft.DBUtility.dll
+D:\GitHubProject\Funnycar\TuoFeng\DBUtility\obj\Debug\Maticsoft.DBUtility.pdb

@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBUtility", "DBUtility\DBUt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFApi", "TFApi\TFApi.csproj", "{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{E7211945-18D0-4C38-8360-BF6ED74DF535}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -82,6 +84,16 @@ Global
 		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|.NET.ActiveCfg = Release|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
