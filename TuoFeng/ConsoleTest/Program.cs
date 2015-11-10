@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Maticsoft.BLL;
+using TuoFeng.BLL;
 
 namespace ConsoleTest
 {
@@ -10,8 +10,7 @@ namespace ConsoleTest
     {
         public static void Main(string[] args)
         {
-            User bll=new User();
-            var flag=bll.Exists(5);
+            testUser.regist();
 
         }
     }

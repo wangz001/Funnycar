@@ -97,3 +97,14 @@ D:\GitHubProject\Funnycar\TuoFeng\TFApi\bin\zh-Hans\System.Web.WebPages.Razor.re
 D:\GitHubProject\Funnycar\TuoFeng\TFApi\obj\Debug\TFApi.csprojResolveAssemblyReference.cache
 D:\GitHubProject\Funnycar\TuoFeng\TFApi\obj\Debug\TFApi.dll
 D:\GitHubProject\Funnycar\TuoFeng\TFApi\obj\Debug\TFApi.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.BLL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.Model.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.DAL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\Maticsoft.Common.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.DBUtility.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\System.Data.SQLite.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\MySql.Data.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.BLL.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.Model.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.DAL.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\TFApi\bin\TuoFeng.DBUtility.pdb

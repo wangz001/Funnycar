@@ -11,7 +11,7 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>Maticsoft.DAL</AssemblyName>
+    <AssemblyName>TuoFeng.DAL</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -19,7 +19,7 @@
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
-    <RootNamespace>Maticsoft.DAL</RootNamespace>
+    <RootNamespace>TuoFeng.DAL</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>
     </StartupObject>
@@ -35,8 +35,9 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -120,12 +121,12 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Comment.cs" />
-    <Compile Include="Thumb.cs" />
-    <Compile Include="TravelParts.cs" />
-    <Compile Include="Travels.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserRelate.cs" />
+    <Compile Include="CommentDal.cs" />
+    <Compile Include="ThumbDal.cs" />
+    <Compile Include="TravelPartsDal.cs" />
+    <Compile Include="TravelsDal.cs" />
+    <Compile Include="UserDal.cs" />
+    <Compile Include="UserRelateDal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

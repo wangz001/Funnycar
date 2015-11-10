@@ -5,8 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Providers.Entities;
-using Maticsoft.BLL;
-using User = Maticsoft.Model.User;
+using User = TuoFeng.Model.User;
 
 namespace TFApi.Controllers
 {
@@ -21,7 +20,7 @@ namespace TFApi.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            Maticsoft.BLL.User bll = new Maticsoft.BLL.User();
+            TuoFeng.BLL.UserBll bll = new TuoFeng.BLL.UserBll();
             var flag = bll.Exists(5);
 
             var model = new User();
