@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBUtility", "DBUtility\DBUtility.csproj", "{0988C62E-247F-471F-A183-DB509C7A3839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFApi", "TFApi\TFApi.csproj", "{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{E7211945-18D0-4C38-8360-BF6ED74DF535}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuoFengWeb", "TuoFengWeb\TuoFengWeb.csproj", "{EF384780-3F11-41A7-822C-0F8EA0576EFE}"
@@ -76,16 +74,6 @@ Global
 		{0988C62E-247F-471F-A183-DB509C7A3839}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0988C62E-247F-471F-A183-DB509C7A3839}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0988C62E-247F-471F-A183-DB509C7A3839}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|.NET.ActiveCfg = Release|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5CC0541D-F5B8-45F6-8F6F-D19405D41E19}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Debug|Any CPU.Build.0 = Debug|Any CPU

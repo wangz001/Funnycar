@@ -1,15 +1,39 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using TuoFeng.BLL;
+using TuoFeng.Model;
 
 namespace TuoFengWeb.Controllers
 {
     public class UserController : Controller
     {
-        //
-        // GET: /User/
+        private readonly UserBll _userBll = new UserBll();
 
-        public ActionResult Index()
+        public string Regist(string userName, string passWord)
         {
-            return null;
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(passWord))
+            {
+                return "用户名不能为空";
+            }
+            var exist = _userBll.Exists(userName);
+            if (exist)
+            {
+                return "用户名已存在";
+            }
+            var model = new User
+            {
+                UserName = userName,
+                PassWord = passWord,
+                IsEnable = true,
+                CreateTime = DateTime.Now,
+                UpdateTime = DateTime.Now
+            };
+            var result = _userBll.Add(model);
+            if (result>0)
+            {
+                return "ok-->" + result;
+            }
+            return "error";
         }
 
         //
@@ -63,8 +87,7 @@ namespace TuoFengWeb.Controllers
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                return null;
             }
             catch
             {
@@ -89,8 +112,7 @@ namespace TuoFengWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                return null;
             }
             catch
             {
