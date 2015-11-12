@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFApi", "TFApi\TFApi.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{E7211945-18D0-4C38-8360-BF6ED74DF535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuoFengWeb", "TuoFengWeb\TuoFengWeb.csproj", "{EF384780-3F11-41A7-822C-0F8EA0576EFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -94,6 +96,16 @@ Global
 		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E7211945-18D0-4C38-8360-BF6ED74DF535}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Release|.NET.ActiveCfg = Release|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EF384780-3F11-41A7-822C-0F8EA0576EFE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
