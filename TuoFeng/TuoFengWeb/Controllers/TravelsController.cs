@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using TuoFeng.BLL;
 using TuoFeng.Model;
@@ -10,13 +11,17 @@ namespace TuoFengWeb.Controllers
         //
         // GET: /Travels/
         private readonly TravelsBll _travelsBll=new TravelsBll();
+        private readonly TravelPartsBll _travelPartsBll=new TravelPartsBll();
+        private readonly UserBll _userBll=new UserBll();
+        private readonly ThumbBll _thumbBll=new ThumbBll();
+        private readonly CommentBll _commentBll=new CommentBll();
 
         public ActionResult Index()
         {
             return null;
         }
 
-        public string Add(string userId,string travelName)
+        public string Create(string userId,string travelName)
         {
             if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(travelName))
             {
@@ -39,51 +44,15 @@ namespace TuoFengWeb.Controllers
             return HttpRequestResult.StateError;
         }
 
+        /// <summary>
+        /// 设置封面图
+        /// </summary>
+        /// <param name="travelId"></param>
+        /// <param name="imgUrl"></param>
+        /// <returns></returns>
         public string SetCoverImage(int travelId,string imgUrl)
         {
 
-            return null;
-        }
-
-        //
-        // GET: /Travels/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return null;
-        }
-
-        //
-        // GET: /Travels/Create
-
-        public ActionResult Create()
-        {
-            return null;
-        }
-
-        //
-        // POST: /Travels/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        //
-        // GET: /Travels/Edit/5
-
-        public ActionResult Edit(int id)
-        {
             return null;
         }
 
@@ -113,22 +82,67 @@ namespace TuoFengWeb.Controllers
             return null;
         }
 
-        //
-        // POST: /Travels/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        /// <summary>
+        /// 分页获取最新的消息。以后可以加入标签，根据用户的兴趣获取，或者根据地理位置获取
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public string GetTravelPartLists(int page, int count)
         {
-            try
+            var resultArr = new List<string>();
+            const string jsonItem = "{{" +
+                                    "\"userName\": \"@userName\"" +
+                                    ",\"userId\": \"@userId\"" +
+                                    ",\"headImage\": \"@headImage\"" +
+                                    ",\"sex\": \"@sex\"" +
+                                    ",\"travelId\": \"@travelId\"" +
+                                    ",\"travelName\": \"@travelName\"" +
+                                    ",\"travelPartId\": \"@travelPartId\"" +
+                                    ",\"description\": \"@description\"" +
+                                    ",\"images\": \"@images\"" +
+                                    ",\"location\": \"@location\"" +
+                                    ",\"createTime\": \"@createTime\"" +
+                                    ",\"thembCount\": \"@thembCount\"" +
+                                    ",\"commentCount\": \"@commentCount\"" +
+                                    "}}";
+            var startIndex = (page-1)*count;
+            var endIndex = startIndex + count;
+            var travelParts = _travelPartsBll.GetListByPage("", "CreateTime", startIndex, endIndex);
+            if (travelParts!=null&&travelParts.Tables[0].Rows.Count>0)
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var lists = _travelPartsBll.DataTableToList(travelParts.Tables[0]);
+                foreach (TravelParts travelPart in lists)
+                {
+                    int travelId = travelPart.TravelId ??0;
+                    var travelName = (travelId > 0)? _travelsBll.GetModelByCache(travelId).TravelName: "";
+                    var userId = travelPart.UserId;
+                    var userModel = _userBll.GetModelByCache(userId);
+                    var userName =userModel.UserName;
+                    var headImage = ""+userModel.ImgUrl;
+                    var sex = userModel.Sex?"男":"女";
+                    var str = jsonItem.Replace("@userName", userName);
+                    str=str.Replace("@userId", userId.ToString());
+                    str = str.Replace("@headImage", headImage);
+                    str = str.Replace("@sex", sex);
+                    str = str.Replace("@travelId", travelId.ToString());
+                    str = str.Replace("@travelName", travelName);
+                    str = str.Replace("@travelPartId", travelPart.Id.ToString());
+                    str = str.Replace("@description", travelPart.Description);
+                    str = str.Replace("@images", travelPart.PartUrl);//图片或视频
+                    str = str.Replace("@location", travelPart.Area);
+                    str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd hh:mm"));
+                    str = str.Replace("@thembCount", "");//_thumbBll.GetModelByPartId(travelPart.Id)
+                    str = str.Replace("@commentCount", "");//_commentBll.GetModelByPartId(travelPart.Id)
+                    resultArr.Add(str);
+                }
+                if (resultArr.Count > 0)
+                {
+                    return string.Format("[{0}]", string.Join(",", resultArr));
+                }
             }
-            catch
-            {
-                return null;
-            }
+            return string.Empty;
         }
+        
     }
 }

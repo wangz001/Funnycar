@@ -226,7 +226,7 @@ namespace TuoFeng.DAL
 				{
 					model.Id=int.Parse(row["Id"].ToString());
 				}
-				if(row["TravelId"]!=null && row["TravelId"].ToString()!="")
+				if(row["TravelId"]!=DBNull.Value && row["TravelId"].ToString()!="")
 				{
 					model.TravelId=int.Parse(row["TravelId"].ToString());
 				}

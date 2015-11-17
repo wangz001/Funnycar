@@ -31,6 +31,7 @@ namespace TuoFengWeb.Controllers
             var result = _userBll.Add(model);
             if (result>0)
             {
+                Session.Add("user",model);
                 return "ok-->" + result;
             }
             return "error";
@@ -44,40 +45,22 @@ namespace TuoFengWeb.Controllers
             return null;
         }
 
-        //
-        // GET: /User/Create
 
-        public ActionResult Create()
+        public string SetHeadImage(FormCollection collection)
         {
-            return null;
-        }
-
-        //
-        // POST: /User/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            var userId = collection.Get("userName");
+            var imgUrl = collection.Get("imgUrl");
+            if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(imgUrl))
             {
-                // TODO: Add insert logic here
-
-                return null;
+                return "图片地址不能为空";
             }
-            catch
+            var flag = _userBll.SetHeadImage(Int32.Parse(userId), imgUrl);
+            if (flag)
             {
-                return null;
+                return HttpRequestResult.StateOk;
             }
+            return HttpRequestResult.StateError;
         }
-
-        //
-        // GET: /User/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return null;
-        }
-
         //
         // POST: /User/Edit/5
 

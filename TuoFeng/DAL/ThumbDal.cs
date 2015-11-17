@@ -322,6 +322,11 @@ namespace TuoFeng.DAL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public Thumb GetModelByPartId(int partId)
+	    {
+	        throw new NotImplementedException();
+	    }
 	}
 }
 

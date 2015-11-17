@@ -416,6 +416,30 @@ namespace TuoFeng.DAL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public bool SetHeadImage(int userid, string imgUrl)
+	    {
+            var strSql = new StringBuilder();
+            strSql.Append("update UserInfo set ");
+            strSql.Append("ImgUrl=@ImgUrl,");
+            strSql.Append("UpdateTime=@UpdateTime");
+            strSql.Append(" where Id=@Id");
+	        SqlParameter[] para =
+	        {
+	            new SqlParameter("@ImgUrl",SqlDbType.VarChar){Value = imgUrl},
+                new SqlParameter("@UpdateTime",SqlDbType.DateTime){Value = DateTime.Now},
+                new SqlParameter("@Id",SqlDbType.Int){Value = userid} 
+	        };
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), para);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+	    }
 	}
 }
 

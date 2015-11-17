@@ -166,6 +166,11 @@ namespace TuoFeng.BLL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public Thumb GetModelByPartId(int partId)
+		{
+            return dal.GetModelByPartId(partId);
+		}
 	}
 }
 
