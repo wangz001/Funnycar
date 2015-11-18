@@ -10,7 +10,7 @@ namespace ConsoleTest
     {
         public static void Main(string[] args)
         {
-            testUser.regist();
+            TestTravels.addTravelParts();
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Web.Mvc;
 using TuoFeng.BLL;
 using TuoFeng.Model;
@@ -82,6 +83,48 @@ namespace TuoFengWeb.Controllers
             return null;
         }
 
+        [HttpPost]
+        public string AddTravelPart(FormCollection collection)
+        {
+            var travelIdStr = collection.Get("travelId");
+            var userIdStr = collection.Get("userId");
+            var partType = collection.Get("partType");
+            var description = collection.Get("description");
+            var partUrl = collection.Get("partUrl");
+            var longitude = collection.Get("longitude");
+            var latitude = collection.Get("latitude");
+            var height = collection.Get("height");
+            var area = collection.Get("area");
+            if (string.IsNullOrEmpty(userIdStr)) return HttpRequestResult.StateNotNull;
+            if (string.IsNullOrEmpty(description) && string.IsNullOrEmpty(partUrl))
+                return HttpRequestResult.StateNotNull;
+            var model = new TravelParts();
+            {
+                model.UserId = Int32.Parse(userIdStr);
+                if(!string.IsNullOrEmpty(travelIdStr))model.TravelId = Int32.Parse(travelIdStr);
+                model.PartType = Int32.Parse(partType);
+                model.Description = description;
+                model.PartUrl = partUrl;
+                if (!string.IsNullOrEmpty(longitude)&&!string.IsNullOrEmpty(latitude)&&!string.IsNullOrEmpty(height))
+                {
+                    model.Longitude = long.Parse(longitude);
+                    model.Latitude = long.Parse(latitude);
+                    model.Height = long.Parse(height);
+                }
+                if (!string.IsNullOrEmpty(area)) model.Area = area;
+                model.CreateTime = DateTime.Now;
+                model.IsDelete = false;
+            };
+            var flag = _travelPartsBll.Add(model);
+            if (flag>0)
+            {
+                return HttpRequestResult.StateOk;
+            }
+            else
+            {
+                return HttpRequestResult.StateError;
+            }
+        }
         /// <summary>
         /// 分页获取最新的消息。以后可以加入标签，根据用户的兴趣获取，或者根据地理位置获取
         /// </summary>
