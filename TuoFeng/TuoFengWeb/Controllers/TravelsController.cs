@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Web.Mvc;
 using TuoFeng.BLL;
 using TuoFeng.Model;
@@ -16,6 +15,7 @@ namespace TuoFengWeb.Controllers
         private readonly UserBll _userBll=new UserBll();
         private readonly ThumbBll _thumbBll=new ThumbBll();
         private readonly CommentBll _commentBll=new CommentBll();
+
 
         public ActionResult Index()
         {
@@ -53,13 +53,18 @@ namespace TuoFengWeb.Controllers
         /// <returns></returns>
         public string SetCoverImage(int travelId,string imgUrl)
         {
-
-            return null;
+            if (travelId <= 0 || string.IsNullOrEmpty(imgUrl)) return HttpRequestResult.StateNotNull;
+            var falg = _travelsBll.SetCoverImage(travelId, imgUrl);
+            if (falg)
+            {
+                return HttpRequestResult.StateOk;}
+            else
+            {
+                return HttpRequestResult.StateError;
+            }
         }
 
-        //
-        // POST: /Travels/Edit/5
-
+        
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -134,7 +139,7 @@ namespace TuoFengWeb.Controllers
         public string GetTravelPartLists(int page, int count)
         {
             var resultArr = new List<string>();
-            const string jsonItem = "{{" +
+            const string jsonItem = "{" +
                                     "\"userName\": \"@userName\"" +
                                     ",\"userId\": \"@userId\"" +
                                     ",\"headImage\": \"@headImage\"" +
@@ -148,7 +153,7 @@ namespace TuoFengWeb.Controllers
                                     ",\"createTime\": \"@createTime\"" +
                                     ",\"thembCount\": \"@thembCount\"" +
                                     ",\"commentCount\": \"@commentCount\"" +
-                                    "}}";
+                                    "}";
             var startIndex = (page-1)*count;
             var endIndex = startIndex + count;
             var travelParts = _travelPartsBll.GetListByPage("", "CreateTime", startIndex, endIndex);
@@ -175,8 +180,8 @@ namespace TuoFengWeb.Controllers
                     str = str.Replace("@images", travelPart.PartUrl);//图片或视频
                     str = str.Replace("@location", travelPart.Area);
                     str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd hh:mm"));
-                    str = str.Replace("@thembCount", "");//_thumbBll.GetModelByPartId(travelPart.Id)
-                    str = str.Replace("@commentCount", "");//_commentBll.GetModelByPartId(travelPart.Id)
+                    str = str.Replace("@thembCount", _thumbBll.GetThembCountByPartId(travelPart.Id).ToString());//
+                    str = str.Replace("@commentCount", _commentBll.GetCommentCountByPartId(travelPart.Id).ToString());//
                     resultArr.Add(str);
                 }
                 if (resultArr.Count > 0)

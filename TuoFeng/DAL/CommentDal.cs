@@ -324,6 +324,17 @@ namespace TuoFeng.DAL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public int GetCommentCountByPartId(int travelPartId)
+	    {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from Comment");
+            strSql.Append(" where TravelPartId=@TravelPartId");
+            SqlParameter[] parameters = {
+					new SqlParameter("@TravelPartId", SqlDbType.BigInt){Value = travelPartId}
+			};
+            return DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+	    }
 	}
 }
 

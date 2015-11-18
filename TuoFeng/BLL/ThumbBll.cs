@@ -167,9 +167,9 @@ namespace TuoFeng.BLL
 
 		#endregion  ExtensionMethod
 
-	    public Thumb GetModelByPartId(int partId)
+        public int GetThembCountByPartId(int partId)
 		{
-            return dal.GetModelByPartId(partId);
+            return dal.GetThembCountByPartId(partId);
 		}
 	}
 }

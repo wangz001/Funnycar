@@ -32,9 +32,9 @@ namespace TuoFengWeb.Controllers
             if (result>0)
             {
                 Session.Add("user",model);
-                return "ok-->" + result;
+                return HttpRequestResult.StateOk;
             }
-            return "error";
+            return HttpRequestResult.StateError;
         }
 
         //
@@ -48,7 +48,7 @@ namespace TuoFengWeb.Controllers
 
         public string SetHeadImage(FormCollection collection)
         {
-            var userId = collection.Get("userName");
+            var userId = collection.Get("userId");
             var imgUrl = collection.Get("imgUrl");
             if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(imgUrl))
             {

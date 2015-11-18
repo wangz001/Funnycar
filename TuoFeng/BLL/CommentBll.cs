@@ -166,6 +166,11 @@ namespace TuoFeng.BLL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public int GetCommentCountByPartId(int travelPartId)
+		{
+		    return dal.GetCommentCountByPartId(travelPartId);
+		}
 	}
 }
 

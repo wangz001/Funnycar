@@ -323,9 +323,21 @@ namespace TuoFeng.DAL
 
 		#endregion  ExtensionMethod
 
-	    public Thumb GetModelByPartId(int partId)
+
+        /// <summary>
+        /// 获取点赞的数量
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <returns></returns>
+        public int GetThembCountByPartId(int partId)
 	    {
-	        throw new NotImplementedException();
+            var strSql = new StringBuilder();
+            strSql.Append("select count(1) from Thumb");
+            strSql.Append(" where TravelPartId=@TravelPartId");
+            SqlParameter[] parameters = {
+					new SqlParameter("@TravelPartId", SqlDbType.BigInt){Value = partId}
+			};
+            return DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
 	    }
 	}
 }

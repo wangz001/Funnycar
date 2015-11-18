@@ -348,6 +348,35 @@ namespace TuoFeng.DAL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+        /// <summary>
+        /// 设置封面图
+        /// </summary>
+        /// <param name="travelId"></param>
+        /// <param name="imgUrl"></param>
+        /// <returns></returns>
+	    public bool SetCoverImage(int travelId, string imgUrl)
+	    {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update Travels set ");
+            strSql.Append("UpdateTime=@UpdateTime,");
+            strSql.Append("CoverImage=@CoverImage,");
+            strSql.Append(" where Id=@Id");
+            SqlParameter[] parameters = {
+					new SqlParameter("@UpdateTime", SqlDbType.DateTime){Value = DateTime.Now},
+					new SqlParameter("@CoverImage", SqlDbType.VarChar,100){Value = imgUrl},
+					new SqlParameter("@Id", SqlDbType.Int,4){Value = travelId}
+                                        };
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+	    }
 	}
 }
 
