@@ -42,10 +42,9 @@ namespace TuoFeng.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(long Id)
+        public bool DeleteThumb(int travelPartId, int userId)
 		{
-			
-			return dal.Delete(Id);
+            return dal.DeleteThumb(travelPartId, userId);
 		}
 		/// <summary>
 		/// 删除一条数据

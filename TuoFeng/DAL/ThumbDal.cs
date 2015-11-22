@@ -103,17 +103,18 @@ namespace TuoFeng.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(long Id)
+        public bool DeleteThumb(int travelPartId,int userId)
 		{
-			
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from Thumb ");
-			strSql.Append(" where Id=@Id");
-			SqlParameter[] parameters = {
-					new SqlParameter("@Id", SqlDbType.BigInt)
-			};
-			parameters[0].Value = Id;
-
+            var strSql = new StringBuilder();
+            strSql.Append("update Thumb set ");
+            strSql.Append("IsDelete=1");
+            strSql.Append("CreateTime=@CreateTime");
+            strSql.Append(" where UserId=@UserId");
+            strSql.Append(" and TravelPartId=@TravelPartId");
+            SqlParameter[] parameters = {
+					new SqlParameter("@TravelPartId", SqlDbType.Int,4){Value = travelPartId},
+					new SqlParameter("@UserId", SqlDbType.Int,4){Value = userId}
+					};
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
