@@ -90,3 +90,5 @@ D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\zh-Hans\System.Web.WebPages.Raz
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.csprojResolveAssemblyReference.cache
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
