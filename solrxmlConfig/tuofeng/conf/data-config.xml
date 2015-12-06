@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<dataConfig>
+    <dataSource driver="com.microsoft.sqlserver.jdbc.SQLServerDriver" url="jdbc:sqlserver://101.200.175.157;DatabaseName=TuoFeng" user="sa" password="funnycar2015"/>
+    <document name="travel">  
+        <entity name="travels"  transformer="ClobTransformer" pk="id"
+                 query="SELECT 'travels_'+convert(varchar(100),id) as table_id,UserId
+						,TravelName,CreateTime,UpdateTime,CoverImage from travels"        
+                 deltaImportQuery="SELECT 'travels_'+convert(varchar(100),id) as table_id,UserId
+						,TravelName,CreateTime,UpdateTime,CoverImage from travels"    
+                 deltaQuery="SELECT 'travels_'+convert(varchar(100),id) as table_id FROM travels where CreateTime > '${dataimporter.last_index_time}'">             
+                    <field column="table_id"      name="id"      />  
+                    <field column="userid"      name="userid"      />
+					<field column="TravelName"      name="TravelName"      />
+					<field column="CreateTime"      name="CreateTime"      />
+					<field column="UpdateTime"      name="UpdateTime"      />
+					<field column="CoverImage"      name="CoverImage"      />					
+         </entity> 
+        <entity name="travelparts"  transformer="ClobTransformer" pk="id"
+                 query="SELECT 'travelparts_'+CONVERT(varchar(100),id) as table_id
+						,TravelId,UserId,PartType,Description,PartUrl,Longitude,Latitude
+						,Height,Area,CreateTime from TravelParts"        
+                 deltaImportQuery="SELECT 'travelparts_'+CONVERT(varchar(100),id) as table_id
+						,TravelId,UserId,PartType,Description,PartUrl,Longitude,Latitude
+						,Height,Area,CreateTime from TravelParts"    
+                 deltaQuery="SELECT 'travelparts_'+CONVERT(varchar(100),id) as table_id FROM Travels where CreateTime > '${dataimporter.last_index_time}'">             
+                    <field column="table_id"      name="id"      />  
+                    <field column="TravelId"      name="UserId"      /> 
+					<field column="UserId"      name="UserId"      /> 
+					<field column="PartType"      name="PartType"      /> 
+					<field column="Description"      name="Description"      /> 
+					<field column="PartUrl"      name="PartUrl"      />
+					<field column="Longitude"      name="Longitude"      />
+					<field column="Latitude"      name="Latitude"      />
+					<field column="Height"      name="Height"      />
+					<field column="Area"      name="Area"      />	
+					<field column="CreateTime"      name="CreateTime"      />						
+         </entity>
+</document>
+</dataConfig>
