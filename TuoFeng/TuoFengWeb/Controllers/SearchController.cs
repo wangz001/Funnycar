@@ -14,7 +14,7 @@ namespace TuoFengWeb.Controllers
         //
         // GET: /Search/
 
-        public string Index()
+        public string Index(string keyWord)
         {
             var result=SolrNetUtil.Index();
 

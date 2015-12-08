@@ -6,13 +6,14 @@ using System.Web;
 using EasyNet.Solr;
 using EasyNet.Solr.Commons;
 using EasyNet.Solr.Impl;
+using TuoFeng.Model;
 
 namespace TuoFengWeb
 {
     public class SolrNetUtil
     {
         private const string SolrUrl = "http://localhost:8080/solr/";
-
+        private const string CoreName = "tuofeng";
 
         static OptimizeOptions optimizeOptions = new OptimizeOptions();
         static ISolrResponseParser<NamedList, ResponseHeader> binaryResponseHeaderParser = new BinaryResponseHeaderParser();
@@ -36,6 +37,47 @@ namespace TuoFengWeb
             
         }
 
+        public static int NewTravelIndex(Travels travle)
+        {
+            var docs = new List<SolrInputDocument>();
+            var doc = new SolrInputDocument();
+            doc.Add("", new SolrInputField("id", "travels_"+travle.Id));  //索引中Id不能重复
+            doc.Add("", new SolrInputField("userid", travle.UserId));
+            doc.Add("", new SolrInputField("TravelName", travle.TravelName));
+            doc.Add("", new SolrInputField("CreateTime", travle.CreateTime));
+            doc.Add("", new SolrInputField("UpdateTime", travle.UpdateTime));
+            doc.Add("", new SolrInputField("CoverImage", travle.CoverImage));
+            docs.Add(doc);
+            var result = updateOperations.Update(CoreName, "/update", new UpdateOptions() { OptimizeOptions = optimizeOptions, Docs = docs });
+            var header = binaryResponseHeaderParser.Parse(result);
+            return header.Status; //返回状态码。0表示成功
+        }
+
+        /// <summary>
+        /// 创建或更新索引  travelpart
+        /// </summary>
+        /// <param name="parts"></param>
+        /// <returns></returns>
+        public static int NewTravelPartIndex(TravelParts parts)
+        {
+            var docs = new List<SolrInputDocument>();
+            var doc = new SolrInputDocument();
+            doc.Add("", new SolrInputField("id", "travelparts_" + parts.Id));
+            doc.Add("", new SolrInputField("TravelId", parts.TravelId));
+            doc.Add("", new SolrInputField("UserId", parts.UserId));
+            doc.Add("", new SolrInputField("PartType", parts.PartType));
+            doc.Add("", new SolrInputField("Description", parts.Description));
+            doc.Add("", new SolrInputField("PartUrl", parts.PartUrl));
+            doc.Add("", new SolrInputField("Longitude", parts.Longitude));
+            doc.Add("", new SolrInputField("Latitude", parts.Latitude));
+            doc.Add("", new SolrInputField("Height", parts.Height));
+            doc.Add("", new SolrInputField("Area", parts.Area));
+            doc.Add("", new SolrInputField("CreateTime", parts.CreateTime));
+            docs.Add(doc);
+            var result = updateOperations.Update(CoreName, "/update", new UpdateOptions() { OptimizeOptions = optimizeOptions, Docs = docs });
+            var header = binaryResponseHeaderParser.Parse(result);
+            return header.Status; //返回状态码。0表示成功
+        }
 
         /// <summary>
         /// 创建索引
