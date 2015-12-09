@@ -20,3 +20,4 @@ D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Maticsoft.Web.Global.resources
 D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Web.csproj.GenerateResource.Cache
 D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Maticsoft.Web.dll
 D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Maticsoft.Web.pdb
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\Maticsoft.Web.dll.config

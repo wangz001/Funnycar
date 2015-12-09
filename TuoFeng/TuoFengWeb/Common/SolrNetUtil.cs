@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using EasyNet.Solr;
 using EasyNet.Solr.Commons;
@@ -17,6 +18,7 @@ namespace TuoFengWeb
 
         static OptimizeOptions optimizeOptions = new OptimizeOptions();
         static ISolrResponseParser<NamedList, ResponseHeader> binaryResponseHeaderParser = new BinaryResponseHeaderParser();
+
         static IUpdateParametersConvert<NamedList> updateParametersConvert = new BinaryUpdateParametersConvert();
         static ISolrUpdateConnection<NamedList, NamedList> solrUpdateConnection = new SolrUpdateConnection<NamedList, NamedList>() { ServerUrl = SolrUrl };
         static ISolrUpdateOperations<NamedList> updateOperations = new SolrUpdateOperations<NamedList, NamedList>(solrUpdateConnection, updateParametersConvert) { ResponseWriter = "javabin" };
@@ -31,22 +33,43 @@ namespace TuoFengWeb
         {
 
         }
-
-        public static void Search()
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public static string Query(string keyWord,int rowNum)
         {
-            
+            var query = new List<ISolrQuery>();
+
+            const int count = 10;//每次取的数据
+            var queryParam = new Dictionary<string, ICollection<string>>();
+            if (string.IsNullOrEmpty(keyWord))
+            {
+                return string.Empty;
+            }
+            queryParam.Add("q",new List<string>(){"text:"+keyWord});
+            if (rowNum>1)
+            {
+                queryParam.Add("start", new List<string>() { ((rowNum-1) * count).ToString() });
+            }
+            queryParam.Add("rows", new List<string>() { count.ToString() });
+            var result = operations.Query(CoreName, "/select", SolrQuery.All, queryParam);
+
+            var header = binaryQueryResultsParser.Parse(result);
+
+            var examples = binaryQueryResultsParser.Parse(result);
+            return string.Empty;
         }
 
         public static int NewTravelIndex(Travels travle)
         {
             var docs = new List<SolrInputDocument>();
             var doc = new SolrInputDocument();
-            doc.Add("", new SolrInputField("id", "travels_"+travle.Id));  //索引中Id不能重复
-            doc.Add("", new SolrInputField("userid", travle.UserId));
-            doc.Add("", new SolrInputField("TravelName", travle.TravelName));
-            doc.Add("", new SolrInputField("CreateTime", travle.CreateTime));
-            doc.Add("", new SolrInputField("UpdateTime", travle.UpdateTime));
-            doc.Add("", new SolrInputField("CoverImage", travle.CoverImage));
+            doc.Add("id", new SolrInputField("id", "travels_" + travle.Id));  //索引中Id不能重复
+            doc.Add("userid", new SolrInputField("userid", travle.UserId));
+            doc.Add("TravelName", new SolrInputField("TravelName", travle.TravelName));
+            doc.Add("CreateTime", new SolrInputField("CreateTime", travle.CreateTime));
+            doc.Add("UpdateTime", new SolrInputField("UpdateTime", travle.UpdateTime));
+            doc.Add("CoverImage", new SolrInputField("CoverImage", travle.CoverImage));
             docs.Add(doc);
             var result = updateOperations.Update(CoreName, "/update", new UpdateOptions() { OptimizeOptions = optimizeOptions, Docs = docs });
             var header = binaryResponseHeaderParser.Parse(result);
@@ -62,21 +85,33 @@ namespace TuoFengWeb
         {
             var docs = new List<SolrInputDocument>();
             var doc = new SolrInputDocument();
-            doc.Add("", new SolrInputField("id", "travelparts_" + parts.Id));
-            doc.Add("", new SolrInputField("TravelId", parts.TravelId));
-            doc.Add("", new SolrInputField("UserId", parts.UserId));
-            doc.Add("", new SolrInputField("PartType", parts.PartType));
-            doc.Add("", new SolrInputField("Description", parts.Description));
-            doc.Add("", new SolrInputField("PartUrl", parts.PartUrl));
-            doc.Add("", new SolrInputField("Longitude", parts.Longitude));
-            doc.Add("", new SolrInputField("Latitude", parts.Latitude));
-            doc.Add("", new SolrInputField("Height", parts.Height));
-            doc.Add("", new SolrInputField("Area", parts.Area));
-            doc.Add("", new SolrInputField("CreateTime", parts.CreateTime));
+            doc.Add("id", new SolrInputField("id", "travelparts_" + parts.Id));
+            doc.Add("TravelId", new SolrInputField("TravelId", parts.TravelId));
+            doc.Add("UserId", new SolrInputField("UserId", parts.UserId));
+            doc.Add("PartType", new SolrInputField("PartType", parts.PartType));
+            doc.Add("Description", new SolrInputField("Description", parts.Description));
+            doc.Add("PartUrl", new SolrInputField("PartUrl", parts.PartUrl));
+            doc.Add("Longitude", new SolrInputField("Longitude", parts.Longitude));
+            doc.Add("Latitude", new SolrInputField("Latitude", parts.Latitude));
+            doc.Add("Height", new SolrInputField("Height", parts.Height));
+            doc.Add("Area", new SolrInputField("Area", parts.Area));
+            doc.Add("CreateTime", new SolrInputField("CreateTime", parts.CreateTime));
             docs.Add(doc);
             var result = updateOperations.Update(CoreName, "/update", new UpdateOptions() { OptimizeOptions = optimizeOptions, Docs = docs });
             var header = binaryResponseHeaderParser.Parse(result);
             return header.Status; //返回状态码。0表示成功
+        }
+
+        /// <summary>
+        /// 删除索引
+        /// </summary>
+        /// <param name="docIds"></param>
+        /// <returns></returns>
+        public static bool DeleteDoc(List<string> docIds) //docId为 table_id  格式
+        {
+            var result = updateOperations.Update(CoreName, "/update", new UpdateOptions() { OptimizeOptions = optimizeOptions, DelById = docIds});
+            var header = binaryResponseHeaderParser.Parse(result);
+            return header.Status==0; //返回状态码。0表示成功
         }
 
         /// <summary>
@@ -101,19 +136,7 @@ namespace TuoFengWeb
             return string.Format("Update Status:{0} QTime:{1}", header.Status, header.QTime);
         }
 
-        /// <summary>
-        /// 查询
-        /// </summary>
-        static void Query()
-        {
-            var result = operations.Query("collection1", "/select", SolrQuery.All, null);
-            var header = binaryResponseHeaderParser.Parse(result);
-
-            var examples = binaryQueryResultsParser.Parse(result);
-                    
-            System.Console.WriteLine(string.Format("Query Status:{0} QTime:{1} Total:{2}", header.Status, header.QTime, examples.NumFound));
-            System.Console.ReadLine();
-        }
+        
 
         /// <summary>
         /// 实体类

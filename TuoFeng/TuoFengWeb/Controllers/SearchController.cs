@@ -16,7 +16,7 @@ namespace TuoFengWeb.Controllers
 
         public string Index(string keyWord)
         {
-            var result=SolrNetUtil.Index();
+            var result = SolrNetUtil.Query("银杏",1);
 
             return result;
         }

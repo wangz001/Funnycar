@@ -8,3 +8,8 @@ D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.dll
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.pdb
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.csprojResolveAssemblyReference.cache
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb

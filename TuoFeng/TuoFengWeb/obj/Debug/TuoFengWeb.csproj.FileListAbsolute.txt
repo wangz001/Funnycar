@@ -92,3 +92,6 @@ D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.dll.config
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
