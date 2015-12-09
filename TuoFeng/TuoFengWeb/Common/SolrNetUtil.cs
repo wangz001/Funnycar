@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using EasyNet.Solr;
 using EasyNet.Solr.Commons;
 using EasyNet.Solr.Impl;
+using Newtonsoft.Json;
 using TuoFeng.Model;
+using TuoFengWeb.Models;
 
 namespace TuoFengWeb
 {
@@ -15,7 +18,7 @@ namespace TuoFengWeb
     {
         private const string SolrUrl = "http://localhost:8080/solr/";
         private const string CoreName = "tuofeng";
-
+        
         static OptimizeOptions optimizeOptions = new OptimizeOptions();
         static ISolrResponseParser<NamedList, ResponseHeader> binaryResponseHeaderParser = new BinaryResponseHeaderParser();
 
@@ -31,32 +34,91 @@ namespace TuoFengWeb
      
         static SolrNetUtil()
         {
-
+            
         }
+
+        public static string Query()
+        {
+            
+
+            return string.Empty;
+        }
+
         /// <summary>
         /// 查询
         /// </summary>
         public static string Query(string keyWord,int rowNum)
         {
-            var query = new List<ISolrQuery>();
-
+            var resultLists = new List<SearchVm>();
             const int count = 10;//每次取的数据
             var queryParam = new Dictionary<string, ICollection<string>>();
             if (string.IsNullOrEmpty(keyWord))
             {
                 return string.Empty;
             }
-            queryParam.Add("q",new List<string>(){"text:"+keyWord});
             if (rowNum>1)
             {
                 queryParam.Add("start", new List<string>() { ((rowNum-1) * count).ToString() });
             }
             queryParam.Add("rows", new List<string>() { count.ToString() });
-            var result = operations.Query(CoreName, "/select", SolrQuery.All, queryParam);
 
-            var header = binaryQueryResultsParser.Parse(result);
+            var result = operations.Query(CoreName, "/select", new SolrQuery("text:" + keyWord), queryParam);
 
-            var examples = binaryQueryResultsParser.Parse(result);
+            var solrDocumentList = (SolrDocumentList)result.Get("response");
+            if (solrDocumentList!=null&&solrDocumentList.Count>0)
+            {
+                var existTravels = new List<int>();
+                foreach (SolrDocument solrDocument in solrDocumentList)
+                {
+                    var idStr = solrDocument["id"].ToString();
+                    var type = idStr.Substring(0,idStr.IndexOf("_"));
+                    if ("travels".Equals(type))
+                    {
+                        var travelId = Int32.Parse(idStr.Substring(idStr.IndexOf("_") + 1));
+                        var userId = Int32.Parse(solrDocument["UserId"].ToString());
+                        var travelName = solrDocument["TravelName"].ToString();
+                        if (existTravels.Contains(travelId)) continue;
+                        var searchvm = new SearchVm
+                        {
+                            UserId = userId,
+                            TravleId = travelId,
+                            TravelName = travelName,
+                            CreateTime = DateTime.Parse(solrDocument["CreateTime"].ToString()).ToString("yyyy-MM-dd")
+                        };
+                        resultLists.Add(searchvm);
+                        existTravels.Add(travelId);
+                        continue;
+                    }
+                    if ("travelparts".Equals(type))
+                    {
+                        var travelId = 100;
+                        var travelPartId = Int32.Parse(idStr.Substring(idStr.IndexOf("_") + 1));
+                        var userId = Int32.Parse(solrDocument["UserId"].ToString());
+                        var description = solrDocument["Description"].ToString();
+                        var Area = (solrDocument["Area"]!=null&&solrDocument["Area"].ToString().Length>0) ?
+                            "" : solrDocument["Area"].ToString();
+                        var PartType = solrDocument["PartType"].ToString();
+                        var PartUrl = (solrDocument["PartUrl"] != null && solrDocument["PartUrl"].ToString().Length > 0) ?
+                            "" : solrDocument["PartUrl"].ToString();
+                        if (existTravels.Contains(travelId)) continue;
+                        var searchvm = new SearchVm
+                        {
+                            UserId = userId,
+                            TravleId = travelId,
+                            TravelName = "",
+                            Description = description,
+                            TravelPartId = travelPartId,
+                            CreateTime = DateTime.Parse(solrDocument["CreateTime"].ToString()).ToString("yyyy-MM-dd")
+                        };
+                        resultLists.Add(searchvm);
+                        existTravels.Add(travelId);
+                        continue;
+                    }
+
+                }
+                return JsonConvert.SerializeObject(resultLists);
+            }
+           
             return string.Empty;
         }
 
