@@ -40,3 +40,7 @@ D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\zh-Hans\System.Web.WebPages.Raz
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.csprojResolveAssemblyReference.cache
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.pdb
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.dll.config
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.xml

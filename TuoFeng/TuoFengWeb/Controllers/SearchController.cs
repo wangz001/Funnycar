@@ -14,10 +14,9 @@ namespace TuoFengWeb.Controllers
         //
         // GET: /Search/
 
-        public string Index(string keyWord)
+        public string Index(string keyWord,int page)
         {
-            var result = SolrNetUtil.Query("银杏",1);
-
+            var result = SolrNetUtil.Query(keyWord,page);
             return result;
         }
 

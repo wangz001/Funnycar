@@ -10,62 +10,65 @@
     <_PublishTargetUrl>C:\Users\wangzheng1.TECH\Desktop\TuoFengWeb</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/EasyNet.Solr.dll">
+      <publishTime>12/10/2015 17:45:41</publishTime>
+    </File>
     <File Include="bin/Maticsoft.Common.dll">
       <publishTime>11/09/2015 09:20:07</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>11/09/2015 09:20:07</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Data.SQLite.dll">
       <publishTime>11/09/2015 09:20:07</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>11/18/2015 14:22:25</publishTime>
+      <publishTime>12/09/2015 10:25:06</publishTime>
     </File>
     <File Include="bin/TuoFeng.BLL.dll">
-      <publishTime>11/18/2015 15:49:59</publishTime>
+      <publishTime>12/10/2015 17:45:50</publishTime>
     </File>
     <File Include="bin/TuoFeng.DAL.dll">
-      <publishTime>11/18/2015 15:49:59</publishTime>
+      <publishTime>12/10/2015 17:45:43</publishTime>
     </File>
     <File Include="bin/TuoFeng.DBUtility.dll">
-      <publishTime>11/18/2015 15:49:59</publishTime>
+      <publishTime>12/10/2015 17:45:38</publishTime>
     </File>
     <File Include="bin/TuoFeng.Model.dll">
-      <publishTime>11/18/2015 15:49:59</publishTime>
+      <publishTime>12/10/2015 17:45:36</publishTime>
     </File>
     <File Include="bin/TuoFengWeb.dll">
-      <publishTime>11/18/2015 15:50:00</publishTime>
+      <publishTime>12/10/2015 17:46:06</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
       <publishTime>11/09/2015 09:20:08</publishTime>

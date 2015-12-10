@@ -21,10 +21,12 @@ namespace TuoFengWeb.Models
 
         public string Description { get; set; }
 
-        private DateTime createTime;
-        public string CreateTime {
-            get { return createTime.ToShortDateString(); }
-            set { createTime = DateTime.Parse(value); }
-        }
+        public string CreateTime { get; set; }
+
+        public string Area { get; set; }
+
+        public string PartType { get; set; }
+        public string PartUrl { get; set; }
+       
     }
 }

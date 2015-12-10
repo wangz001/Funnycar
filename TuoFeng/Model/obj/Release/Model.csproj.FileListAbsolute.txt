@@ -1,2 +1,3 @@
 D:\GitHubProject\Funnycar\TuoFeng\Model\bin\Release\TuoFeng.Model.dll
 D:\GitHubProject\Funnycar\TuoFeng\Model\obj\Release\TuoFeng.Model.dll
+D:\GitHubProject\Funnycar\TuoFeng\Model\obj\Release\Model.csprojResolveAssemblyReference.cache

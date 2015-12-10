@@ -25,7 +25,7 @@ namespace TuoFengWeb
         static IUpdateParametersConvert<NamedList> updateParametersConvert = new BinaryUpdateParametersConvert();
         static ISolrUpdateConnection<NamedList, NamedList> solrUpdateConnection = new SolrUpdateConnection<NamedList, NamedList>() { ServerUrl = SolrUrl };
         static ISolrUpdateOperations<NamedList> updateOperations = new SolrUpdateOperations<NamedList, NamedList>(solrUpdateConnection, updateParametersConvert) { ResponseWriter = "javabin" };
-
+        static BinaryHighlightingParser highlightingParser=new BinaryHighlightingParser();
         static ISolrQueryConnection<NamedList> connection = new SolrQueryConnection<NamedList>() { ServerUrl = SolrUrl };
         static ISolrQueryOperations<NamedList> operations = new SolrQueryOperations<NamedList>(connection) { ResponseWriter = "javabin" };
 
@@ -39,8 +39,6 @@ namespace TuoFengWeb
 
         public static string Query()
         {
-            
-
             return string.Empty;
         }
 
@@ -61,10 +59,12 @@ namespace TuoFengWeb
                 queryParam.Add("start", new List<string>() { ((rowNum-1) * count).ToString() });
             }
             queryParam.Add("rows", new List<string>() { count.ToString() });
-
-            var result = operations.Query(CoreName, "/select", new SolrQuery("text:" + keyWord), queryParam);
-
+            queryParam.Add("hl",new List<string>(){"true"});
+            var queryStr=string.IsNullOrEmpty(keyWord)? SolrQuery.All:new SolrQuery("text:" + keyWord);
+            var result = operations.Query(CoreName, "/select",queryStr , queryParam);
+            var highLightResult = highlightingParser.Parse(result);
             var solrDocumentList = (SolrDocumentList)result.Get("response");
+            //整合返回的数据
             if (solrDocumentList!=null&&solrDocumentList.Count>0)
             {
                 var existTravels = new List<int>();
@@ -91,7 +91,7 @@ namespace TuoFengWeb
                     }
                     if ("travelparts".Equals(type))
                     {
-                        var travelId = 100;
+                        var travelId = Int32.Parse(solrDocument["TravelId"].ToString());
                         var travelPartId = Int32.Parse(idStr.Substring(idStr.IndexOf("_") + 1));
                         var userId = Int32.Parse(solrDocument["UserId"].ToString());
                         var description = solrDocument["Description"].ToString();
@@ -108,17 +108,17 @@ namespace TuoFengWeb
                             TravelName = "",
                             Description = description,
                             TravelPartId = travelPartId,
-                            CreateTime = DateTime.Parse(solrDocument["CreateTime"].ToString()).ToString("yyyy-MM-dd")
+                            CreateTime = DateTime.Parse(solrDocument["CreateTime"].ToString()).ToString("yyyy-MM-dd"),
+                            Area = Area,
+                            PartType = PartType,
+                            PartUrl = PartUrl
                         };
                         resultLists.Add(searchvm);
                         existTravels.Add(travelId);
-                        continue;
                     }
-
                 }
                 return JsonConvert.SerializeObject(resultLists);
             }
-           
             return string.Empty;
         }
 

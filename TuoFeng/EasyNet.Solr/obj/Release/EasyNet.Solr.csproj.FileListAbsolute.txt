@@ -1,0 +1,8 @@
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Release\EasyNet.Solr.XML
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Release\EasyNet.Solr.dll
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Release\EasyNet.Solr.pdb
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Release\EasyNet.Solr.dll.CodeAnalysisLog.xml
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Release\EasyNet.Solr.dll.lastcodeanalysissucceeded
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Release\EasyNet.Solr.csprojResolveAssemblyReference.cache
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Release\EasyNet.Solr.dll
+D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Release\EasyNet.Solr.pdb
