@@ -8,109 +8,111 @@
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword />
     <_PublishTargetUrl>C:\Users\wangzheng1.TECH\Desktop\TuoFengWeb</_PublishTargetUrl>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>.NET</LastUsedPlatform>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/EasyNet.Solr.dll">
-      <publishTime>12/10/2015 17:45:41</publishTime>
+      <publishTime>12/10/2015 21:04:14</publishTime>
     </File>
     <File Include="bin/Maticsoft.Common.dll">
-      <publishTime>11/09/2015 09:20:07</publishTime>
+      <publishTime>11/18/2015 19:22:21</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:40</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>11/09/2015 09:20:07</publishTime>
+      <publishTime>11/18/2015 19:22:21</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:40</publishTime>
     </File>
     <File Include="bin/System.Data.SQLite.dll">
-      <publishTime>11/09/2015 09:20:07</publishTime>
+      <publishTime>11/18/2015 19:22:22</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>12/09/2015 10:25:06</publishTime>
+      <publishTime>12/10/2015 21:06:39</publishTime>
     </File>
     <File Include="bin/TuoFeng.BLL.dll">
-      <publishTime>12/10/2015 17:45:50</publishTime>
+      <publishTime>12/10/2015 21:04:14</publishTime>
     </File>
     <File Include="bin/TuoFeng.DAL.dll">
-      <publishTime>12/10/2015 17:45:43</publishTime>
+      <publishTime>12/10/2015 21:04:14</publishTime>
     </File>
     <File Include="bin/TuoFeng.DBUtility.dll">
-      <publishTime>12/10/2015 17:45:38</publishTime>
+      <publishTime>12/10/2015 21:04:14</publishTime>
     </File>
     <File Include="bin/TuoFeng.Model.dll">
-      <publishTime>12/10/2015 17:45:36</publishTime>
+      <publishTime>12/10/2015 21:04:14</publishTime>
     </File>
     <File Include="bin/TuoFengWeb.dll">
-      <publishTime>12/10/2015 17:46:06</publishTime>
+      <publishTime>12/12/2015 00:34:52</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:33</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
-      <publishTime>11/09/2015 09:20:07</publishTime>
+      <publishTime>11/10/2015 21:22:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:33</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:33</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
-      <publishTime>11/09/2015 09:20:08</publishTime>
+      <publishTime>11/10/2015 21:22:33</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>11/18/2015 14:20:33</publishTime>
+      <publishTime>11/12/2015 21:02:41</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>11/18/2015 14:20:33</publishTime>
+      <publishTime>11/12/2015 21:02:47</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/18/2015 14:20:33</publishTime>
+      <publishTime>11/12/2015 21:18:32</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>11/18/2015 14:20:33</publishTime>
+      <publishTime>11/12/2015 21:02:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/18/2015 15:50:00</publishTime>
+      <publishTime>12/12/2015 00:35:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

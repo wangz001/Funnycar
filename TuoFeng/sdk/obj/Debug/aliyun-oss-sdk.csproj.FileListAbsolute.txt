@@ -1,0 +1,16 @@
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\bin\Debug\Aliyun.OSS.dll
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\bin\Debug\Aliyun.OSS.pdb
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\obj\Debug\aliyun-oss-sdk.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\obj\Debug\Aliyun.OSS.Domain.OssResources.resources
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\obj\Debug\Aliyun.OSS.Properties.Resources.resources
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\obj\Debug\aliyun-oss-sdk.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\obj\Debug\Aliyun.OSS.dll
+C:\Users\Administrator\Desktop\windows_ossclient_v1.1.2.0\aliyun-oss-csharp-sdk-master\aliyun-oss-csharp-sdk-master\sdk\obj\Debug\Aliyun.OSS.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\bin\Debug\Aliyun.OSS.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\bin\Debug\Aliyun.OSS.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\aliyun-oss-sdk.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.Domain.OssResources.resources
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.Properties.Resources.resources
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\aliyun-oss-sdk.csproj.GenerateResource.Cache
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.pdb

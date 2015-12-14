@@ -32,3 +32,5 @@ D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\TuoFeng.BLL.pdb
 D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\TuoFeng.Model.pdb
 D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\TuoFeng.DAL.pdb
 D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\TuoFeng.DBUtility.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.pdb

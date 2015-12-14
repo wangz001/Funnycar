@@ -10,8 +10,8 @@ namespace ConsoleTest
     {
         public static void Main(string[] args)
         {
-            TestTravels.addTravelParts();
-
+            //TestTravels.addTravelParts();
+            TestPutObject.PutObject();
         }
     }
 }

@@ -21,3 +21,15 @@ D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Web.csproj.GenerateResource.Cach
 D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Maticsoft.Web.dll
 D:\GitHubProject\Funnycar\TuoFeng\Web\obj\Debug\Maticsoft.Web.pdb
 D:\GitHubProject\Funnycar\TuoFeng\Web\bin\Maticsoft.Web.dll.config
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.BLL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.Model.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.DAL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.DBUtility.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\System.Data.SQLite.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\MySql.Data.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.BLL.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.Model.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.DAL.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.DBUtility.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\Aliyun.OSS.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\Aliyun.OSS.pdb

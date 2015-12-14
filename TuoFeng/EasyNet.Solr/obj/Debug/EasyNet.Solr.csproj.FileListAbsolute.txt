@@ -3,13 +3,12 @@ C:\Users\Administrator\Desktop\solr\easynet-73523\EasyNet.Solr\EasyNet.Solr\bin\
 C:\Users\Administrator\Desktop\solr\easynet-73523\EasyNet.Solr\EasyNet.Solr\obj\Debug\EasyNet.Solr.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\solr\easynet-73523\EasyNet.Solr\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
 C:\Users\Administrator\Desktop\solr\easynet-73523\EasyNet.Solr\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb
-D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.dll
-D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.pdb
-D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.csprojResolveAssemblyReference.cache
-D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
-D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb
 D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.dll
 D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.pdb
 D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.csprojResolveAssemblyReference.cache
 D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
 D:\GitHubProject\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb
