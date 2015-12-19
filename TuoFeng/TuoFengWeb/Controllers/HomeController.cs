@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 using System.Web.Mvc;
 using TuoFeng.BLL;
+using TuoFengWeb.Common;
 
 namespace TuoFengWeb.Controllers
 {
@@ -32,6 +34,24 @@ namespace TuoFengWeb.Controllers
                 return true;
             }
             return false;
+        }
+
+        public string GetOssSecurityToken()
+        {
+            var credentials = OssAccessUtil.GetSecurityToken();
+            if (credentials!=null)
+            {
+                var resultStr = new StringBuilder();
+                resultStr.AppendFormat("{{\"AccessKeyId\": \"{0}\",",credentials.AccessKeyId);
+                resultStr.AppendFormat("\"AccessKeySecret\": \"{0}\",",credentials.AccessKeySecret);
+                resultStr.AppendFormat("\"Expiration\": \"{0}\",",credentials.Expiration);
+                resultStr.AppendFormat("\"SecurityToken\": \"{0}\"}}",credentials.SecurityToken);
+                return resultStr.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
 }

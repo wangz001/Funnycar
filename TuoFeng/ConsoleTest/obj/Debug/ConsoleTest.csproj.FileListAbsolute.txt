@@ -34,3 +34,5 @@ D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\TuoFeng.DAL.pdb
 D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\TuoFeng.DBUtility.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\aliyun-net-sdk-core.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\aliyun-net-sdk-sts.dll

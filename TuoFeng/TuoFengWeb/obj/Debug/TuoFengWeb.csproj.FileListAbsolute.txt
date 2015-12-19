@@ -95,3 +95,5 @@ D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-core.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-sts.dll

@@ -12,3 +12,4 @@ D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\bin\Debug\EasyNet.Solr.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.pdb
+D:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\obj\Debug\EasyNet.Solr.csprojResolveAssemblyReference.cache

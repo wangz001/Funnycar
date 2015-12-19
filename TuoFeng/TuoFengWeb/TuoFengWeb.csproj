@@ -42,6 +42,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="aliyun-net-sdk-core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDll\aliyun-net-sdk-core.dll</HintPath>
+    </Reference>
+    <Reference Include="aliyun-net-sdk-sts, Version=2.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDll\aliyun-net-sdk-sts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,6 +114,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\OssAccessUtil.cs" />
     <Compile Include="Common\SolrNetUtil.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -127,6 +136,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="RefDll\aliyun-net-sdk-core.dll" />
+    <Content Include="RefDll\aliyun-net-sdk-sts.dll" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
