@@ -35,7 +35,10 @@ namespace TuoFengWeb.Controllers
             }
             return false;
         }
-
+        /// <summary>
+        /// 获取oss临时访问权限，用于app客户端上传图片到oss
+        /// </summary>
+        /// <returns></returns>
         public string GetOssSecurityToken()
         {
             var credentials = OssAccessUtil.GetSecurityToken();
