@@ -19,6 +19,10 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult Index()
         {
+            const string title = "首页";
+
+
+            ViewBag.Title = title;
             return View();
         }
 

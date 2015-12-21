@@ -14,9 +14,14 @@ namespace TuoFengWeb.Controllers
         //
         // GET: /Search/
 
-        public string Index(string keyWord,int page)
+        public ActionResult Index()
         {
-            var result = SolrNetUtil.Query(keyWord,page);
+            return View();
+        }
+
+        public string Search(string keyWord, int page)
+        {
+            var result = SolrNetUtil.Query(keyWord, page);
             return result;
         }
 
