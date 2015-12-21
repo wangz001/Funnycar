@@ -33,3 +33,15 @@ D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.DAL.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\TuoFeng.DBUtility.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\Aliyun.OSS.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\Web\bin\Aliyun.OSS.pdb
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\Aliyun.OSS.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.BLL.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.Model.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.DAL.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.DBUtility.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\System.Data.SQLite.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\MySql.Data.dll
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.BLL.pdb
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.Model.pdb
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\Aliyun.OSS.pdb
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.DAL.pdb
+D:\GitHubProject\Funnycar\TuoFeng\Web\bin\TuoFeng.DBUtility.pdb

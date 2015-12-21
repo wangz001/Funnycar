@@ -36,3 +36,7 @@ D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\aliyun-net-sdk-core.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\ConsoleTest\bin\Debug\aliyun-net-sdk-sts.dll
+D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\aliyun-net-sdk-core.dll
+D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\aliyun-net-sdk-sts.dll
+D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.dll
+D:\GitHubProject\Funnycar\TuoFeng\ConsoleTest\bin\Debug\Aliyun.OSS.pdb

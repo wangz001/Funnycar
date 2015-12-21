@@ -14,3 +14,11 @@ D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.Properties.Resourc
 D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\aliyun-oss-sdk.csproj.GenerateResource.Cache
 D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.pdb
+D:\GitHubProject\Funnycar\TuoFeng\sdk\bin\Debug\Aliyun.OSS.dll
+D:\GitHubProject\Funnycar\TuoFeng\sdk\bin\Debug\Aliyun.OSS.pdb
+D:\GitHubProject\Funnycar\TuoFeng\sdk\obj\Debug\aliyun-oss-sdk.csprojResolveAssemblyReference.cache
+D:\GitHubProject\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.Domain.OssResources.resources
+D:\GitHubProject\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.Properties.Resources.resources
+D:\GitHubProject\Funnycar\TuoFeng\sdk\obj\Debug\aliyun-oss-sdk.csproj.GenerateResource.Cache
+D:\GitHubProject\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.dll
+D:\GitHubProject\Funnycar\TuoFeng\sdk\obj\Debug\Aliyun.OSS.pdb

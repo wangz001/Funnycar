@@ -19,7 +19,7 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult Index()
         {
-            return null;
+            return View();
         }
 
         public string Create(string userId,string travelName)
