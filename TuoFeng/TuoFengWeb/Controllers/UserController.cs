@@ -9,6 +9,17 @@ namespace TuoFengWeb.Controllers
     {
         private readonly UserBll _userBll = new UserBll();
 
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Setting()
+        {
+            return View();
+        }
+
         public string Regist(string userName, string passWord)
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(passWord))

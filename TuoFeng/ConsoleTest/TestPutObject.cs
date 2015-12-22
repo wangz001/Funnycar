@@ -20,13 +20,14 @@ namespace ConsoleTest
         static OssClient client = new OssClient(endpoint, accessKeyId, accessKeySecret);
 
         const string bucketName = "funnycar";
-        const string key = "1219/aaa.jpg";
+        static string key = "1219/aaa.jpg";
         const string fileToUpload = @"C:\Users\Administrator\Desktop\image\20071017111345564_2.jpg";
 
         static AutoResetEvent _event = new AutoResetEvent(false);
 
         public static void PutObject()
         {
+            key =DateTime.Now.ToShortDateString()+"/aaa.jpg";
             try
             {
                 var credentials = GetSecurityToken();

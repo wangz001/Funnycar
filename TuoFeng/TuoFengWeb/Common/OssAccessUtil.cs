@@ -15,11 +15,11 @@ namespace TuoFengWeb.Common
         const string accessKeyId = "5VygCfR832iUb570";
         const string accessKeySecret = "xDiOX2MMIGuzyCUdyQhufT8Kon1ZKA";
         private static AssumeRoleResponse.Credentials_ credentials = null;
-        private static DateTime timeStamp;
+        private static DateTime _timeStamp;
 
         public static AssumeRoleResponse.Credentials_ GetSecurityToken()
         {
-            if (credentials!=null&&((DateTime.Now-timeStamp).Seconds<300))
+            if (credentials!=null&&(DateTime.Now-_timeStamp).Seconds<30)
             {
                 //防止请求过于频繁，设置5分钟请求一次。
                 return credentials;
@@ -48,7 +48,7 @@ namespace TuoFengWeb.Common
                 ////Token过期时间；服务器返回UTC时间，这里转换成北京时间显示；
                 //Console.WriteLine("Expiration: " + DateTime.Parse(response.Credentials.Expiration).ToLocalTime());
                 credentials = response.Credentials;
-                timeStamp = DateTime.Now;
+                _timeStamp = DateTime.Now;
                 return credentials;
             }
             catch (Exception ex)
