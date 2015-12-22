@@ -1,5 +1,31 @@
 ﻿@{
     ViewBag.Title = "搜索";
+    ViewBag.NgApp = "searchIndex";
+}
+@section Head
+{
+    <script type="text/javascript">
+        var funnycarApp = angular.module('searchIndex', []);
+        funnycarApp.controller('PhoneListCtrl', function ($scope) {
+            $scope.phones = [
+              {
+                  'id':'1',
+                  'name': '苹果',
+                  'snippet': 'Fast just got faster with Nexus S.'
+              },
+              {
+                  'id': '2',
+                  'name': '三星',
+                  'snippet': 'The Next, Next Generation tablet.'
+              },
+              {
+                  'id': '3',
+                  'name': 'MOTOROLA XOOM™',
+                  'snippet': 'The Next, Next Generation tablet.'
+              }
+            ];
+        });
+    </script>
 }
 <div class="page">
     <header class="bar bar-nav">
@@ -13,5 +39,19 @@
             </div>
             <a class="button button-fill button-primary col-15"><span class="icon icon-search"></span></a>
         </div>
+        Your name: <input type="text" ng-model="yourname" placeholder="World">
+        <hr>
+        Hello {{yourname || 'World'}}!
+
+        <div ng-controller="PhoneListCtrl">
+
+            <div ng-repeat="phone in phones|filter:yourname">
+                {{phone.name}}
+                <p>{{phone.snippet}}</p>
+            </div>
+
+        </div>
     </div>
+
 </div>
+

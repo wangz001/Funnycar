@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "路由";
+    ViewBag.NgApp = "phonecatApp";
+}
+@section Head
+{
+    <script type="text/javascript">
+        var funnycarApp = angular.module('funnycarApp', []);
+        funnycarApp.controller('PhoneListCtrl', function ($scope) {
+            $scope.phones = [
+              {
+                  'name': '苹果',
+                  'snippet': 'Fast just got faster with Nexus S.'
+              },
+              {
+                  'name': '三星',
+                  'snippet': 'The Next, Next Generation tablet.'
+              },
+              {
+                  'name': 'MOTOROLA XOOM™',
+                  'snippet': 'The Next, Next Generation tablet.'
+              }
+            ];
+        });
+
+        var phonecatApp = angular.module('phonecatApp', [
+  'ngRoute',
+  'phonecatControllers'
+        ]);
+
+
+        phonecatApp.config(['$routeProvider',
+  function ($routeProvider) {
+      $routeProvider.
+        when('/phones', {
+            templateUrl: '~/Views/Search/template/test-phone-list.cshtml',
+            controller: 'PhoneListCtrl'
+        }).
+        when('/phones/:phoneId', {
+            templateUrl: '~/Views/Search/template/test-phone-detail.cshtml',
+            controller: 'PhoneDetailCtrl'
+        }).
+        otherwise({
+            redirectTo: '/phones'
+        });
+  }]);
+        
+        var phonecatControllers = angular.module('phonecatControllers', []);
+
+        phonecatControllers.controller('PhoneListCtrl', ['$scope', '$http',
+          //function ($scope, $http) {
+          //    $http.get('phones/phones.json').success(function (data) {
+          //        $scope.phones = data;
+          //    });
+
+          //    $scope.orderProp = 'age';
+          //}
+            ]);
+
+        phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams',
+          function ($scope, $routeParams) {
+              $scope.phoneId = $routeParams.phoneId;
+          }]);
+    </script>
+}
+<div class="page">
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left open-panel" href="/Travels"></a>
+        <span class="title">@ViewBag.Title</span>
+    </header>
+    <div class="content">
+        <div ng-view></div>
+    </div>
+
+</div>

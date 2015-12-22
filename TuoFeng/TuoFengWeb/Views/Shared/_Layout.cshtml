@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="@ViewBag.NgApp">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title|驼峰自驾游</title>
+    <title>@ViewBag.Title</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,6 +12,8 @@
     <script src="@Url.Content("//g.alicdn.com/sj/lib/zepto/zepto.js")" type="text/javascript"></script>
     <script src="@Url.Content("//g.alicdn.com/msui/sm/0.5.8/js/sm.js")" type="text/javascript"></script>
     <script src="@Url.Content("//g.alicdn.com/msui/sm/0.5.8/js/sm-extend.js")" type="text/javascript"> </script>
+    <!--angularJs-->
+    <script src="@Url.Content("~/Scripts/AngularJs/angular.js")" type="text/javascript"> </script>
     @RenderSection("Head", false)
 </head>
 <body>

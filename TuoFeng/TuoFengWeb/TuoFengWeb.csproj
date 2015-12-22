@@ -138,6 +138,8 @@
     <Content Include="Global.asax" />
     <Content Include="RefDll\aliyun-net-sdk-core.dll" />
     <Content Include="RefDll\aliyun-net-sdk-sts.dll" />
+    <Content Include="Scripts\AngularJs\angular.js" />
+    <Content Include="Scripts\AngularJs\angular.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -182,6 +184,9 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\tuofeng.pubxml" />
     <Content Include="Views\Travels\Index.cshtml" />
+    <Content Include="Views\Search\Test.cshtml" />
+    <Content Include="Views\Search\template\test-phone-list.cshtml" />
+    <Content Include="Views\Search\template\test-phone-detail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

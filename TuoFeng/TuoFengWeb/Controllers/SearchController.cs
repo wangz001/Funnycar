@@ -25,5 +25,9 @@ namespace TuoFengWeb.Controllers
             return result;
         }
 
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
