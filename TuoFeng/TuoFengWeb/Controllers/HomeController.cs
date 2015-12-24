@@ -20,9 +20,15 @@ namespace TuoFengWeb.Controllers
             return View();
         }
 
-        public bool Login(string userName, string passWord)
+        public ActionResult Login()
         {
-            if (string.IsNullOrEmpty(userName)||string.IsNullOrEmpty(passWord))
+            return View();
+        }
+
+        [System.Web.Http.HttpPost]
+        public bool LoginIn(string userName, string password)
+        {
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 return false;
             }
@@ -35,6 +41,12 @@ namespace TuoFengWeb.Controllers
             }
             return false;
         }
+
+        public ActionResult Regist()
+        {
+            return View();
+        }
+        
         /// <summary>
         /// 获取oss临时访问权限，用于app客户端上传图片到oss
         /// </summary>

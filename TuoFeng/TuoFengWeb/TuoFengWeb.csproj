@@ -140,6 +140,7 @@
     <Content Include="RefDll\aliyun-net-sdk-sts.dll" />
     <Content Include="Scripts\AngularJs\angular.js" />
     <Content Include="Scripts\AngularJs\angular.min.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Search\template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -184,11 +186,11 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\tuofeng.pubxml" />
     <Content Include="Views\Travels\Index.cshtml" />
-    <Content Include="Views\Search\Test.cshtml" />
-    <Content Include="Views\Search\template\test-phone-list.cshtml" />
-    <Content Include="Views\Search\template\test-phone-detail.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Setting.cshtml" />
+    <Content Include="Views\Search\Test.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Regist.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
