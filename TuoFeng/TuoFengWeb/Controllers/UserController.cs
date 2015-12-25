@@ -17,6 +17,18 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult Setting()
         {
+            ViewBag.UserInfo = new User()
+            {
+                ShowName = "bwlang"
+            };
+            return View();
+        }
+        /// <summary>
+        /// 用户详细信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UserDetail()
+        {
             return View();
         }
 

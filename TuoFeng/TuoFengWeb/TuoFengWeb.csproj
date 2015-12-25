@@ -191,6 +191,7 @@
     <Content Include="Views\Search\Test.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Regist.cshtml" />
+    <Content Include="Views\User\UserDetail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

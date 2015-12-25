@@ -10,8 +10,8 @@ namespace TuoFengWeb
 
         public static string StateOk = "true";
         public static string StateError = "false";
-        public static string StateNotNull = "不能为空";
-
+        public static string StateNotNull = "notnull";
+        public static string StateExisted = "existed";//已经存在
 
     }
 }

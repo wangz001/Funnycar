@@ -4,15 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Web.Http;
 using System.Web.Mvc;
 using TuoFeng.BLL;
+using TuoFeng.Model;
 using TuoFengWeb.Common;
 
 namespace TuoFengWeb.Controllers
 {
     public class HomeController : Controller
     {
+        readonly UserBll _userBll = new UserBll();
 
         public ActionResult Index()
         {
@@ -25,26 +26,56 @@ namespace TuoFengWeb.Controllers
             return View();
         }
 
-        [System.Web.Http.HttpPost]
-        public bool LoginIn(string userName, string password)
+        [HttpPost]
+        public string LoginIn(string userName, string password)
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                return false;
+                return HttpRequestResult.StateError;
             }
-            var userBll = new UserBll();
-
-            var exist = userBll.Exists(userName);
+            var exist = _userBll.Exists(userName);
             if (exist)
             {
-                return true;
+                return HttpRequestResult.StateOk;
             }
-            return false;
+            return HttpRequestResult.StateError;
         }
 
         public ActionResult Regist()
         {
             return View();
+        }
+        [HttpPost]
+        public string RegistIn(FormCollection collection)
+        {
+            var userName = collection.Get("username");
+            var password = collection.Get("password");
+            var email = collection.Get("email");
+            var phone = collection.Get("phone");
+            if (string.IsNullOrEmpty(userName)||string.IsNullOrEmpty(password))
+            {
+                return HttpRequestResult.StateNotNull;
+            }
+            var user = new User
+            {
+                UserName = userName,
+                PassWord = password,
+                Email = email,
+                PhoneNum = phone,
+                IsEnable = true,
+                CreateTime = DateTime.Now,
+                UpdateTime = DateTime.Now
+            };
+            if (_userBll.Exists(user.UserName))
+            {
+                return HttpRequestResult.StateExisted;
+            }
+            var flag = _userBll.Add(user);
+            if (flag>0)
+            {
+                return HttpRequestResult.StateOk;
+            }
+            return HttpRequestResult.StateError;
         }
         
         /// <summary>
