@@ -130,6 +130,8 @@
     <Compile Include="Common\HttpRequestResult.cs" />
     <Compile Include="Models\SearchVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAuthorize\AccountSession.cs" />
+    <Compile Include="UserAuthorize\UserAuthorize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />

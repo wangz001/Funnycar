@@ -100,7 +100,7 @@
             async: false,
             success: function (flag) {
                 if (flag == 'true' || flag == 'True') {
-                    window.location.href = "/User/UserDetail";
+                    window.location.href = "/User/UserDetail?userid=1";//测试用   userid
                 } else {
                     $.toast('sorry,请重试');
                 }

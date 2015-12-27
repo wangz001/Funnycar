@@ -52,7 +52,7 @@ namespace TuoFengWeb.Controllers
             var password = collection.Get("password");
             var email = collection.Get("email");
             var phone = collection.Get("phone");
-            if (string.IsNullOrEmpty(userName)||string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 return HttpRequestResult.StateNotNull;
             }
@@ -71,13 +71,13 @@ namespace TuoFengWeb.Controllers
                 return HttpRequestResult.StateExisted;
             }
             var flag = _userBll.Add(user);
-            if (flag>0)
+            if (flag > 0)
             {
                 return HttpRequestResult.StateOk;
             }
             return HttpRequestResult.StateError;
         }
-        
+
         /// <summary>
         /// 获取oss临时访问权限，用于app客户端上传图片到oss
         /// </summary>
@@ -85,13 +85,13 @@ namespace TuoFengWeb.Controllers
         public string GetOssSecurityToken()
         {
             var credentials = OssAccessUtil.GetSecurityToken();
-            if (credentials!=null)
+            if (credentials != null)
             {
                 var resultStr = new StringBuilder();
-                resultStr.AppendFormat("{{\"AccessKeyId\": \"{0}\",",credentials.AccessKeyId);
-                resultStr.AppendFormat("\"AccessKeySecret\": \"{0}\",",credentials.AccessKeySecret);
-                resultStr.AppendFormat("\"Expiration\": \"{0}\",",credentials.Expiration);
-                resultStr.AppendFormat("\"SecurityToken\": \"{0}\"}}",credentials.SecurityToken);
+                resultStr.AppendFormat("{{\"AccessKeyId\": \"{0}\",", credentials.AccessKeyId);
+                resultStr.AppendFormat("\"AccessKeySecret\": \"{0}\",", credentials.AccessKeySecret);
+                resultStr.AppendFormat("\"Expiration\": \"{0}\",", credentials.Expiration);
+                resultStr.AppendFormat("\"SecurityToken\": \"{0}\"}}", credentials.SecurityToken);
                 return resultStr.ToString();
             }
             else
@@ -100,5 +100,5 @@ namespace TuoFengWeb.Controllers
             }
         }
 
-}
+    }
 }

@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using TuoFeng.BLL;
 using TuoFeng.Model;
+using TuoFengWeb.UserAuthorize;
 
 namespace TuoFengWeb.Controllers
 {
@@ -27,8 +28,10 @@ namespace TuoFengWeb.Controllers
         /// 用户详细信息
         /// </summary>
         /// <returns></returns>
-        public ActionResult UserDetail()
+        public ActionResult UserDetail(int userid)
         {
+            var user = _userBll.GetModelByCache(userid);
+            ViewBag.User = user;
             return View();
         }
 

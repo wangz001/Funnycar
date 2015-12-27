@@ -99,3 +99,4 @@ D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-core.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-sts.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-core.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-sts.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.dll.config

@@ -84,7 +84,7 @@ namespace TuoFeng.BLL
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public User GetModel(int Id)
+        private User GetModel(int Id)
         {
 
             return dal.GetModel(Id);

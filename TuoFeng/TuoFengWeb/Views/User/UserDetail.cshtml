@@ -1,6 +1,6 @@
 ﻿@using TuoFeng.Model
 @{
-    var user = (User)ViewBag.UserInfo;
+    var user = (User)ViewBag.User;
     ViewBag.Title = "UserDetail";
 }
 <div class="page">
@@ -13,7 +13,6 @@
     </header>
     <div class="content">
         <div class="card">
-            <div class="card-header">新的公布:</div>
             <div class="card-content">
                 <div class="list-block media-list">
                     <ul>
@@ -23,27 +22,16 @@
                             </div>
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title">标题</div>
+                                    <div class="item-title">@user.ShowName</div>
                                 </div>
-                                <div class="item-subtitle">子标题</div>
-                            </div>
-                        </li>
-                        <li class="item-content">
-                            <div class="item-media">
-                                <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="44">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-title-row">
-                                    <div class="item-title">标题</div>
-                                </div>
-                                <div class="item-subtitle">子标题</div>
+                                <div class="item-subtitle">@user.UserName</div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        
+
         <div class="card">
             <div class="list-block">
                 <ul>
@@ -51,9 +39,9 @@
                     <li>
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title label">登录名</div>
+                                <div class="item-title label">昵称</div>
                                 <div class="item-input">
-                                    <input type="text" id="username" placeholder="Your name">
+                                    <input type="text" id="showname" placeholder="Your name">
                                 </div>
                             </div>
                         </div>
@@ -70,20 +58,15 @@
                     </li>
                     <li>
                         <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">密码</div>
-                                <div class="item-input">
-                                    <input type="password" id="password1" placeholder="Password" class="">
-                                </div>
+                            <div class="item-media">
+                                <i class="icon icon-form-gender"></i>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title label">确认密码</div>
                                 <div class="item-input">
-                                    <input type="password" id="password2" placeholder="Password" class="">
+                                    <select>
+                                        <option>男</option>
+                                        <option>女</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -101,5 +84,15 @@
                 </ul>
             </div>
         </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+                    <div class="col-50"><a href="#" class="button button-big button-fill button-success">保存</a></div>
+                </div>
+            </div>
     </div>
 </div>
+<script type="text/javascript">
+
+
+</script>
