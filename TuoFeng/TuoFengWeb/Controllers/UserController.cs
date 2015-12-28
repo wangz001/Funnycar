@@ -71,7 +71,40 @@ namespace TuoFengWeb.Controllers
             return null;
         }
 
+        public string SetUserDetail(FormCollection collection)
+        {
+            var userId = collection.Get("userid");
+            var showName = collection.Get("showname");
+            var email = collection.Get("email");
+            var phone = collection.Get("phone");
+            var sex = collection.Get("sex");
+            var user = new User()
+            {
+                Id = Int32.Parse(userId),
+                ShowName = showName,
+                Email = email,
+                PhoneNum = phone,
+                Sex = Int32.Parse(sex) > 0,
+                UpdateTime = DateTime.Now
+            };
+            var flag = _userBll.SetUserDetail(user);
+            if (flag)
+            {
+                return HttpRequestResult.StateOk;
+            }
+            else
+            {
+                return HttpRequestResult.StateError;
+            }
+        }
 
+
+        public ActionResult SetImage(int userid)
+        {
+            var user = _userBll.GetModelByCache(userid);
+            ViewBag.User = user;
+            return View();
+        }
         public string SetHeadImage(FormCollection collection)
         {
             var userId = collection.Get("userId");

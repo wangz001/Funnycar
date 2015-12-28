@@ -140,9 +140,11 @@
     <Content Include="Global.asax" />
     <Content Include="RefDll\aliyun-net-sdk-core.dll" />
     <Content Include="RefDll\aliyun-net-sdk-sts.dll" />
+    <Content Include="Scripts\aliyun-sdk.js" />
     <Content Include="Scripts\AngularJs\angular.js" />
     <Content Include="Scripts\AngularJs\angular.min.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\oss-js-upload.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -194,6 +196,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Regist.cshtml" />
     <Content Include="Views\User\UserDetail.cshtml" />
+    <Content Include="Views\User\SetImage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

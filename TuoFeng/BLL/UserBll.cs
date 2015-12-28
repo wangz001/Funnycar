@@ -220,6 +220,16 @@ namespace TuoFeng.BLL
             }
             return flag;
         }
+
+        public bool SetUserDetail(User user)
+        {
+            var flag = dal.SetUserDetail(user);
+            if (flag)
+            {
+                SetModelCache(user.Id);
+            }
+            return flag;
+        }
     }
 }
 
