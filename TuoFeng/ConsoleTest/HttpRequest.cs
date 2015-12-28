@@ -7,7 +7,8 @@ namespace ConsoleTest
 {
     public class HttpRequestUtil
     {
-        private static readonly string UrlBase = "http://localhost:3168/";
+        //private static readonly string UrlBase = "http://localhost:3168/";
+        private static readonly string UrlBase = "http://www.impinker.cn/";
         public static string HttpGet(string url)
         {
             var requestUrl = UrlBase + url;

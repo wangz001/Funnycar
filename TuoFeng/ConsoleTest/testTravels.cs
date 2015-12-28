@@ -16,8 +16,8 @@ namespace ConsoleTest
                 {"userId", "2"},
                 {"travelId", "1"},
                 {"parttype", "1"},
-                {"description", "银杏林"},
-                {"area", "北京延庆"},
+                {"description", "呼伦贝尔大草原"},
+                {"area", "莫日格拉河"},
                 {"partUrl", "http://img10.fblife.com/attachments/20151116/14476335102611.jpg"},
             };
             var flag = HttpRequestUtil.HttpPost("travels/AddTravelPart", dic);
