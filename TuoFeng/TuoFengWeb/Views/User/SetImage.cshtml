@@ -6,6 +6,8 @@
 @section Head{
     <script src="@Url.Content("~/Scripts/aliyun-sdk.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/oss-js-upload.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/dateformat.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ossInit.js")" type="text/javascript"></script>
 }
 <div class="page">
     <header class="bar bar-nav">
@@ -27,79 +29,25 @@
 @section Foot
 {
     <script>
-        // 对Date的扩展，将 Date 转化为指定格式的String
-        // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
-        // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字) 
-        // 例子： 
-        // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423 
-        // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18 
-        Date.prototype.Format = function (fmt) { //author: meizz 
-            var o = {
-                "M+": this.getMonth() + 1, //月份 
-                "d+": this.getDate(), //日 
-                "h+": this.getHours(), //小时 
-                "m+": this.getMinutes(), //分 
-                "s+": this.getSeconds(), //秒 
-                "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-                "S": this.getMilliseconds() //毫秒 
-            };
-            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-            for (var k in o)
-                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-            return fmt;
-        };
-
-        var init = function (stsToken) {
-            var mossUpload = new OssUpload({
-                bucket: 'funnycar',
-
-                endpoint: 'http://oss-cn-beijing.aliyuncs.com',
-                // 如果文件大于 chunkSize 则分块上传, chunkSize 不能小于 100KB 即 102400
-                chunkSize: 1048576,
-                // 分块上传的并发数
-                concurrency: 2,
-                // 注意: 虽然使用 accessKeyId 和 secretAccessKey 可以进行上传, 但是存在泄露风险, 因此强烈建议使用下面的 STS token
-                // 只有在确认不会出现泄露风险的情况下, 才使用 aliyunCredential
-                //aliyunCredential: {
-                //    "accessKeyId": "在阿里云OSS申请的 accessKeyId",
-                //    "secretAccessKey": "在阿里云OSS申请的 secretAccessKey"
-                //},
-                // 这是一个 stsToken 的样例
-                stsToken:
-                {
-                    //"RequestId": "577DA7A9-35BB-4AC0-8B39-F75DF8BDACB2",
-                    //"AssumedRoleUser": {
-                    //  "AssumedRoleId": "391405342211886582:chylvina",
-                    //    "Arn": "acs:ram::31611321:role/role-oss-js-upload/chylvina"
-                    //},
-                    "Credentials": {
-                        "AccessKeySecret": stsToken.AccessKeySecret,
-                        "AccessKeyId": stsToken.AccessKeyId,
-                        "Expiration": stsToken.Expiration,
-                        "SecurityToken": stsToken.SecurityToken
-                    }
-                }
+        document.getElementById("files")
+            .addEventListener('change', function (evt) {
+                var mfiles = evt.target.files;
+                //显示缩略图
+                var reader = new FileReader();
+                reader.readAsDataURL(mfiles[0]);
+                reader.onload = function (e) {
+                    $("#imgView").html('<img src="' + this.result + '" width="30%" alt=""/>');
+                };
+                files = mfiles;
             });
 
-            document.getElementById("files")
-                .addEventListener('change', function (evt) {
-                    var mfiles = evt.target.files;
-                    //显示缩略图
-                    var reader = new FileReader();
-                    reader.readAsDataURL(mfiles[0]);
-                    reader.onload = function(e) {
-                        $("#imgView").html('<img src="' + this.result + '" width="30%" alt=""/>');
-                    };
-
-                    files = mfiles;
-                    ossUpload = mossUpload;
-
-                });
-        };
-
         var files = new Object();
-        var ossUpload = new Object();
-        var uploadImg = function() {
+        //var ossUpload = new Object();
+        var uploadImg = function () {
+            if (ossUpload == null) {
+                $.toast('oss对象为空');
+                return;
+            }
             var username = "@user.UserName";
             // 如果要上传大量文件, 需要自己控制并发
             for (var i = 0; i < files.length; i++) {
@@ -139,7 +87,6 @@
                     oncomplete: function (res) {
                         console.log(res);
                         saveImgUrl();
-
                     }
                 });
             }
@@ -168,14 +115,5 @@
         };
 
 
-        // 获取 stsToken
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                init(JSON.parse(xhr.responseText));
-            }
-        };
-        xhr.open('GET', '/Home/GetOssSecurityToken', true);//True 表示脚本会在 send() 方法之后继续执行，而不等待来自服务器的响应。
-        xhr.send(null);
     </script>
 }

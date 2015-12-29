@@ -143,6 +143,8 @@
     <Content Include="Scripts\aliyun-sdk.js" />
     <Content Include="Scripts\AngularJs\angular.js" />
     <Content Include="Scripts\AngularJs\angular.min.js" />
+    <Content Include="Scripts\ossInit.js" />
+    <Content Include="Scripts\dateformat.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\oss-js-upload.js" />
     <Content Include="Web.config">
@@ -197,6 +199,7 @@
     <Content Include="Views\Home\Regist.cshtml" />
     <Content Include="Views\User\UserDetail.cshtml" />
     <Content Include="Views\User\SetImage.cshtml" />
+    <Content Include="Views\Travels\NewTravelParts.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -92,6 +92,12 @@ namespace TuoFengWeb.Controllers
             return null;
         }
 
+        public ActionResult NewTravelParts(int userid)
+        {
+            ViewBag.UserInf=_userBll.GetModelByCache(userid);
+            return View();
+        }
+        
         [HttpPost]
         public string AddTravelPart(FormCollection collection)
         {

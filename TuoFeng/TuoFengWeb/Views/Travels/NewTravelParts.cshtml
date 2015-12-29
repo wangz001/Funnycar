@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "NewTravelParts";
+}
+
+<div class="page">
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back" href="">
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+        <a class="button button-link pull-right" href="javascript:;">
+            <span class="icon icon-check"></span>
+        </a>
+        <h1 class="title">记一下</h1>
+    </header>
+    <div class="content">
+        <div class="buttons-tab">
+            <a href="#tab1" class="tab-link button active">游记</a>
+            <a href="#tab2" class="tab-link button">说说</a>
+        </div>
+        <div class="content-block">
+            <div class="tabs">
+                <div id="tab1" class="tab active">
+                    <div class="content-block">
+                        <p>旅行点滴，轻松游记</p>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">手机</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="选择手机" id="picker" />
+                                    <hr />
+                                    <input type="text" id="datetime-picker" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab">
+                    <div class="content-block">
+                        <p>This is tab 2 content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).on("pageInit", function () {
+            $("#picker").picker({
+                toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择你的手机</h1>\
+      </header>',
+                cols: [
+                  {
+                      textAlign: 'center',
+                      values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+                  }
+                ]
+            });
+            $("#picker-name").picker({
+                toolbarTemplate: '<header class="bar bar-nav">\
+      <button class="button button-link pull-right close-picker">确定</button>\
+      <h1 class="title">请选择称呼</h1>\
+      </header>',
+                cols: [
+                  {
+                      textAlign: 'center',
+                      values: ['赵', '钱', '孙', '李', '周', '吴', '郑', '王']
+                  },
+                  {
+                      textAlign: 'center',
+                      values: ['杰伦', '磊', '明', '小鹏', '燕姿', '菲菲', 'Baby']
+                  },
+                  {
+                      textAlign: 'center',
+                      values: ['先生', '小姐']
+                  }
+                ]
+            });
+            $("#datetime-picker").datetimePicker({
+                value: ['1985', '12', '04', '9', '34']
+            });
+
+        });
+        $.init();
+    });
+</script>
