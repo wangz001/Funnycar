@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
+using Maticsoft.Common;
 using TuoFeng.Model;
 
 namespace TuoFeng.BLL
@@ -11,8 +13,12 @@ namespace TuoFeng.BLL
     public class UserBll
     {
         private readonly DAL.UserDal dal = new DAL.UserDal();
+        private string baseUrl = "";
+
         public UserBll()
-        { }
+        {
+            baseUrl = ConfigHelper.GetConfigString("AppImgBaseUrl");
+        }
         #region  BasicMethod
 
         /// <summary>
@@ -97,7 +103,7 @@ namespace TuoFeng.BLL
         {
 
             string CacheKey = "UserModel-" + Id;
-            object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+            var objModel = (User)Maticsoft.Common.DataCache.GetCache(CacheKey);
             if (objModel == null)
             {
                 try
@@ -105,12 +111,16 @@ namespace TuoFeng.BLL
                     objModel = dal.GetModel(Id);
                     if (objModel != null)
                     {
+                        var headImg = objModel.ImgUrl;
+                        objModel.ImgUrl = Path.Combine(baseUrl, headImg);
                         int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
                         Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
                     }
                 }
                 catch { }
             }
+            
+
             return (User)objModel;
         }
 
@@ -122,8 +132,10 @@ namespace TuoFeng.BLL
                 var objModel = dal.GetModel(Id);
                 if (objModel != null)
                 {
-                    int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-                    Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache),
+                    var headImg = objModel.ImgUrl;
+                    objModel.ImgUrl = Path.Combine(baseUrl, headImg);
+                    int ModelCache = ConfigHelper.GetConfigInt("ModelCache");
+                    DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache),
                         TimeSpan.Zero);
                 }
             }

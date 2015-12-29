@@ -16,12 +16,9 @@ namespace TuoFengWeb.Controllers
             return View();
         }
 
-        public ActionResult Setting()
+        public ActionResult Setting(int ? userid=0)
         {
-            ViewBag.UserInfo = new User()
-            {
-                ShowName = "bwlang"
-            };
+            ViewBag.UserInfo._userBll.GetModelByCache(userid);
             return View();
         }
         /// <summary>
@@ -107,11 +104,11 @@ namespace TuoFengWeb.Controllers
         }
         public string SetHeadImage(FormCollection collection)
         {
-            var userId = collection.Get("userId");
-            var imgUrl = collection.Get("imgUrl");
+            var userId = collection.Get("userid");
+            var imgUrl = collection.Get("imgurl");
             if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(imgUrl))
             {
-                return "图片地址不能为空";
+                return HttpRequestResult.StateNotNull;
             }
             var flag = _userBll.SetHeadImage(Int32.Parse(userId), imgUrl);
             if (flag)
