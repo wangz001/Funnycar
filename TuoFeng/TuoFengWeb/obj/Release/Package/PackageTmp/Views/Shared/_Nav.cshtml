@@ -1,14 +1,23 @@
 ﻿<nav class="bar bar-tab">
-    <a class="tab-item active" href="#">
+    <a id="tab_index" class="tab-item external"  href="/Travels">
         <span class="icon icon-home"></span>
         <span class="tab-label">首页</span>
     </a>
-    <a class="tab-item" href="#">
+    <a id="tab_me" class="tab-item external" href="/User">
         <span class="icon icon-me"></span>
         <span class="tab-label">我</span>
     </a>
-    <a class="tab-item" href="#">
+    <a id="tab_setting" class="tab-item external" href="/User/Setting">
         <span class="icon icon-settings"></span>
         <span class="tab-label">设置</span>
     </a>
 </nav>
+
+<script type="text/javascript">
+    function SetTabSelected(id) {
+        $("#" + id).addClass("active");
+        $("#" + id).nextSibling.removeClass("active");
+    }
+
+</script>
+

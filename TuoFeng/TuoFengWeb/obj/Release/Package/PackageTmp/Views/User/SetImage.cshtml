@@ -1,0 +1,119 @@
+﻿@using TuoFeng.Model
+@{
+    ViewBag.Title = "SetImage";
+    var user = (User)ViewBag.User;
+}
+@section Head{
+    <script src="@Url.Content("~/Scripts/aliyun-sdk.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/oss-js-upload.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/dateformat.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ossInit.js")" type="text/javascript"></script>
+}
+<div class="page">
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back" href="/Home/Login">
+            <span class="icon icon-left"></span>
+            返回
+        </a>
+        <h1 class="title"></h1>
+    </header>
+    <div class="content">
+        <h2>修改头像</h2>
+        <input type="file" name="files" id="files" accept="image/*" />
+        <div class="facebook-avatar" id="imgView">
+        </div>
+        <p><a href="#" onclick="uploadImg()" class="button button-round">上传</a></p>
+    </div>
+</div>
+
+@section Foot
+{
+    <script>
+        document.getElementById("files")
+            .addEventListener('change', function (evt) {
+                var mfiles = evt.target.files;
+                //显示缩略图
+                var reader = new FileReader();
+                reader.readAsDataURL(mfiles[0]);
+                reader.onload = function (e) {
+                    $("#imgView").html('<img src="' + this.result + '" width="30%" alt=""/>');
+                };
+                files = mfiles;
+            });
+
+        var files = new Object();
+        //var ossUpload = new Object();
+        var uploadImg = function () {
+            if (ossUpload == null) {
+                $.toast('oss对象为空');
+                return;
+            }
+            var username = "@user.UserName";
+            // 如果要上传大量文件, 需要自己控制并发
+            for (var i = 0; i < files.length; i++) {
+                var myDate = new Date();
+                var dayStr = myDate.Format('yyyyMMdd');
+                var timeStr = myDate.Format('hhmmss');
+                var keyStr = "headimage/" + dayStr + "/" + username + "_" + timeStr + ".jpg";
+                headImageUrl = keyStr;
+                ossUpload.upload({
+                    // 必传参数, 需要上传的文件对象
+                    file: files[i],
+                    // 必传参数, 文件上传到 oss 后的名称, 包含路径
+                    key: keyStr,
+                    // 上传失败后重试次数
+                    maxRetry: 3,
+                    // OSS支持4个 HTTP RFC2616(https://www.ietf.org/rfc/rfc2616.txt)协议规定的Header 字段：
+                    // Cache-Control、Expires、Content-Encoding、Content-Disposition。
+                    // 如果上传Object时设置了这些Header，则这个Object被下载时，相应的Header值会被自动设置成上传时的值
+                    // 可选参数
+                    headers: {
+                        'CacheControl': 'public',
+                        'Expires': '',
+                        'ContentEncoding': 'utf-8',
+                        'ContentDisposition': 'image/jpeg',
+                        // oss 支持的 header, 目前仅支持 x-oss-server-side-encryption
+                        'ServerSideEncryption': ''
+                    },
+                    // 文件上传中调用, 可选参数
+                    onprogress: function (evt) {
+                        console.log(evt);
+                    },
+                    // 文件上传失败后调用, 可选参数
+                    onerror: function (evt) {
+                        console.log(evt);
+                    },
+                    // 文件上传成功调用, 可选参数
+                    oncomplete: function (res) {
+                        console.log(res);
+                        saveImgUrl();
+                    }
+                });
+            }
+        };
+
+        var headImageUrl = "";
+        var saveImgUrl = function () {
+            var data = {
+                userid: "@user.Id",
+                imgurl: headImageUrl
+            };
+            $.ajax({
+                url: "/User/SetHeadImage",
+                type: "POST",
+                data: data,
+                async: false,
+                success: function (flag) {
+                    if (flag == 'true' || flag == 'True') {
+                        $.toast('设置头像成功！');
+                        window.location.href = "/User/UserDetail?userid=@user.Id";
+                    } else {
+                        $.toast('sorry,请重试');
+                    }
+                }
+            });
+        };
+
+
+    </script>
+}

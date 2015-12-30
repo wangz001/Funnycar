@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "设置";
+}
+<div class="page">
+    <header class="bar bar-nav">
+        <a class="icon icon-me pull-left open-panel"></a>
+        <a class="button button-link button-nav pull-right" href="/Search/Index" data-transition='slide-out'>
+            <span class="icon icon-search"></span>
+            搜搜
+        </a>
+        <h1 class="title">@ViewBag.Title</h1>
+    </header>
+    @Html.Partial("~/Views/Shared/_Nav.cshtml")
+    <div class="content">
+    </div>
+</div>
+@section Foot
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SetTabSelected('tab_setting');
+        });
+    </script>
+}

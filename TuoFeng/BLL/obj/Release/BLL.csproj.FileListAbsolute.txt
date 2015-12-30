@@ -7,3 +7,12 @@ D:\GitHubProject\Funnycar\TuoFeng\BLL\bin\Release\System.Data.SQLite.dll
 D:\GitHubProject\Funnycar\TuoFeng\BLL\bin\Release\MySql.Data.dll
 D:\GitHubProject\Funnycar\TuoFeng\BLL\obj\Release\BLL.csprojResolveAssemblyReference.cache
 D:\GitHubProject\Funnycar\TuoFeng\BLL\obj\Release\TuoFeng.BLL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\TuoFeng.BLL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\Maticsoft.Common.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\TuoFeng.DAL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\TuoFeng.Model.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\TuoFeng.DBUtility.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\System.Data.SQLite.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Release\MySql.Data.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\obj\Release\BLL.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Funnycar\TuoFeng\BLL\obj\Release\TuoFeng.BLL.dll

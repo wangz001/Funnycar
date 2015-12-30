@@ -92,6 +92,16 @@ namespace TuoFengWeb.Controllers
             return null;
         }
 
+        /// <summary>
+        /// 获取用户的游记列表，
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public string GetTravelNamesByUserId(int userid)
+        {
+            return null;
+        }
+
         public ActionResult NewTravelParts(int userid)
         {
             ViewBag.User= _userBll.GetModelByCache(userid);
