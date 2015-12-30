@@ -1,7 +1,14 @@
-﻿@{
+﻿@using TuoFeng.Model
+@{
     ViewBag.Title = "NewTravelParts";
+    var user = (User)ViewBag.User;
 }
-
+@section Head{
+    <script src="@Url.Content("~/Scripts/aliyun-sdk.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/oss-js-upload.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/dateformat.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ossInit.js")" type="text/javascript"></script>
+}
 <div class="page">
     <header class="bar bar-nav">
         <a class="button button-link button-nav pull-left back" href="">
@@ -21,23 +28,50 @@
         <div class="content-block">
             <div class="tabs">
                 <div id="tab1" class="tab active">
-                    <div class="content-block">
-                        <p>旅行点滴，轻松游记</p>
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title label">手机</div>
-                                <div class="item-input">
-                                    <input type="text" placeholder="选择手机" id="picker" />
-                                    <hr />
-                                    <input type="text" id="datetime-picker" />
+                    <div class="list-block">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-media"><i class="icon icon-edit"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title">游记</div>
+                                    <input type="text" class="item-after" placeholder="选择游记" id="picker" />
                                 </div>
-                            </div>
-                        </div>
+                            </li>
+                            <li class="align-top">
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <textarea placeholder="此刻想说……"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list-block">
+                        <ul>
+                            <li class="item-content">
+                                <input type="file" name="files" id="files" accept="image/*" />
+                            </li>
+                            <li class="align-top">
+                                <div class="item-content">
+                                </div>  
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div id="tab2" class="tab">
                     <div class="content-block">
                         <p>This is tab 2 content</p>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">手机</div>
+                                <div class="item-input">
+                                    <input type="text" placeholder="选择手机" id="picker" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

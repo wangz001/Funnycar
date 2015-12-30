@@ -94,7 +94,7 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult NewTravelParts(int userid)
         {
-            ViewBag.UserInf=_userBll.GetModelByCache(userid);
+            ViewBag.User= _userBll.GetModelByCache(userid);
             return View();
         }
         
