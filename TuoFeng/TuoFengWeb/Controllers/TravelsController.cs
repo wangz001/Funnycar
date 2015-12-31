@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using TuoFeng.BLL;
 using TuoFeng.Model;
@@ -99,7 +101,14 @@ namespace TuoFengWeb.Controllers
         /// <returns></returns>
         public string GetTravelNamesByUserId(int userid)
         {
-            return null;
+            var itemList = new List<string>();
+            var list = _travelsBll.GetModelList(" UserId=" + userid);
+            if (list!=null&&list.Count>0)
+            {
+                itemList.AddRange(list.Select(travel => string.Format("{{\"travelid\":\"{0}\",\"travelname\":\"{1}\"}}", travel.Id, travel.TravelName)));
+                return string.Format("[{0}]", string.Join(",", itemList));
+            }
+            return string.Empty;
         }
 
         public ActionResult NewTravelParts(int userid)

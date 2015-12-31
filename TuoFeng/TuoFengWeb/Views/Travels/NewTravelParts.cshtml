@@ -31,7 +31,7 @@
                     <div class="list-block">
                         <ul>
                             <li class="item-content">
-                                <div class="item-media"><i class="icon icon-edit"></i></div>
+                                <div class="prompt-ok item-media"><i class="icon icon-edit "></i></div>
                                 <div class="item-inner">
                                     <div class="item-title">游记</div>
                                     <input type="text" class="item-after" aria-valuetext="ddd" placeholder="选择游记" id="picker" />
@@ -94,20 +94,51 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $(document).on("pageInit", function () {
-            $("#picker").picker({
-                toolbarTemplate: '<header class="bar bar-nav">\
+        $(".prompt-ok").bind("click", function() {
+            $.prompt('你叫什么问题?', function (value) {
+                $.alert('你输入的名字是"' + value + '"');
+                if (value == "") return;
+                newTravel(value);
+            });
+        });
+        
+        //获取个人游记列表
+        
+        $.ajax({
+            url: "/Travels/GetTravelNamesByUserId",
+            type: "POST",
+            data: { userid: "@user.Id" },
+            //dataType: "json",
+            async: false,
+            success: function (data) {
+                if (data != null && data.length > 0) {
+                    var travelList = JSON.parse(data);
+                    $.toast(travelList[0].travelname);
+                    var nameArr = new Array([travelList.length]);
+                    var idArr = new Array([travelList.length]);
+                    for (var i = 0; i < travelList.length; i++) {
+                        nameArr.push(travelList[i].travelname);
+                        idArr.push(travelList[i].travelid);
+                    }
+                    $("#picker").picker({
+                        toolbarTemplate: '<header class="bar bar-nav">\
       <button class="button button-link pull-right close-picker">确定</button>\
       <h1 class="title">请选择你的游记</h1>\
       </header>',
-                cols: [
-                    {
-                        textAlign: 'center',
-                        displayValues: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2'],
-                        values: ["2012", "13", "12", "2012", "14", "15", "99"]
-                    }
-                ]
-            });
+                        cols: [
+                            {
+                                textAlign: 'center',
+                                displayValues: nameArr,
+                                values: idArr
+                            }
+                        ]
+                    });
+                }
+                   // $.toast('sorry,请重试');
+            }
+        });
+        $(document).on("pageInit", function () {
+            
         });
         $.init();
     });
@@ -135,7 +166,7 @@
 
         //$.toast(travelValue);
     };
-    var saveData = function () {
+    var saveData = function() {
         var text = $("#text2").val();
         var data = {
             description: text,
@@ -148,6 +179,28 @@
             type: "POST",
             data: data,
             async: false,
+            success: function(flag) {
+                if (flag == 'true' || flag == 'True') {
+                    $.toast('发布成功！');
+                    //window.location.href = "/User/UserDetail?userid=@user.Id";
+                } else {
+                    $.toast('sorry,请重试');
+                }
+            }
+        });
+    };
+
+    ///添加游记名称
+    var newTravel = function(name) {
+        var data = {
+            userId: "@user.Id",
+            travelName: name
+        };
+        $.ajax({
+            url: "/Travels/Create",
+            type: "POST",
+            data: data,
+            async: false,
             success: function (flag) {
                 if (flag == 'true' || flag == 'True') {
                     $.toast('发布成功！');
@@ -157,20 +210,20 @@
                 }
             }
         });
-    }
+    };
 </script>
 <script>
     document.getElementById("files1")
-            .addEventListener('change', function (evt) {
-                var mfiles = evt.target.files;
-                //显示缩略图
-                var reader = new FileReader();
-                reader.readAsDataURL(mfiles[0]);
-                reader.onload = function (e) {
-                    $("#imgView1").html('<img src="' + this.result + '" width="30%" alt=""/>');
-                };
-                files = mfiles;
-            });
+        .addEventListener('change', function (evt) {
+            var mfiles = evt.target.files;
+            //显示缩略图
+            var reader = new FileReader();
+            reader.readAsDataURL(mfiles[0]);
+            reader.onload = function (e) {
+                $("#imgView1").html('<img src="' + this.result + '" width="30%" alt=""/>');
+            };
+            files = mfiles;
+        });
     document.getElementById("files2")
         .addEventListener('change', function (evt) {
             var mfiles = evt.target.files;

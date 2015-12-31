@@ -147,6 +147,7 @@
     <Content Include="Scripts\dateformat.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\oss-js-upload.js" />
+    <Content Include="Scripts\Travels\NewTravelParts\newTravelParts.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
