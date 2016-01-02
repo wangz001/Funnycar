@@ -7,4 +7,3 @@ D:\Documents\GitHub\Funnycar\TuoFeng\Model\bin\Debug\TuoFeng.Model.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\Model\obj\Debug\TuoFeng.Model.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\Model\obj\Debug\TuoFeng.Model.pdb
 D:\GitHubProject\Funnycar\TuoFeng\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-D:\Documents\GitHub\Funnycar\TuoFeng\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

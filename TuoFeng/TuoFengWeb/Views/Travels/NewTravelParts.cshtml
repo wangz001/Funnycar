@@ -95,9 +95,9 @@
 <script type="text/javascript">
     $(function () {
         $(".prompt-ok").bind("click", function() {
-            $.prompt('你叫什么问题?', function (value) {
+            $.prompt('新的游记名称', function (value) {
                 $.alert('你输入的名字是"' + value + '"');
-                if (value == "") return;
+                if (value === "") return;
                 newTravel(value);
             });
         });
@@ -112,50 +112,55 @@
             async: false,
             success: function (data) {
                 if (data != null && data.length > 0) {
-                    var travelList = JSON.parse(data);
-                    $.toast(travelList[0].travelname);
+                    var list = JSON.parse(data);
+                    travelList = list;
+                    //$.toast(travelList[0].travelname);
                     var nameArr = new Array([travelList.length]);
-                    var idArr = new Array([travelList.length]);
                     for (var i = 0; i < travelList.length; i++) {
                         nameArr.push(travelList[i].travelname);
-                        idArr.push(travelList[i].travelid);
                     }
                     $("#picker").picker({
                         toolbarTemplate: '<header class="bar bar-nav">\
       <button class="button button-link pull-right close-picker">确定</button>\
-      <h1 class="title">请选择你的游记</h1>\
+      <h1 class="title">请选择游记</h1>\
       </header>',
                         cols: [
                             {
                                 textAlign: 'center',
-                                displayValues: nameArr,
-                                values: idArr
+                                values: nameArr
                             }
                         ]
                     });
                 }
-                   // $.toast('sorry,请重试');
             }
         });
-        $(document).on("pageInit", function () {
-            
-        });
+        
         $.init();
     });
+    //发布说说
     var files = new Object();
     var imgUrl = "";
-    //发布说说
+    var text = "";
+    var travelId = 0;
+    var travelList = new Object();
+    
     var publish = function () {
-        var travelValue = $("#picker").val();
+        $.showPreloader();
         var isTab1 = $("#tab1").hasClass("active");
         if (isTab1) {
-
+            text = $("#text1").val();
+            var travelName = $("#picker").val();
+            for (var i = 0; i < travelList.length; i++) {
+                if (travelName === travelList[i].travelname) {
+                    travelId = travelList[i].travelid;
+                    break;
+                }
+            }
         } else {
-
+            text = $("#text2").val();
         }
-        var text = $("#text2").val();
-        if (text == null || text == "") {
-            $.toast("不能为空");
+        if (text == null &&(files==null||files.length===0)) {
+            $.hidePreloader("请填写说说或添加图片");
             return;
         }
         if (files != null && files.length > 0) {
@@ -167,12 +172,12 @@
         //$.toast(travelValue);
     };
     var saveData = function() {
-        var text = $("#text2").val();
         var data = {
             description: text,
             userid: "@user.Id",
             partType: 0,
-            partUrl: imgUrl
+            partUrl: imgUrl,
+            travelId:travelId
         };
         $.ajax({
             url: "/Travels/AddTravelPart",
@@ -182,10 +187,11 @@
             success: function(flag) {
                 if (flag == 'true' || flag == 'True') {
                     $.toast('发布成功！');
-                    //window.location.href = "/User/UserDetail?userid=@user.Id";
+                    window.location.href = "/Travels";
                 } else {
                     $.toast('sorry,请重试');
                 }
+                $.hidePreloader();
             }
         });
     };

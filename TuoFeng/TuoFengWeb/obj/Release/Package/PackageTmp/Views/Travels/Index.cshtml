@@ -4,22 +4,16 @@
 <div class="page">
     <header class="bar bar-nav">
         <a class="icon icon-me pull-left open-panel"></a>
-        <a class="button button-link button-nav pull-right"  href="/Search/Index" data-transition='slide-out'>
+        <a class="button button-link button-nav pull-right external" href="/Search/Index" data-transition='slide-out'>
             <span class="icon icon-search"></span>
             搜搜
         </a>
         <h1 class="title">@ViewBag.Title</h1>
     </header>
     @Html.Partial("~/Views/Shared/_Nav.cshtml")
-    <div class="content">
+    <div class="content infinite-scroll infinite-scroll-bottom" id="content" data-distance="100">
         <!-- 这里是页面内容区 -->
-        <div class="content-block-title">简单卡片</div>
-        <div class="card">
-            <div class="card-content">
-                <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
-            </div>
-        </div>
-        <div class="content-block-title">Facebook卡片</div>
+        <div class="content-block-title">锡林浩特自驾游</div>
         <div class="card facebook-card">
             <div class="card-header no-border">
                 <div class="facebook-avatar">
@@ -37,7 +31,6 @@
                 <a href="#" class="link">分享</a>
             </div>
         </div>
-        <div class="content-block-title">Facebook卡片</div>
         <div class="card facebook-card">
             <div class="card-header no-border">
                 <div class="facebook-avatar">
@@ -47,7 +40,7 @@
                 <div class="facebook-date">星期一 3:47pm</div>
             </div>
             <div class="card-content">
-                <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="100%">
+                <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
             </div>
             <div class="card-footer no-border">
                 <a href="#" class="link">赞</a>
@@ -57,11 +50,130 @@
         </div>
     </div>
 </div>
-@section Foot
+<script type="text/template1">
+    <div class="content-block-title">$travelName$</div>
+    <div class="card facebook-card">
+        <div class="card-header no-border">
+            <div class="facebook-avatar">
+                <img src="$headImage$" width="34" height="34">
+            </div>
+            <div class="facebook-name">$userName$</div>
+            <div class="facebook-date">星期一 3:47pm</div>
+        </div>
+        <div class="card-content">
+            <img src="$images$" width="100%">
+        </div>
+        <div class="card-footer no-border">
+            <a href="#" class="link">赞</a>
+            <a href="#" class="link">评论</a>
+            <a href="#" class="link">分享</a>
+        </div>
+    </div>
+
+</script>
+    @section Foot
 {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            SetTabSelected('tab_index');
-        });
-    </script>
-}
+        <script type="text/javascript">
+            function formatTemplate(dta, tmpl) {
+                var format = {
+                    name: function (x) {
+                        return x;
+                    }
+                };
+                return tmpl.replace(/$(\w+)$/g, function (m1, m2) {
+                    if (!m2)
+                        return "";
+                    return (format && format[m2]) ? format[m2](dta[m2]) : dta[m2];
+                });
+            }
+            //模板替换方法
+            String.prototype.temp = function (obj) {
+                return this.replace(/\$\w+\$/gi, function (matchs) {
+                    var returns = obj[matchs.replace(/\$/g, "")];
+                    return (returns + "") == "undefined" ? "" : returns;
+                });
+            };
+
+            $(document).ready(function () {
+                getList();
+                //SetTabSelected('tab_index');
+            });
+
+            var page = 1; //页码
+            var count = 10;//每次取的数据数
+            var getList = function () {
+                var data = {
+                    //userid: "",
+                    page: page,
+                    count: count,
+                };
+                $.ajax({
+                    url: "/Travels/GetTravelPartLists",
+                    type: "GET",
+                    data: data,
+                    async: false,
+                    success: function (data) {
+                        if (data != null && data.length > 0) {
+                            var list = JSON.parse(data);
+                            page++;
+                            setCard(list);
+                        } else {
+                            $.toast('没有更多数据');
+                        }
+                        $('.infinite-scroll-preloader').remove();
+                    }
+                });
+            }
+
+            var setCard = function (dataJson) {
+                if (dataJson != null && dataJson.length > 0) {
+                    //获取模板上的HTML  
+                    var html = $('script[type="text/template1"]').html();
+                    //定义一个数组，用来接收格式化合的数据  
+                    var arr = [];
+                    //对数据进行遍历  
+                    $.each(dataJson, function (i, o) {
+                        //这里取到o就是上面rows数组中的值, formatTemplate是最开始定义的方法.  
+                        arr.push(html.temp(o));
+                    });
+                    //好了，最后把数组化成字符串，并添加到table中去。  
+                    $('#content').append(arr.join(''));
+
+
+                }
+            }
+
+            // 注册'infinite'事件处理函数
+            $(document).on('infinite', '.infinite-scroll-bottom', function () {
+
+                // 如果正在加载，则退出
+                if (loading) return;
+
+                // 设置flag
+                loading = true;
+
+                getList();
+
+                // 模拟1s的加载过程
+                //setTimeout(function () {
+                //    // 重置加载flag
+                //    loading = false;
+
+                //    if (lastIndex >= maxItems) {
+                //        // 加载完毕，则注销无限加载事件，以防不必要的加载
+                //        $.detachInfiniteScroll($('.infinite-scroll'));
+                //        // 删除加载提示符
+                //        $('.infinite-scroll-preloader').remove();
+                //        return;
+                //    }
+
+                //    // 添加新条目
+                //    addItems(itemsPerLoad, lastIndex);
+                //    // 更新最后加载的序号
+                //    lastIndex = $('.list-container li').length;
+                //    //容器发生改变,如果是js滚动，需要刷新滚动
+                //    $.refreshScroller();
+                //}, 1000);
+            });
+        </script>
+    }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using Maticsoft.Common;
 using TuoFeng.BLL;
 using TuoFeng.Model;
 
@@ -18,7 +20,7 @@ namespace TuoFengWeb.Controllers
         private readonly ThumbBll _thumbBll=new ThumbBll();
         private readonly CommentBll _commentBll=new CommentBll();
 
-
+        private readonly string _baseUrl = ConfigHelper.GetConfigString("AppImgBaseUrl");
         public ActionResult Index()
         {
             const string title = "首页";
@@ -135,7 +137,14 @@ namespace TuoFengWeb.Controllers
             var model = new TravelParts();
             {
                 model.UserId = Int32.Parse(userIdStr);
-                if(!string.IsNullOrEmpty(travelIdStr))model.TravelId = Int32.Parse(travelIdStr);
+                if (!string.IsNullOrEmpty(travelIdStr))
+                {
+                    var travelId = Int32.Parse(travelIdStr);
+                    if (travelId > 0)
+                    {
+                        model.TravelId = travelId;
+                    }
+                }
                 model.PartType = Int32.Parse(partType);
                 model.Description = description;
                 model.PartUrl = partUrl;
@@ -159,13 +168,15 @@ namespace TuoFengWeb.Controllers
                 return HttpRequestResult.StateError;
             }
         }
+
         /// <summary>
         /// 分页获取最新的消息。以后可以加入标签，根据用户的兴趣获取，或者根据地理位置获取
         /// </summary>
         /// <param name="page"></param>
         /// <param name="count"></param>
+        /// <param name="userid">有userid的时候，是从添加页跳过去的。否则是直接打开首页</param>
         /// <returns></returns>
-        public string GetTravelPartLists(int page, int count)
+        public string GetTravelPartLists(int page, int count,int ? userid)
         {
             var resultArr = new List<string>();
             const string jsonItem = "{" +
@@ -206,7 +217,15 @@ namespace TuoFengWeb.Controllers
                     str = str.Replace("@travelName", travelName);
                     str = str.Replace("@travelPartId", travelPart.Id.ToString());
                     str = str.Replace("@description", travelPart.Description);
-                    str = str.Replace("@images", travelPart.PartUrl);//图片或视频
+                    var imagesStr = string.Empty;
+                    if (!string.IsNullOrEmpty(travelPart.PartUrl))
+                    {
+                        var arr = travelPart.PartUrl.Split(',');
+                        var tempimg = arr[0];
+                        tempimg = tempimg.Replace("http://appimg.impinker.cn", "");
+                        imagesStr = _baseUrl+tempimg;
+                    }
+                    str = str.Replace("@images", imagesStr);//图片或视频
                     str = str.Replace("@location", travelPart.Area);
                     str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd hh:mm"));
                     str = str.Replace("@thembCount", _thumbBll.GetThembCountByPartId(travelPart.Id).ToString());//
