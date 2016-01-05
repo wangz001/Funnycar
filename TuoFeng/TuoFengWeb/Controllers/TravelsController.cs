@@ -196,7 +196,7 @@ namespace TuoFengWeb.Controllers
                                     "}";
             var startIndex = (page-1)*count;
             var endIndex = startIndex + count;
-            var travelParts = _travelPartsBll.GetListByPage("", "CreateTime", startIndex, endIndex);
+            var travelParts = _travelPartsBll.GetListByPage("", "CreateTime desc", startIndex, endIndex);
             if (travelParts!=null&&travelParts.Tables[0].Rows.Count>0)
             {
                 var lists = _travelPartsBll.DataTableToList(travelParts.Tables[0]);
