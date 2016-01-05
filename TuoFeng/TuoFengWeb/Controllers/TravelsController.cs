@@ -195,7 +195,7 @@ namespace TuoFengWeb.Controllers
                                     ",\"commentCount\": \"@commentCount\"" +
                                     "}";
             var startIndex = (page-1)*count;
-            var endIndex = startIndex + count;
+            var endIndex = startIndex + count-1;
             var travelParts = _travelPartsBll.GetListByPage("", "CreateTime desc", startIndex, endIndex);
             if (travelParts!=null&&travelParts.Tables[0].Rows.Count>0)
             {

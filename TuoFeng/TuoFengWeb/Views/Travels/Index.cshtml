@@ -10,7 +10,7 @@
         </a>
         <h1 class="title">@ViewBag.Title</h1>
     </header>
-    @*@Html.Partial("~/Views/Shared/_Nav.cshtml")*@
+    @Html.Partial("~/Views/Shared/_Nav.cshtml")
     <div class="content infinite-scroll" data-distance="100">
         <div class="list-block" id="content">
             <!-- 这里是页面内容区 -->
@@ -81,39 +81,28 @@
 @section Foot
 {
     <script type="text/javascript">
-        function formatTemplate(dta, tmpl) {
-            var format = {
-                name: function (x) {
-                    return x;
-                }
-            };
-            return tmpl.replace(/$(\w+)$/g, function (m1, m2) {
-                if (!m2)
-                    return "";
-                return (format && format[m2]) ? format[m2](dta[m2]) : dta[m2];
-            });
-        }
-
         //模板替换方法
         String.prototype.temp = function (obj) {
             return this.replace(/\$\w+\$/gi, function (matchs) {
                 var returns = obj[matchs.replace(/\$/g, "")];
-                return (returns + "") == "undefined" ? "" : returns;
+                return (returns + "") === "undefined" ? "" : returns;
             });
         };
 
         $(document).ready(function () {
             getList();
-            //SetTabSelected('tab_index');
+            SetTabSelected('tab_index');
         });
-
-        var page = 1; //页码
+        var pagenum = 1; //页码
         var count = 10; //每次取的数据数
+        var loading = false;
         var getList = function () {
+            // 重置加载flag
+            loading = false;
             var data = {
                 //userid: "",
-                page: page,
-                count: count,
+                page: pagenum,
+                count: count
             };
             $.ajax({
                 url: "/Travels/GetTravelPartLists",
@@ -123,7 +112,7 @@
                 success: function (data) {
                     if (data != null && data.length > 0) {
                         var list = JSON.parse(data);
-                        page++;
+                        pagenum++;
                         setCard(list);
                     } else {
                         $.toast('没有更多数据');
@@ -132,7 +121,6 @@
                 }
             });
         };
-
         var setCard = function (dataJson) {
             if (dataJson != null && dataJson.length > 0) {
                 //获取模板上的HTML
@@ -155,45 +143,15 @@
             'use strict';
             //无限滚动
             $(document).on("pageInit", "#page-infinite-scroll-bottom", function (e, id, page) {
-                var loading = false;
-                // 每次加载添加多少条目
-                var itemsPerLoad = 20;
-                // 最多可加载的条目
-                var maxItems = 100;
-                var lastIndex = $('.facebook-card div').length;
-                function addItems(number, lastIndex) {
-                    // 生成新条目的HTML
-                    var html = '';
-                    for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
-                        html += '<div class="item-inner"><div class="item-title">新条目</div></div>';
-                    }
-                    // 添加新条目
-                    $('#content').append(html);
-                }
                 $(page).on('infinite', function () {
                     // 如果正在加载，则退出
                     if (loading) return;
                     // 设置flag
                     loading = true;
                     // 模拟1s的加载过程
-                    setTimeout(function () {
-                        // 重置加载flag
-                        loading = false;
-                        if (lastIndex >= maxItems) {
-                            // 加载完毕，则注销无限加载事件，以防不必要的加载
-                            $.detachInfiniteScroll($('.infinite-scroll'));
-                            // 删除加载提示符
-                            $('.infinite-scroll-preloader').remove();
-                            return;
-                        }
-                        addItems(itemsPerLoad, lastIndex);
-                        // 更新最后加载的序号
-                        lastIndex = $('.facebook-card div').length;
-                        $.refreshScroller();
-                    }, 1000);
+                    getList();
                 });
             });
-
             $.init();
         });
     </script>

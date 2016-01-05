@@ -15,8 +15,9 @@
 
 <script type="text/javascript">
     function SetTabSelected(id) {
+        $(".tab-item div").removeClass("active");
         $("#" + id).addClass("active");
-        $("#" + id).nextSibling.removeClass("active");
+        //$("#" + id).nextSibling.removeClass("active");
     }
 
 </script>
