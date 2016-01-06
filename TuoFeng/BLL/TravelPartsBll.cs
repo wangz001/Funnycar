@@ -163,13 +163,19 @@ namespace TuoFeng.BLL
 		{
 			return dal.GetListByPage( strWhere,  orderby,  startIndex,  endIndex);
 		}
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		//public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		//{
-			//return dal.GetList(PageSize,PageIndex,strWhere);
-		//}
+
+        /// <summary>
+        /// 获取用户的说说
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="endIndex"></param>
+        /// <returns></returns>
+	    public DataSet GetListByUserId(int userid, int startIndex, int endIndex)
+	    {
+	        var strWhere = " UserId=" + userid;
+            return dal.GetListByPage(strWhere, "CreateTime desc ", startIndex, endIndex);
+	    }
 
 		#endregion  BasicMethod
 		#region  ExtensionMethod

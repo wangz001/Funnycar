@@ -199,6 +199,26 @@ namespace TuoFeng.BLL
             }
             return flag;
         }
+
+        public DataSet GetMyTravels(int page, int count, int userid)
+        {
+            var sqlStr = @"
+SELECT * FROM (
+SELECT  *
+FROM    TravelParts
+WHERE   ID IN ( SELECT  MAX(id)
+                FROM    dbo.TravelParts
+                GROUP BY TravelId )
+        AND dbo.TravelParts.UserId = 1
+UNION 
+SELECT  *
+FROM    dbo.TravelParts
+WHERE   TravelId IS NULL
+        AND UserId = 1 ) AS t
+ORDER BY CreateTime DESC
+";
+            return null;
+        }
     }
 }
 

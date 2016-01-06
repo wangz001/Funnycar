@@ -14,11 +14,11 @@ namespace TuoFengWeb.Controllers
     {
         //
         // GET: /Travels/
-        private readonly TravelsBll _travelsBll=new TravelsBll();
-        private readonly TravelPartsBll _travelPartsBll=new TravelPartsBll();
-        private readonly UserBll _userBll=new UserBll();
-        private readonly ThumbBll _thumbBll=new ThumbBll();
-        private readonly CommentBll _commentBll=new CommentBll();
+        private readonly TravelsBll _travelsBll = new TravelsBll();
+        private readonly TravelPartsBll _travelPartsBll = new TravelPartsBll();
+        private readonly UserBll _userBll = new UserBll();
+        private readonly ThumbBll _thumbBll = new ThumbBll();
+        private readonly CommentBll _commentBll = new CommentBll();
 
         private readonly string _baseUrl = ConfigHelper.GetConfigString("AppImgBaseUrl");
         public ActionResult Index()
@@ -30,14 +30,14 @@ namespace TuoFengWeb.Controllers
             return View();
         }
 
-        public string Create(string userId,string travelName)
+        public string Create(string userId, string travelName)
         {
-            if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(travelName))
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(travelName))
             {
                 return HttpRequestResult.StateNotNull;
             }
             int useridInt;
-            if (Int32.TryParse(userId,out useridInt)&&useridInt>0)
+            if (Int32.TryParse(userId, out useridInt) && useridInt > 0)
             {
                 var model = new Travels
                 {
@@ -59,20 +59,21 @@ namespace TuoFengWeb.Controllers
         /// <param name="travelId"></param>
         /// <param name="imgUrl"></param>
         /// <returns></returns>
-        public string SetCoverImage(int travelId,string imgUrl)
+        public string SetCoverImage(int travelId, string imgUrl)
         {
             if (travelId <= 0 || string.IsNullOrEmpty(imgUrl)) return HttpRequestResult.StateNotNull;
             var falg = _travelsBll.SetCoverImage(travelId, imgUrl);
             if (falg)
             {
-                return HttpRequestResult.StateOk;}
+                return HttpRequestResult.StateOk;
+            }
             else
             {
                 return HttpRequestResult.StateError;
             }
         }
 
-        
+
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -105,7 +106,7 @@ namespace TuoFengWeb.Controllers
         {
             var itemList = new List<string>();
             var list = _travelsBll.GetModelList(" UserId=" + userid);
-            if (list!=null&&list.Count>0)
+            if (list != null && list.Count > 0)
             {
                 itemList.AddRange(list.Select(travel => string.Format("{{\"travelid\":\"{0}\",\"travelname\":\"{1}\"}}", travel.Id, travel.TravelName)));
                 return string.Format("[{0}]", string.Join(",", itemList));
@@ -115,10 +116,10 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult NewTravelParts(int userid)
         {
-            ViewBag.User= _userBll.GetModelByCache(userid);
+            ViewBag.User = _userBll.GetModelByCache(userid);
             return View();
         }
-        
+
         [HttpPost]
         public string AddTravelPart(FormCollection collection)
         {
@@ -148,7 +149,7 @@ namespace TuoFengWeb.Controllers
                 model.PartType = Int32.Parse(partType);
                 model.Description = description;
                 model.PartUrl = partUrl;
-                if (!string.IsNullOrEmpty(longitude)&&!string.IsNullOrEmpty(latitude)&&!string.IsNullOrEmpty(height))
+                if (!string.IsNullOrEmpty(longitude) && !string.IsNullOrEmpty(latitude) && !string.IsNullOrEmpty(height))
                 {
                     model.Longitude = long.Parse(longitude);
                     model.Latitude = long.Parse(latitude);
@@ -159,7 +160,7 @@ namespace TuoFengWeb.Controllers
                 model.IsDelete = false;
             };
             var flag = _travelPartsBll.Add(model);
-            if (flag>0)
+            if (flag > 0)
             {
                 return HttpRequestResult.StateOk;
             }
@@ -176,7 +177,7 @@ namespace TuoFengWeb.Controllers
         /// <param name="count"></param>
         /// <param name="userid">有userid的时候，是从添加页跳过去的。否则是直接打开首页</param>
         /// <returns></returns>
-        public string GetTravelPartLists(int page, int count,int ? userid)
+        public string GetTravelPartLists(int page, int count, int? userid)
         {
             var resultArr = new List<string>();
             const string jsonItem = "{" +
@@ -194,23 +195,23 @@ namespace TuoFengWeb.Controllers
                                     ",\"thembCount\": \"@thembCount\"" +
                                     ",\"commentCount\": \"@commentCount\"" +
                                     "}";
-            var startIndex = (page-1)*count;
-            var endIndex = startIndex + count-1;
+            var startIndex = (page - 1) * count;
+            var endIndex = startIndex + count - 1;
             var travelParts = _travelPartsBll.GetListByPage("", "CreateTime desc", startIndex, endIndex);
-            if (travelParts!=null&&travelParts.Tables[0].Rows.Count>0)
+            if (travelParts != null && travelParts.Tables[0].Rows.Count > 0)
             {
                 var lists = _travelPartsBll.DataTableToList(travelParts.Tables[0]);
                 foreach (TravelParts travelPart in lists)
                 {
-                    int travelId = travelPart.TravelId ??0;
-                    var travelName = (travelId > 0)? _travelsBll.GetModelByCache(travelId).TravelName: "";
+                    int travelId = travelPart.TravelId ?? 0;
+                    var travelName = (travelId > 0) ? _travelsBll.GetModelByCache(travelId).TravelName : "";
                     var userId = travelPart.UserId;
                     var userModel = _userBll.GetModelByCache(userId);
-                    var userName =userModel.UserName;
-                    var headImage = ""+userModel.ImgUrl;
-                    var sex = userModel.Sex?"男":"女";
+                    var userName = userModel.UserName;
+                    var headImage = "" + userModel.ImgUrl;
+                    var sex = userModel.Sex ? "男" : "女";
                     var str = jsonItem.Replace("@userName", userName);
-                    str=str.Replace("@userId", userId.ToString());
+                    str = str.Replace("@userId", userId.ToString());
                     str = str.Replace("@headImage", headImage);
                     str = str.Replace("@sex", sex);
                     str = str.Replace("@travelId", travelId.ToString());
@@ -223,7 +224,7 @@ namespace TuoFengWeb.Controllers
                         var arr = travelPart.PartUrl.Split(',');
                         var tempimg = arr[0];
                         tempimg = tempimg.Replace("http://appimg.impinker.cn", "");
-                        imagesStr = _baseUrl+tempimg;
+                        imagesStr = _baseUrl + tempimg;
                     }
                     str = str.Replace("@images", imagesStr);//图片或视频
                     str = str.Replace("@location", travelPart.Area);
@@ -239,6 +240,94 @@ namespace TuoFengWeb.Controllers
             }
             return string.Empty;
         }
+
+
+        public ActionResult MyTravels()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 获取个人的游记， 不属于游记的part数据也要，按时间倒序排序
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public string GetMyTravels(int page, int count, int userid)
+        {
+            var lists = _travelsBll.GetMyTravels(page, count, userid);
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// 获取个人的游记章节，按时间倒序排序
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public string GetMyTravelParts(int page, int count, int userid)
+        {
+            var resultArr = new List<string>();
+            const string jsonItem = "{" +
+                                    ",\"travelId\": \"@travelId\"" +
+                                    ",\"travelName\": \"@travelName\"" +
+                                    ",\"travelPartId\": \"@travelPartId\"" +
+                                    ",\"description\": \"@description\"" +
+                                    ",\"images\": \"@images\"" +
+                                    ",\"location\": \"@location\"" +
+                                    ",\"createTime\": \"@createTime\"" +
+                                    ",\"thembCount\": \"@thembCount\"" +
+                                    ",\"commentCount\": \"@commentCount\"" +
+                                    "}";
+            var startIndex = (page - 1) * count;
+            var endIndex = startIndex + count - 1;
+            var travelParts = _travelPartsBll.GetListByUserId(userid, startIndex, endIndex);
+            if (travelParts != null && travelParts.Tables[0].Rows.Count > 0)
+            {
+                var lists = _travelPartsBll.DataTableToList(travelParts.Tables[0]);
+                foreach (TravelParts travelPart in lists)
+                {
+                    int travelId = travelPart.TravelId ?? 0;
+                    var travelName = (travelId > 0) ? _travelsBll.GetModelByCache(travelId).TravelName : "";
+                    var userId = travelPart.UserId;
+                    var userModel = _userBll.GetModelByCache(userId);
+                    var userName = userModel.UserName;
+                    var headImage = "" + userModel.ImgUrl;
+                    var sex = userModel.Sex ? "男" : "女";
+                    var str = jsonItem.Replace("@userName", userName);
+                    //str = str.Replace("@userId", userId.ToString());
+                    //str = str.Replace("@headImage", headImage);
+                    //str = str.Replace("@sex", sex);
+                    str = str.Replace("@travelId", travelId.ToString());
+                    str = str.Replace("@travelName", travelName);
+                    str = str.Replace("@travelPartId", travelPart.Id.ToString());
+                    str = str.Replace("@description", travelPart.Description);
+                    var imagesStr = string.Empty;
+                    if (!string.IsNullOrEmpty(travelPart.PartUrl))
+                    {
+                        var arr = travelPart.PartUrl.Split(',');
+                        var tempimg = arr[0];
+                        tempimg = tempimg.Replace("http://appimg.impinker.cn", "");
+                        imagesStr = _baseUrl + tempimg;
+                    }
+                    str = str.Replace("@images", imagesStr);//图片或视频
+                    str = str.Replace("@location", travelPart.Area);
+                    str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd hh:mm"));
+                    str = str.Replace("@thembCount", _thumbBll.GetThembCountByPartId(travelPart.Id).ToString());//
+                    str = str.Replace("@commentCount", _commentBll.GetCommentCountByPartId(travelPart.Id).ToString());//
+                    resultArr.Add(str);
+                }
+                if (resultArr.Count > 0)
+                {
+                    return string.Format("[{0}]", string.Join(",", resultArr));
+                }
+            }
+            return string.Empty;
+        }
+    
         
     }
 }
