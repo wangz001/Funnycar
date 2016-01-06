@@ -272,7 +272,7 @@ namespace TuoFengWeb.Controllers
         {
             var resultArr = new List<string>();
             const string jsonItem = "{" +
-                                    ",\"travelId\": \"@travelId\"" +
+                                    "\"travelId\": \"@travelId\"" +
                                     ",\"travelName\": \"@travelName\"" +
                                     ",\"travelPartId\": \"@travelPartId\"" +
                                     ",\"description\": \"@description\"" +

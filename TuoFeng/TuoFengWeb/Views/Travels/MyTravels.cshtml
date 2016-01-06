@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "mytravel";
 }
-
 <div class="page" id="page-infinite-scroll-bottom">
     <header class="bar bar-nav">
         <a class="icon icon-me pull-left open-panel"></a>
@@ -54,7 +53,6 @@
         $(document).ready(function () {
             SetTabSelected('tab_me');
             getList();
-            
         });
         var pagenum = 1; //页码
         var count = 10; //每次取的数据数
@@ -63,7 +61,7 @@
             // 重置加载flag
             loading = false;
             var data = {
-                //userid: "",
+                userid: 1,
                 page: pagenum,
                 count: count
             };
