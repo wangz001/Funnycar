@@ -257,7 +257,45 @@ namespace TuoFengWeb.Controllers
         public string GetMyTravels(int page, int count, int userid)
         {
             var lists = _travelsBll.GetMyTravels(page, count, userid);
-
+            if (lists == null || lists.Count == 0) return string.Empty;
+            var resultArr = new List<string>();
+            const string jsonItem = "{" +
+                                    "\"travelId\": \"@travelId\"" +
+                                    ",\"travelName\": \"@travelName\"" +
+                                    ",\"travelPartId\": \"@travelPartId\"" +
+                                    ",\"description\": \"@description\"" +
+                                    ",\"images\": \"@images\"" +
+                                    ",\"location\": \"@location\"" +
+                                    ",\"createTime\": \"@createTime\"" +
+                                    ",\"thembCount\": \"@thembCount\"" +
+                                    ",\"commentCount\": \"@commentCount\"" +
+                                    "}";
+            foreach (TravelsBll.TravelVm vm in lists)
+            {
+                var str = jsonItem.Replace("@travelId",vm.TravelId==null?"0":vm.TravelId.ToString() );
+                str = str.Replace("@travelName", vm.TravelName);
+                str = str.Replace("@travelPartId", vm.Id.ToString());
+                str = str.Replace("@description", vm.Description);
+                str = str.Replace("@location", vm.Area);
+                str = str.Replace("@createTime", vm.CreateTime.ToShortDateString());
+                str = str.Replace("@thembCount", "0");
+                str = str.Replace("@commentCount", "0");
+                var imagesStr = string.Empty;
+                if (!string.IsNullOrEmpty(vm.PartUrl))
+                {
+                    var arr = vm.PartUrl.Split(',');
+                    var tempimg = arr[0];
+                    tempimg = tempimg.Replace("http://appimg.impinker.cn", "");
+                    imagesStr = _baseUrl + tempimg;
+                }
+                str = str.Replace("@images", imagesStr);//图片或视频
+                
+                resultArr.Add(str);
+            }
+            if (resultArr.Count > 0)
+            {
+                return string.Format("[{0}]", string.Join(",", resultArr));
+            }
             return string.Empty;
         }
 
@@ -327,7 +365,5 @@ namespace TuoFengWeb.Controllers
             }
             return string.Empty;
         }
-    
-        
     }
 }

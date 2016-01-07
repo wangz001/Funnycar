@@ -377,6 +377,38 @@ namespace TuoFeng.DAL
                 return false;
             }
 	    }
+
+	    public DataSet GetMyTravels(int page, int count, int userid)
+	    {
+            var startIndex = (page - 1) * count;
+            var endIndex = startIndex + count - 1;
+            var sqlStr = @"
+SELECT * FROM (
+SELECT ROW_NUMBER() OVER (
+order by T.CreateTime desc
+)AS Row, T.*  from 
+(SELECT  *
+FROM    TravelParts
+WHERE   ID IN ( SELECT  MAX(id)
+                FROM    dbo.TravelParts
+                GROUP BY TravelId )
+        and IsDelete=0 AND dbo.TravelParts.UserId = @UserId
+UNION 
+SELECT  *
+FROM    dbo.TravelParts
+WHERE   TravelId IS NULL and IsDelete=0
+        AND UserId = @UserId ) T 
+ ) TT
+ WHERE TT.Row between @startindex and @endindex
+";
+            SqlParameter[] parameters = {
+					new SqlParameter("@UserId", SqlDbType.Int){Value = userid},
+					new SqlParameter("@startindex", SqlDbType.Int){Value = startIndex},
+					new SqlParameter("@endindex", SqlDbType.Int){Value = endIndex}
+                                        };
+	        var ds = DbHelperSQL.Query(sqlStr, parameters);
+	        return ds;
+	    }
 	}
 }
 

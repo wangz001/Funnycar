@@ -200,24 +200,72 @@ namespace TuoFeng.BLL
             return flag;
         }
 
-        public DataSet GetMyTravels(int page, int count, int userid)
+        public List<TravelVm> GetMyTravels(int page, int count, int userid)
         {
-            var sqlStr = @"
-SELECT * FROM (
-SELECT  *
-FROM    TravelParts
-WHERE   ID IN ( SELECT  MAX(id)
-                FROM    dbo.TravelParts
-                GROUP BY TravelId )
-        AND dbo.TravelParts.UserId = 1
-UNION 
-SELECT  *
-FROM    dbo.TravelParts
-WHERE   TravelId IS NULL
-        AND UserId = 1 ) AS t
-ORDER BY CreateTime DESC
-";
-            return null;
+            var list=new List<TravelVm>();
+            var ds = dal.GetMyTravels(page,count,userid);
+            if (ds == null || ds.Tables[0] == null || ds.Tables[0].Rows.Count <= 0) return list;
+            foreach (DataRow dataRow in ds.Tables[0].Rows)
+            {
+                var partId = Int32.Parse(dataRow["id"].ToString());
+                var travelId = 0;
+                if (dataRow["TravelId"] != DBNull.Value && !string.IsNullOrEmpty(dataRow["TravelId"].ToString()))
+                {
+                    travelId = Int32.Parse(dataRow["TravelId"].ToString());
+                }
+                var partType = Int32.Parse(dataRow["PartType"].ToString());
+                var description = dataRow["Description"].ToString();
+                var partUrl = dataRow["PartUrl"]!=DBNull.Value?dataRow["PartUrl"].ToString():"";
+                var longitude = dataRow["Longitude"] != DBNull.Value
+                    ? Decimal.Parse(dataRow["Longitude"].ToString())
+                    : 0;
+                var latitude = dataRow["Latitude"] != DBNull.Value
+                    ? Decimal.Parse(dataRow["Latitude"].ToString())
+                    : 0;
+                var height = dataRow["Height"] != DBNull.Value
+                    ? Decimal.Parse(dataRow["Height"].ToString())
+                    : 0;
+                var area = dataRow["Area"] != DBNull.Value
+                    ? dataRow["Area"].ToString()
+                    : "";
+                var createtime = DateTime.Parse(dataRow["CreateTime"].ToString());
+                var travel=new Travels();
+                if (travelId>0)
+                {
+                    travel = GetModelByCache(travelId);
+                }
+
+                var vm = new TravelVm()
+                {
+                    TravelName = travel != null ? travel.TravelName : "",
+                    CoverImage = travel != null ? travel.CoverImage : "",
+                    Id = partId,
+                    TravelId = travelId,
+                    PartType = partType,
+                    PartUrl = partUrl,
+                    Description = description,
+                    Longitude = longitude,
+                    Latitude = latitude,
+                    Height = height,
+                    Area = area,
+                    CreateTime = createtime,
+                };
+                list.Add(vm);
+            }
+            return list;
+        }
+
+
+        public class TravelVm:TravelParts
+        {
+            public string TravelName { get; set; }
+
+            /// <summary>
+            /// 游记封面图
+            /// </summary>
+            public string CoverImage { get; set; }
+
+
         }
     }
 }
