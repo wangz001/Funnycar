@@ -108,7 +108,7 @@
       <Name>System.XML</Name>
     </Reference>
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">
-      <Project>{0988C62E-247F-471F-A183-DB509C7A3839}</Project>
+      <Project>{0988c62e-247f-471f-a183-db509c7a3839}</Project>
       <Name>DBUtility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
