@@ -6,8 +6,11 @@
 @section Head{
     <script src="@Url.Content("~/Scripts/aliyun-sdk.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/oss-js-upload.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/dateformat.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/ossInit.js")" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css" />
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=c79256304629b2e2eae8e479189d9124"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script src="@Url.Content("~/Scripts/Travels/NewTravelParts/newTravelParts.js")" type="text/javascript"></script>
 }
 <div class="page">
     <header class="bar bar-nav">
@@ -49,6 +52,7 @@
                             </li>
                         </ul>
                     </div>
+                    
                     <div class="list-block">
                         <ul>
                             <li class="item-content">
@@ -60,6 +64,8 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="list-block"><a id="tab1_address" class="tab_address"></a></div>
+                    
                 </div>
                 <div id="tab2" class="tab">
                     <div class="list-block">
@@ -87,23 +93,27 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                    <div class="list-block"><a class="tab_address"></a></div>
+                 </div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     $(function () {
-        $(".prompt-ok").bind("click", function() {
+        //获取地理位置
+        getLocation();
+
+        $(".prompt-ok").bind("click", function () {
             $.prompt('新的游记名称', function (value) {
                 $.alert('你输入的名字是"' + value + '"');
                 if (value === "") return;
                 newTravel(value);
             });
         });
-        
+
         //获取个人游记列表
-        
+
         $.ajax({
             url: "/Travels/GetTravelNamesByUserId",
             type: "POST",
@@ -134,7 +144,7 @@
                 }
             }
         });
-        
+
         $.init();
     });
     //发布说说
@@ -143,7 +153,7 @@
     var text = "";
     var travelId = 0;
     var travelList = new Object();
-    
+
     var publish = function () {
         $.showPreloader();
         var isTab1 = $("#tab1").hasClass("active");
@@ -159,8 +169,9 @@
         } else {
             text = $("#text2").val();
         }
-        if (text == null &&(files==null||files.length===0)) {
+        if (text === "" && (files == null || files.length==null || files.length === 0)) {
             $.hidePreloader("请填写说说或添加图片");
+            $.toast("请填写说说或添加图片");
             return;
         }
         if (files != null && files.length > 0) {
@@ -171,20 +182,24 @@
 
         //$.toast(travelValue);
     };
-    var saveData = function() {
+    var saveData = function () {
+        var address = $(".tab_address")[0].innerText;
         var data = {
             description: text,
             userid: "@user.Id",
             partType: 0,
             partUrl: imgUrl,
-            travelId:travelId
-        };
+            travelId: travelId,
+            longitude: longitude,
+            latitude: latitude,
+            address: address
+    };
         $.ajax({
             url: "/Travels/AddTravelPart",
             type: "POST",
             data: data,
             async: false,
-            success: function(flag) {
+            success: function (flag) {
                 if (flag == 'true' || flag == 'True') {
                     $.toast('发布成功！');
                     window.location.href = "/Travels";
@@ -197,7 +212,7 @@
     };
 
     ///添加游记名称
-    var newTravel = function(name) {
+    var newTravel = function (name) {
         var data = {
             userId: "@user.Id",
             travelName: name
@@ -242,7 +257,7 @@
             files = mfiles;
         });
 
-    
+
     //var ossUpload = new Object();
     var uploadImg = function () {
         if (ossUpload == null) {

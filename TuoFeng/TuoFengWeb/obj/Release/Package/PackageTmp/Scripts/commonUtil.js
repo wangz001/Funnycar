@@ -19,3 +19,13 @@ Date.prototype.Format = function (fmt) { //author: meizz 
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 };
+
+
+
+//html模板替换方法
+String.prototype.temp = function (obj) {
+    return this.replace(/\$\w+\$/gi, function (matchs) {
+        var returns = obj[matchs.replace(/\$/g, "")];
+        return (returns + "") === "undefined" ? "" : returns;
+    });
+};

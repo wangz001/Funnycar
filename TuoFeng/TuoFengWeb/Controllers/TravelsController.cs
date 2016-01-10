@@ -130,8 +130,7 @@ namespace TuoFengWeb.Controllers
             var partUrl = collection.Get("partUrl");
             var longitude = collection.Get("longitude");
             var latitude = collection.Get("latitude");
-            var height = collection.Get("height");
-            var area = collection.Get("area");
+            var area = collection.Get("address");
             if (string.IsNullOrEmpty(userIdStr)) return HttpRequestResult.StateNotNull;
             if (string.IsNullOrEmpty(description) && string.IsNullOrEmpty(partUrl))
                 return HttpRequestResult.StateNotNull;
@@ -149,11 +148,10 @@ namespace TuoFengWeb.Controllers
                 model.PartType = Int32.Parse(partType);
                 model.Description = description;
                 model.PartUrl = partUrl;
-                if (!string.IsNullOrEmpty(longitude) && !string.IsNullOrEmpty(latitude) && !string.IsNullOrEmpty(height))
+                if (!string.IsNullOrEmpty(longitude) && !string.IsNullOrEmpty(latitude))
                 {
-                    model.Longitude = long.Parse(longitude);
-                    model.Latitude = long.Parse(latitude);
-                    model.Height = long.Parse(height);
+                    model.Longitude = decimal.Parse(longitude);
+                    model.Latitude = decimal.Parse(latitude);
                 }
                 if (!string.IsNullOrEmpty(area)) model.Area = area;
                 model.CreateTime = DateTime.Now;

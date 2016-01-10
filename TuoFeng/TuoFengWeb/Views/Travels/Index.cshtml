@@ -14,41 +14,7 @@
     <div class="content infinite-scroll" data-distance="100">
         <div class="list-block" id="content">
             <!-- 这里是页面内容区 -->
-            <div class="content-block-title">锡林浩特自驾游</div>
-            <div class="card facebook-card">
-                <div class="card-header no-border">
-                    <div class="facebook-avatar">
-                        <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34">
-                    </div>
-                    <div class="facebook-name">夜萧</div>
-                    <div class="facebook-date">星期一 3:47pm</div>
-                </div>
-                <div class="card-content">
-                    <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="100%">
-                </div>
-                <div class="card-footer no-border">
-                    <a href="#" class="link">赞</a>
-                    <a href="#" class="link">评论</a>
-                    <a href="#" class="link">分享</a>
-                </div>
-            </div>
-            <div class="card facebook-card">
-                <div class="card-header no-border">
-                    <div class="facebook-avatar">
-                        <img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34">
-                    </div>
-                    <div class="facebook-name">夜萧</div>
-                    <div class="facebook-date">星期一 3:47pm</div>
-                </div>
-                <div class="card-content">
-                    <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
-                </div>
-                <div class="card-footer no-border">
-                    <a href="#" class="link">赞</a>
-                    <a href="#" class="link">评论</a>
-                    <a href="#" class="link">分享</a>
-                </div>
-            </div>
+          
         </div>
         <!-- 加载提示符 -->
         <div class="infinite-scroll-preloader">
@@ -69,6 +35,7 @@
         </div>
         <div class="card-content">
             <img src="$images$" width="100%">
+            <div class="card-content-inner">$description$</div>
         </div>
         <div class="card-footer no-border">
             <a href="#" class="link">赞</a>
@@ -77,6 +44,25 @@
         </div>
     </div>
 
+</script>
+<script type="text/template2">
+    <div class="card facebook-card">
+        <div class="card-header no-border">
+            <div class="facebook-avatar">
+                <img src="$headImage$" width="34" height="34">
+            </div>
+            <div class="facebook-name">$userName$</div>
+            <div class="facebook-date">星期一 3:47pm</div>
+        </div>
+        <div class="card-content">
+            <div class="card-content-inner">$description$</div>
+        </div>
+        <div class="card-footer no-border">
+            <a href="#" class="link">赞</a>
+            <a href="#" class="link">评论</a>
+            <a href="#" class="link">分享</a>
+        </div>
+    </div>
 </script>
 @section Foot
 {
@@ -117,12 +103,17 @@
             if (dataJson != null && dataJson.length > 0) {
                 //获取模板上的HTML
                 var html = $('script[type="text/template1"]').html();
+                var html2 = $('script[type="text/template2"]').html();
                 //定义一个数组，用来接收格式化合的数据
                 var arr = [];
                 //对数据进行遍历
                 $.each(dataJson, function (i, o) {
                     //这里取到o就是上面rows数组中的值, formatTemplate是最开始定义的方法.
-                    arr.push(html.temp(o));
+                    if (o.images != null && o.images !== "") {
+                        arr.push(html.temp(o));
+                    } else {
+                        arr.push(html2.temp(o));
+                    }
                 });
                 //好了，最后把数组化成字符串，并添加到table中去。
                 $('#content').append(arr.join(''));

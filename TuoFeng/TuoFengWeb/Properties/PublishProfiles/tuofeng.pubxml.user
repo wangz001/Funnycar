@@ -19,7 +19,7 @@
       <publishTime>12/19/2015 22:35:02</publishTime>
     </File>
     <File Include="bin/EasyNet.Solr.dll">
-      <publishTime>01/01/2016 14:11:42</publishTime>
+      <publishTime>01/10/2016 14:35:40</publishTime>
     </File>
     <File Include="bin/Maticsoft.Common.dll">
       <publishTime>11/18/2015 19:22:21</publishTime>
@@ -64,19 +64,19 @@
       <publishTime>12/23/2015 20:25:09</publishTime>
     </File>
     <File Include="bin/TuoFeng.BLL.dll">
-      <publishTime>01/01/2016 14:11:44</publishTime>
+      <publishTime>01/10/2016 14:35:41</publishTime>
     </File>
     <File Include="bin/TuoFeng.DAL.dll">
-      <publishTime>01/01/2016 14:11:43</publishTime>
+      <publishTime>01/10/2016 14:35:41</publishTime>
     </File>
     <File Include="bin/TuoFeng.DBUtility.dll">
-      <publishTime>01/01/2016 14:11:42</publishTime>
+      <publishTime>01/10/2016 14:35:39</publishTime>
     </File>
     <File Include="bin/TuoFeng.Model.dll">
-      <publishTime>01/01/2016 14:11:40</publishTime>
+      <publishTime>01/10/2016 14:35:38</publishTime>
     </File>
     <File Include="bin/TuoFengWeb.dll">
-      <publishTime>01/01/2016 14:11:56</publishTime>
+      <publishTime>01/10/2016 14:35:54</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
       <publishTime>11/10/2015 21:22:32</publishTime>
@@ -126,6 +126,9 @@
     <File Include="Scripts/AngularJs/angular.min.js">
       <publishTime>12/22/2015 19:59:11</publishTime>
     </File>
+    <File Include="Scripts/commonUtil.js">
+      <publishTime>01/06/2016 20:18:57</publishTime>
+    </File>
     <File Include="Scripts/dateformat.js">
       <publishTime>12/29/2015 20:48:14</publishTime>
     </File>
@@ -139,7 +142,7 @@
       <publishTime>12/29/2015 21:29:03</publishTime>
     </File>
     <File Include="Scripts/Travels/NewTravelParts/newTravelParts.js">
-      <publishTime>12/31/2015 22:15:46</publishTime>
+      <publishTime>01/10/2016 13:19:19</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>12/21/2015 20:38:25</publishTime>
@@ -160,22 +163,25 @@
       <publishTime>12/22/2015 19:59:11</publishTime>
     </File>
     <File Include="Views/Search/Test.cshtml">
-      <publishTime>12/29/2015 23:45:41</publishTime>
+      <publishTime>01/09/2016 15:02:02</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>12/21/2015 20:50:10</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/29/2015 23:58:41</publishTime>
+      <publishTime>01/06/2016 20:18:57</publishTime>
     </File>
     <File Include="Views/Shared/_Nav.cshtml">
-      <publishTime>12/24/2015 19:58:07</publishTime>
+      <publishTime>01/06/2016 20:18:57</publishTime>
     </File>
     <File Include="Views/Travels/Index.cshtml">
-      <publishTime>01/01/2016 14:09:21</publishTime>
+      <publishTime>01/10/2016 14:31:12</publishTime>
+    </File>
+    <File Include="Views/Travels/MyTravels.cshtml">
+      <publishTime>01/10/2016 14:30:15</publishTime>
     </File>
     <File Include="Views/Travels/NewTravelParts.cshtml">
-      <publishTime>01/01/2016 11:44:19</publishTime>
+      <publishTime>01/10/2016 13:42:58</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
       <publishTime>12/31/2015 23:55:48</publishTime>

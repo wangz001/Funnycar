@@ -3,7 +3,7 @@
         <span class="icon icon-home"></span>
         <span class="tab-label">首页</span>
     </a>
-    <a id="tab_me" class="tab-item external" href="/User">
+    <a id="tab_me" class="tab-item external" href="/Travels/MyTravels">
         <span class="icon icon-me"></span>
         <span class="tab-label">我</span>
     </a>
@@ -15,8 +15,9 @@
 
 <script type="text/javascript">
     function SetTabSelected(id) {
+        $(".tab-item div").removeClass("active");
         $("#" + id).addClass("active");
-        $("#" + id).nextSibling.removeClass("active");
+        //$("#" + id).nextSibling.removeClass("active");
     }
 
 </script>

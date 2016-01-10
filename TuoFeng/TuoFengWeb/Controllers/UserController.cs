@@ -16,9 +16,9 @@ namespace TuoFengWeb.Controllers
             return View();
         }
 
-        public ActionResult Setting(int ? userid=0)
+        public ActionResult Setting(int userid=0)
         {
-            ViewBag.UserInfo._userBll.GetModelByCache(userid);
+            if (userid > 0) { ViewBag.UserInfo = _userBll.GetModelByCache(userid); }
             return View();
         }
         /// <summary>

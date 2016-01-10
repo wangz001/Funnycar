@@ -10,7 +10,7 @@
        <Types>
         <Type Name="JavaBinCodec" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-01-01 06:11:46Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-01-10 06:35:43Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">在 'JavaBinCodec' 上实现 IDisposable，因为它创建下列 IDisposable 类型的成员:  'FastOutputStream'。如果以前提供过 'JavaBinCodec'，对于现有使用者来说，向此类型添加用于实现 IDisposable 的新成员属于重大更改。</Issue>
           </Message>
          </Messages>
@@ -23,7 +23,7 @@
          <Members>
           <Member Name="#Get(System.String,System.Collections.Generic.IDictionary`2&lt;System.String,System.Collections.Generic.ICollection`1&lt;System.String&gt;&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-01-01 06:11:46Z" FixCategory="NonBreaking">
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2016-01-10 06:35:43Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="Error" Path="d:\Documents\GitHub\Funnycar\TuoFeng\EasyNet.Solr\Impl" File="SolrQueryConnection.cs" Line="114">'SolrQueryConnection&lt;T&gt;.Get(string, IDictionary&lt;string, ICollection&lt;string&gt;&gt;)' 再次引发捕获的异常并将其显式地指定为一个参数。请改用不带参数的“throw”以保留该异常最初引发时所在的堆栈位置。</Issue>
             </Message>
            </Messages>
