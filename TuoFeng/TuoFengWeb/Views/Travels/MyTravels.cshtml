@@ -1,5 +1,7 @@
-﻿@{
+﻿@using TuoFeng.Model
+@{
     ViewBag.Title = "mytravel";
+    var user=(User)ViewBag.User;
 }
 <div class="page" id="page-infinite-scroll-bottom">
     <header class="bar bar-nav">
@@ -66,20 +68,23 @@
 @section Foot
 {
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             SetTabSelected('tab_me');
-            getList();
-            getTravelLists();
+            getPartList();
+            getTravelList();
         });
-        var pagenum = 1; //页码
-        var count = 10; //每次取的数据数
+        var partPage = 1;
+//页码
+        var count = 10;
+//每次取的数据
         var loading = false;
-        var getList = function () {
+        //根据part获取列表
+        var getPartList = function() {
             // 重置加载flag
             loading = false;
             var data = {
-                userid: 1,
-                page: pagenum,
+                userid: "@user.Id",
+                page: partPage,
                 count: count
             };
             $.ajax({
@@ -87,10 +92,10 @@
                 type: "GET",
                 data: data,
                 async: false,
-                success: function (data) {
-                    if (data != null && data.length > 0) {
-                        var list = JSON.parse(data);
-                        pagenum++;
+                success: function(dataresult) {
+                    if (dataresult != null && dataresult.length > 0) {
+                        var list = JSON.parse(dataresult);
+                        partPage++;
                         setCard(list);
                     } else {
                         $.toast('没有更多数据');
@@ -99,7 +104,7 @@
                 }
             });
         };
-        var setCard = function (dataJson) {
+        var setCard = function(dataJson) {
             if (dataJson != null && dataJson.length > 0) {
                 //获取模板上的HTML
                 var html = $('script[type="text/template1"]').html();
@@ -107,7 +112,7 @@
                 //定义一个数组，用来接收格式化合的数据
                 var arr = [];
                 //对数据进行遍历
-                $.each(dataJson, function (i, o) {
+                $.each(dataJson, function(i, o) {
                     //这里取到o就是上面rows数组中的值, formatTemplate是最开始定义的方法.
                     if (o.images != null && o.images !== "") {
                         arr.push(html.temp(o));
@@ -119,13 +124,16 @@
                 $('#tab1').append(arr.join(''));
             }
         };
+    </script>
+    <script type="text/javascript">
+        var travelPage = 1;
         //按游记展示
-        var getTravelLists=function() {
+        var getTravelList = function() {
             // 重置加载flag
             loading = false;
             var data = {
-                userid: 1,
-                page: pagenum,
+                userid: "@user.Id",
+                page: travelPage,
                 count: count
             };
             $.ajax({
@@ -133,20 +141,20 @@
                 type: "GET",
                 data: data,
                 async: false,
-                success: function (data) {
-                    if (data != null && data.length > 0) {
-                        var list = JSON.parse(data);
-                        pagenum++;
+                success: function(dataresult) {
+                    if (dataresult != null && dataresult.length > 0) {
+                        var list = JSON.parse(dataresult);
+                        travelPage++;
                         setCardTravel(list);
                     } else {
-                        $.toast('没有更多数据');
+                        $.toast('没有更多数据2');
                     }
                     $('.infinite-scroll-preloader').remove();
                 }
             });
-        }
+        };
 
-        var setCardTravel = function (dataJson) {
+        var setCardTravel = function(dataJson) {
             if (dataJson != null && dataJson.length > 0) {
                 //获取模板上的HTML
                 var html = $('script[type="text/template1"]').html();
@@ -154,7 +162,7 @@
                 //定义一个数组，用来接收格式化合的数据
                 var arr = [];
                 //对数据进行遍历
-                $.each(dataJson, function (i, o) {
+                $.each(dataJson, function(i, o) {
                     //这里取到o就是上面rows数组中的值, formatTemplate是最开始定义的方法.
                     if (o.images != null && o.images !== "") {
                         arr.push(html.temp(o));
@@ -162,22 +170,26 @@
                         arr.push(html2.temp(o));
                     }
                 });
-                //好了，最后把数组化成字符串，并添加到table中去。
                 $('#tab2').append(arr.join(''));
             }
         };
     </script>
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             'use strict';
             //无限滚动
-            $(document).on("pageInit", "#page-infinite-scroll-bottom", function (e, id, page) {
-                $(page).on('infinite', function () {
+            $(document).on("pageInit", "#page-infinite-scroll-bottom", function(e, id, page) {
+                $(page).on('infinite', function() {
                     // 如果正在加载，则退出
                     if (loading) return;
                     // 设置flag
                     loading = true;
-                    getList();
+                    var isTab1 = $("#tab1").hasClass("active");
+                    if (isTab1) {
+                        getPartList();
+                    } else {
+                        getTravelList();
+                    }
                 });
             });
             $.init();

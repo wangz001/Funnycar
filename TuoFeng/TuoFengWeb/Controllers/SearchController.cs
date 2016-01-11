@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using EasyNet.Solr;
 using EasyNet.Solr.Commons;
 using EasyNet.Solr.Impl;
+using Newtonsoft.Json;
 
 namespace TuoFengWeb.Controllers
 {
@@ -19,10 +20,21 @@ namespace TuoFengWeb.Controllers
             return View();
         }
 
-        public string Search(string keyWord, int page)
+        public string DoSearch(int userid,string keyWord, int page)
         {
-            var result = SolrNetUtil.Query(keyWord, page);
-            return result;
+            var resultStr = string.Empty;
+            const int count = 10;
+            if (page<0)
+            {
+                page = 1;
+            }
+            if (string.IsNullOrEmpty(keyWord)) return string.Empty;
+            var list = SolrNetUtil.Query(keyWord, page,count);
+            if (list!=null&&list.Count>0)
+            {
+                resultStr = JsonConvert.SerializeObject(list);
+            }
+            return resultStr;
         }
 
         public ActionResult Test()

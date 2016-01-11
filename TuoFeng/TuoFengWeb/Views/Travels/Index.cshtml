@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "周边热门景点";
+    ViewBag.Title = "景点";
 }
 <div class="page" id="page-infinite-scroll-bottom">
     <header class="bar bar-nav">
@@ -68,8 +68,8 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
-            getList();
             SetTabSelected('tab_index');
+            getList();
         });
         var pagenum = 1; //页码
         var count = 10; //每次取的数据数
@@ -87,9 +87,9 @@
                 type: "GET",
                 data: data,
                 async: false,
-                success: function (data) {
-                    if (data != null && data.length > 0) {
-                        var list = JSON.parse(data);
+                success: function (dataresult) {
+                    if (dataresult != null && dataresult.length > 0) {
+                        var list = JSON.parse(dataresult);
                         pagenum++;
                         setCard(list);
                     } else {
@@ -115,7 +115,6 @@
                         arr.push(html2.temp(o));
                     }
                 });
-                //好了，最后把数组化成字符串，并添加到table中去。
                 $('#content').append(arr.join(''));
             }
         };

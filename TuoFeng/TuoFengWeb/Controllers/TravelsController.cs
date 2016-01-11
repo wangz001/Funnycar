@@ -105,8 +105,8 @@ namespace TuoFengWeb.Controllers
         public string GetTravelNamesByUserId(int userid)
         {
             var itemList = new List<string>();
-            var list = _travelsBll.GetModelList(" UserId=" + userid);
-            if (list != null && list.Count > 0)
+            var list = _travelsBll.GetModelList(" UserId=" + userid + " and IsDelete=0").OrderByDescending(m => m.CreateTime);
+            if (list.Any())
             {
                 itemList.AddRange(list.Select(travel => string.Format("{{\"travelid\":\"{0}\",\"travelname\":\"{1}\"}}", travel.Id, travel.TravelName)));
                 return string.Format("[{0}]", string.Join(",", itemList));
@@ -240,8 +240,9 @@ namespace TuoFengWeb.Controllers
         }
 
 
-        public ActionResult MyTravels()
+        public ActionResult MyTravels(int userid)
         {
+            ViewBag.User = _userBll.GetModelByCache(userid);
             return View();
         }
 

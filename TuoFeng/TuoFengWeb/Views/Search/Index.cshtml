@@ -12,16 +12,99 @@
     <div class="content">
         <div class="searchbar row">
             <div class="search-input col-85">
-                <input type="search" id='search' placeholder='输入关键字...'/>
+                <input type="search" id='txtsearch' placeholder='输入关键字...' />
             </div>
-            <a class="button button-fill button-primary col-15"><span class="icon icon-search"></span></a>
+            <a id="btnsearch" class="button button-fill button-primary col-15"><span class="icon icon-search"></span></a>
+        </div>
+        <div id="content">
+            
         </div>
     </div>
 
 </div>
+<script type="text/template1">
+    <div class="card facebook-card">
+        <div class="card-header no-border">
+            <div class="facebook-name">$TravelName$</div>
+            <div class="facebook-date">星期一 3:47pm</div>
+        </div>
+        <div class="card-content">
+            <div class="card-content-inner">$Description$</div>
+        </div>
+    </div>
+</script>
 @section Foot
 {
     <script type="text/javascript">
-      
+        $(document).ready(function () {
+            $("#btnsearch").bind('click', function () {
+                var keyWord = $("#txtsearch").val();
+                if (keyWord != null && keyWord.length > 0) {
+                    doSearch(keyWord);
+                } else {
+                    $.toast("请输入搜索关键字");
+                }
+            });
+        });
+        //搜索
+        var pagenum = 1;//页码
+        var loading = false;
+        var doSearch = function (keyWord) {
+            var para = {
+                userid: 1,
+                page: pagenum,
+                keyword: keyWord
+            };
+            $.ajax({
+                url: "/Search/DoSearch",
+                type: "GET",
+                data: para,
+                async: false,
+                success: function (dataresult) {
+                    if (dataresult != null && dataresult.length > 0) {
+                        var list = JSON.parse(dataresult);
+                        pagenum++;
+                        setCard(list);
+                    } else {
+                        $.toast('没有更多数据');
+                    }
+                    $('.infinite-scroll-preloader').remove();
+                }
+            });
+        };
+
+        function setCard(dataJson) {
+            if (dataJson != null && dataJson.length > 0) {
+                //获取模板上的HTML
+                var html = $('script[type="text/template1"]').html();
+                //定义一个数组，用来接收格式化合的数据
+                var arr = [];
+                //对数据进行遍历
+                $.each(dataJson, function (i, o) {
+                    //这里取到o就是上面rows数组中的值, formatTemplate是最开始定义的方法.
+                    arr.push(html.temp(o));
+
+                });
+                $('#content').append(arr.join(''));
+            }
+        }
     </script>
+    <script type="text/javascript">
+        $(function () {
+            'use strict';
+            //无限滚动
+            $(document).on("pageInit", "#page-infinite-scroll-bottom", function (e, id, page) {
+                $(page).on('infinite', function () {
+                    // 如果正在加载，则退出
+                    if (loading) return;
+                    // 设置flag
+                    loading = true;
+                    // 模拟1s的加载过程
+                    getList();
+                });
+            });
+            $.init();
+        });
+    </script>
+
 }
