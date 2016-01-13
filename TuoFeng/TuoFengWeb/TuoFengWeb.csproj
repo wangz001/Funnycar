@@ -50,11 +50,28 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>RefDll\aliyun-net-sdk-sts.dll</HintPath>
     </Reference>
+    <Reference Include="EasyNet.Solr, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDll\EasyNet.Solr.dll</HintPath>
+    </Reference>
+    <Reference Include="HttpWebAdapters, Version=0.5.0.1002, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDll\HttpWebAdapters.dll</HintPath>
+    </Reference>
     <Reference Include="Maticsoft.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Maticsoft.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="SolrNet, Version=0.5.0.1002, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDll\SolrNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SolrNet.DSL, Version=0.5.0.1002, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RefDll\SolrNet.DSL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -118,8 +135,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\SolrNetUtil.cs" />
     <Compile Include="Common\OssAccessUtil.cs" />
-    <Compile Include="Common\SolrNetUtil.cs">
+    <Compile Include="Common\EasyNetSolrUtil.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\CommentController.cs" />
@@ -144,6 +162,10 @@
     <Content Include="Global.asax" />
     <Content Include="RefDll\aliyun-net-sdk-core.dll" />
     <Content Include="RefDll\aliyun-net-sdk-sts.dll" />
+    <Content Include="RefDll\EasyNet.Solr.dll" />
+    <Content Include="RefDll\HttpWebAdapters.dll" />
+    <Content Include="RefDll\SolrNet.dll" />
+    <Content Include="RefDll\SolrNet.DSL.dll" />
     <Content Include="Scripts\aliyun-sdk.js" />
     <Content Include="Scripts\AngularJs\angular.js" />
     <Content Include="Scripts\AngularJs\angular.min.js" />
@@ -184,10 +206,6 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{38d7aa58-c95b-449b-86c6-a8073a56e11f}</Project>
       <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EasyNet.Solr\EasyNet.Solr.csproj">
-      <Project>{68d7b310-d02c-4503-9caa-9f3af0d24fb5}</Project>
-      <Name>EasyNet.Solr</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{53995dbb-9836-4647-ad22-865884fdeb9e}</Project>

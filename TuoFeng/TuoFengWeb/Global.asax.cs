@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using TuoFengWeb.Common;
+using TuoFengWeb.Models;
 
 namespace TuoFengWeb
 {
@@ -19,6 +21,8 @@ namespace TuoFengWeb
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //solr搜索引擎
+            SolrNet.Startup.Init<SolrNetUtil.SearchVm2>("http://localhost:8080/solr/tuofeng");
         }
     }
 }
