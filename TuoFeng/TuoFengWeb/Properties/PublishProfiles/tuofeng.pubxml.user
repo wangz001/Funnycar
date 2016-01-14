@@ -13,148 +13,190 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/aliyun-net-sdk-core.dll">
-      <publishTime>12/19/2015 22:35:02</publishTime>
+      <publishTime>11/09/2015 14:58:06</publishTime>
     </File>
     <File Include="bin/aliyun-net-sdk-sts.dll">
-      <publishTime>12/19/2015 22:35:02</publishTime>
+      <publishTime>11/09/2015 14:58:06</publishTime>
     </File>
     <File Include="bin/EasyNet.Solr.dll">
-      <publishTime>01/10/2016 14:35:40</publishTime>
+      <publishTime>01/13/2016 14:35:30</publishTime>
+    </File>
+    <File Include="bin/HttpWebAdapters.dll">
+      <publishTime>01/13/2016 15:20:30</publishTime>
     </File>
     <File Include="bin/Maticsoft.Common.dll">
-      <publishTime>11/18/2015 19:22:21</publishTime>
+      <publishTime>11/09/2015 09:20:07</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>04/16/2010 14:16:58</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.pdb">
+      <publishTime>04/16/2010 13:42:32</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:14</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>11/18/2015 19:22:21</publishTime>
+      <publishTime>11/09/2015 09:20:07</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:14</publishTime>
+    </File>
+    <File Include="bin/SolrNet.dll">
+      <publishTime>01/13/2016 14:43:28</publishTime>
+    </File>
+    <File Include="bin/SolrNet.DSL.dll">
+      <publishTime>01/13/2016 15:20:30</publishTime>
     </File>
     <File Include="bin/System.Data.SQLite.dll">
-      <publishTime>11/18/2015 19:22:22</publishTime>
+      <publishTime>11/09/2015 09:20:07</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>12/23/2015 20:25:09</publishTime>
+      <publishTime>01/11/2016 11:19:13</publishTime>
     </File>
     <File Include="bin/TuoFeng.BLL.dll">
-      <publishTime>01/10/2016 14:35:41</publishTime>
+      <publishTime>01/12/2016 11:39:05</publishTime>
+    </File>
+    <File Include="bin/TuoFeng.BLL.pdb">
+      <publishTime>01/12/2016 11:39:05</publishTime>
     </File>
     <File Include="bin/TuoFeng.DAL.dll">
-      <publishTime>01/10/2016 14:35:41</publishTime>
+      <publishTime>01/12/2016 11:39:04</publishTime>
+    </File>
+    <File Include="bin/TuoFeng.DAL.pdb">
+      <publishTime>01/12/2016 11:39:04</publishTime>
     </File>
     <File Include="bin/TuoFeng.DBUtility.dll">
-      <publishTime>01/10/2016 14:35:39</publishTime>
+      <publishTime>01/12/2016 09:03:27</publishTime>
+    </File>
+    <File Include="bin/TuoFeng.DBUtility.pdb">
+      <publishTime>01/12/2016 09:03:27</publishTime>
     </File>
     <File Include="bin/TuoFeng.Model.dll">
-      <publishTime>01/10/2016 14:35:38</publishTime>
+      <publishTime>01/12/2016 09:03:27</publishTime>
+    </File>
+    <File Include="bin/TuoFeng.Model.pdb">
+      <publishTime>01/12/2016 09:03:27</publishTime>
     </File>
     <File Include="bin/TuoFengWeb.dll">
-      <publishTime>01/10/2016 14:35:54</publishTime>
+      <publishTime>01/14/2016 17:18:49</publishTime>
+    </File>
+    <File Include="bin/TuoFengWeb.pdb">
+      <publishTime>01/14/2016 17:18:49</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
-      <publishTime>11/10/2015 21:22:32</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
-      <publishTime>11/10/2015 21:22:33</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
-      <publishTime>11/10/2015 21:22:32</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
-      <publishTime>11/10/2015 21:22:32</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
-      <publishTime>11/10/2015 21:22:32</publishTime>
+      <publishTime>11/09/2015 09:20:07</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
-      <publishTime>11/10/2015 21:22:32</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
-      <publishTime>11/10/2015 21:22:33</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
-      <publishTime>11/10/2015 21:22:33</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
-      <publishTime>11/10/2015 21:22:33</publishTime>
+      <publishTime>11/09/2015 09:20:08</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>11/12/2015 21:02:41</publishTime>
+      <publishTime>11/18/2015 14:20:33</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>11/12/2015 21:02:47</publishTime>
+      <publishTime>11/18/2015 14:20:33</publishTime>
     </File>
     <File Include="RefDll/aliyun-net-sdk-core.dll">
-      <publishTime>12/19/2015 22:35:02</publishTime>
+      <publishTime>11/09/2015 14:58:06</publishTime>
     </File>
     <File Include="RefDll/aliyun-net-sdk-sts.dll">
-      <publishTime>12/19/2015 22:35:02</publishTime>
+      <publishTime>11/09/2015 14:58:06</publishTime>
+    </File>
+    <File Include="RefDll/EasyNet.Solr.dll">
+      <publishTime>01/13/2016 14:35:30</publishTime>
+    </File>
+    <File Include="RefDll/HttpWebAdapters.dll">
+      <publishTime>01/13/2016 15:20:30</publishTime>
+    </File>
+    <File Include="RefDll/SolrNet.dll">
+      <publishTime>01/13/2016 14:43:28</publishTime>
+    </File>
+    <File Include="RefDll/SolrNet.DSL.dll">
+      <publishTime>01/13/2016 15:20:30</publishTime>
     </File>
     <File Include="Scripts/aliyun-sdk.js">
-      <publishTime>12/28/2015 21:51:07</publishTime>
+      <publishTime>12/28/2015 17:33:31</publishTime>
     </File>
     <File Include="Scripts/AngularJs/angular.js">
-      <publishTime>12/22/2015 19:59:11</publishTime>
+      <publishTime>12/22/2015 11:48:44</publishTime>
     </File>
     <File Include="Scripts/AngularJs/angular.min.js">
-      <publishTime>12/22/2015 19:59:11</publishTime>
+      <publishTime>12/22/2015 11:48:43</publishTime>
     </File>
     <File Include="Scripts/commonUtil.js">
-      <publishTime>01/06/2016 20:18:57</publishTime>
+      <publishTime>01/06/2016 15:13:03</publishTime>
     </File>
     <File Include="Scripts/dateformat.js">
       <publishTime>12/29/2015 20:48:14</publishTime>
     </File>
     <File Include="Scripts/jquery-1.8.3.js">
-      <publishTime>12/23/2015 20:46:08</publishTime>
+      <publishTime>12/25/2015 09:14:30</publishTime>
     </File>
     <File Include="Scripts/oss-js-upload.js">
-      <publishTime>12/28/2015 21:51:07</publishTime>
+      <publishTime>12/28/2015 17:33:47</publishTime>
     </File>
     <File Include="Scripts/ossInit.js">
-      <publishTime>12/29/2015 21:29:03</publishTime>
+      <publishTime>01/14/2016 17:14:39</publishTime>
     </File>
     <File Include="Scripts/Travels/NewTravelParts/newTravelParts.js">
-      <publishTime>01/10/2016 13:19:19</publishTime>
+      <publishTime>01/11/2016 10:18:23</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/21/2015 20:38:25</publishTime>
+      <publishTime>12/21/2015 11:34:29</publishTime>
     </File>
     <File Include="Views/Home/Login.cshtml">
-      <publishTime>12/24/2015 21:22:35</publishTime>
+      <publishTime>12/25/2015 09:14:30</publishTime>
     </File>
     <File Include="Views/Home/Regist.cshtml">
-      <publishTime>12/27/2015 13:40:48</publishTime>
+      <publishTime>12/28/2015 10:25:15</publishTime>
     </File>
     <File Include="Views/Search/Index.cshtml">
-      <publishTime>12/24/2015 19:49:50</publishTime>
+      <publishTime>01/13/2016 09:51:05</publishTime>
     </File>
     <File Include="Views/Search/template/test-phone-detail.cshtml">
       <publishTime>12/22/2015 19:59:11</publishTime>
@@ -163,46 +205,46 @@
       <publishTime>12/22/2015 19:59:11</publishTime>
     </File>
     <File Include="Views/Search/Test.cshtml">
-      <publishTime>01/09/2016 15:02:02</publishTime>
+      <publishTime>01/11/2016 10:18:23</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>12/21/2015 20:50:10</publishTime>
+      <publishTime>12/22/2015 09:57:01</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/06/2016 20:18:57</publishTime>
+      <publishTime>01/06/2016 15:12:30</publishTime>
     </File>
     <File Include="Views/Shared/_Nav.cshtml">
-      <publishTime>01/06/2016 20:18:57</publishTime>
+      <publishTime>01/14/2016 15:08:24</publishTime>
     </File>
     <File Include="Views/Travels/Index.cshtml">
-      <publishTime>01/10/2016 14:31:12</publishTime>
+      <publishTime>01/11/2016 15:22:49</publishTime>
     </File>
     <File Include="Views/Travels/MyTravels.cshtml">
-      <publishTime>01/10/2016 14:30:15</publishTime>
+      <publishTime>01/11/2016 15:39:34</publishTime>
     </File>
     <File Include="Views/Travels/NewTravelParts.cshtml">
-      <publishTime>01/10/2016 13:42:58</publishTime>
+      <publishTime>01/14/2016 15:23:08</publishTime>
     </File>
     <File Include="Views/User/Index.cshtml">
-      <publishTime>12/31/2015 23:55:48</publishTime>
+      <publishTime>01/05/2016 16:34:05</publishTime>
     </File>
     <File Include="Views/User/SetImage.cshtml">
-      <publishTime>12/29/2015 21:29:30</publishTime>
+      <publishTime>12/30/2015 09:08:49</publishTime>
     </File>
     <File Include="Views/User/Setting.cshtml">
-      <publishTime>12/24/2015 19:50:17</publishTime>
+      <publishTime>01/14/2016 14:39:03</publishTime>
     </File>
     <File Include="Views/User/UserDetail.cshtml">
-      <publishTime>12/29/2015 19:35:56</publishTime>
+      <publishTime>12/29/2015 15:23:06</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>11/12/2015 21:02:41</publishTime>
+      <publishTime>11/18/2015 14:20:33</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>12/21/2015 20:50:10</publishTime>
+      <publishTime>12/22/2015 09:57:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/30/2015 23:35:25</publishTime>
+      <publishTime>01/14/2016 17:21:35</publishTime>
     </File>
   </ItemGroup>
 </Project>

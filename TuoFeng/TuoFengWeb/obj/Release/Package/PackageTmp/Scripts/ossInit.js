@@ -16,7 +16,7 @@ var init = function (stsToken) {
         bucket: 'funnycar',
         endpoint: 'http://oss-cn-beijing.aliyuncs.com',
         // 如果文件大于 chunkSize 则分块上传, chunkSize 不能小于 100KB 即 102400
-        chunkSize: 1048576,
+        chunkSize: 5048576,
         // 分块上传的并发数
         concurrency: 2,
         stsToken:

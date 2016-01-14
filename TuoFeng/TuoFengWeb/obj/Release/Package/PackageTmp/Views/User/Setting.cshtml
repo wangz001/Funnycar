@@ -1,5 +1,7 @@
-﻿@{
+﻿@using TuoFeng.Model
+@{
     ViewBag.Title = "设置";
+    var user = (User)ViewBag.User;
 }
 <div class="page">
     <header class="bar bar-nav">
@@ -12,6 +14,29 @@
     </header>
     @Html.Partial("~/Views/Shared/_Nav.cshtml")
     <div class="content">
+        <div class="card">
+            <div class="card-content">
+                <div class="list-block media-list">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-media">
+                                <a class="refer" href="/User/SetImage?userid=@user.Id">
+                                    <img src="@user.ImgUrl" width="44">
+                                </a>
+                            </div>
+                            <div class="item-inner">
+                                <a class="refer" href="/User/UserDetail?userid=@user.Id">
+                                    <div class="item-title-row">
+                                        <div class="item-title">@user.ShowName</div>
+                                    </div>
+                                    <div class="item-subtitle">@user.UserName</div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @section Foot

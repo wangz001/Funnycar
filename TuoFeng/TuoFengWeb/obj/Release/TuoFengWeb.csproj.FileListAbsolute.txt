@@ -42,8 +42,6 @@ D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.pdb
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.dll.config
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
-D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
-D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.xml
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.dll.config
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\TuoFengWeb.pdb
@@ -92,3 +90,10 @@ D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\zh-Hans\System.Web.WebPages.
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Release\TuoFengWeb.pdb
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-core.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-sts.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\HttpWebAdapters.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\Microsoft.Practices.ServiceLocation.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\SolrNet.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\SolrNet.DSL.dll
+D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\Microsoft.Practices.ServiceLocation.pdb

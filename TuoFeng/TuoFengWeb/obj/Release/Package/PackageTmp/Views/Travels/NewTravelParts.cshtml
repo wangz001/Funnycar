@@ -21,7 +21,7 @@
         <a class="button button-link pull-right" onclick="publish()">
             发布<span class="icon icon-check"></span>
         </a>
-        <h1 class="title">记一下</h1>
+        <h1 class="title">mark</h1>
     </header>
     <div class="content">
         <div class="buttons-tab">
@@ -52,7 +52,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="list-block">
                         <ul>
                             <li class="item-content">
@@ -65,7 +65,7 @@
                         </ul>
                     </div>
                     <div class="list-block"><a id="tab1_address" class="tab_address"></a></div>
-                    
+
                 </div>
                 <div id="tab2" class="tab">
                     <div class="list-block">
@@ -94,7 +94,7 @@
                         </ul>
                     </div>
                     <div class="list-block"><a class="tab_address"></a></div>
-                 </div>
+                </div>
             </div>
         </div>
     </div>
@@ -113,7 +113,6 @@
         });
 
         //获取个人游记列表
-
         $.ajax({
             url: "/Travels/GetTravelNamesByUserId",
             type: "POST",
@@ -124,11 +123,11 @@
                 if (data != null && data.length > 0) {
                     var list = JSON.parse(data);
                     travelList = list;
-                    //$.toast(travelList[0].travelname);
-                    var nameArr = new Array([travelList.length]);
+                    var nameArr = new Array();
                     for (var i = 0; i < travelList.length; i++) {
                         nameArr.push(travelList[i].travelname);
                     }
+                    $("#picker").val(nameArr[0]);  //默认显示最新的youji名称
                     $("#picker").picker({
                         toolbarTemplate: '<header class="bar bar-nav">\
       <button class="button button-link pull-right close-picker">确定</button>\
@@ -144,7 +143,6 @@
                 }
             }
         });
-
         $.init();
     });
     //发布说说
@@ -169,7 +167,7 @@
         } else {
             text = $("#text2").val();
         }
-        if (text === "" && (files == null || files.length==null || files.length === 0)) {
+        if (text === "" && (files == null || files.length == null || files.length === 0)) {
             $.hidePreloader("请填写说说或添加图片");
             $.toast("请填写说说或添加图片");
             return;
@@ -193,7 +191,7 @@
             longitude: longitude,
             latitude: latitude,
             address: address
-    };
+        };
         $.ajax({
             url: "/Travels/AddTravelPart",
             type: "POST",
@@ -298,6 +296,7 @@
                 // 文件上传失败后调用, 可选参数
                 onerror: function (evt) {
                     console.log(evt);
+                    $.hidePreloader();
                 },
                 // 文件上传成功调用, 可选参数
                 oncomplete: function (res) {

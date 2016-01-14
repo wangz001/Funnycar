@@ -30,8 +30,8 @@ namespace TuoFengWeb.Controllers
                 page = 1;
             }
             if (string.IsNullOrEmpty(keyWord)) return string.Empty;
-            //var list = EasyNetSolrUtil.Query(keyWord, page, count);
-            var list = SolrNetUtil.Query(keyWord, page, count);
+            var list = EasyNetSolrUtil.Query(keyWord, page, count);
+            //var list = SolrNetUtil.Query(keyWord, page, count);
             if (list!=null&&list.Count>0)
             {
                 resultStr = JsonConvert.SerializeObject(list);
