@@ -224,6 +224,7 @@
     <Content Include="Views\User\SetImage.cshtml" />
     <Content Include="Views\Travels\NewTravelParts.cshtml" />
     <Content Include="Views\Travels\MyTravels.cshtml" />
+    <Content Include="Views\Travels\TravelDetail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

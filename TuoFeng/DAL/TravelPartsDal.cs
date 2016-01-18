@@ -393,6 +393,29 @@ namespace TuoFeng.DAL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public DataSet GetModelListByTravelId(int travelid, int page, int count)
+	    {
+	        var startIndex = (page-1)*count;
+	        var endIndex = page*count;
+	        var sqlStr = @"
+SELECT  *
+FROM    ( SELECT    ROW_NUMBER() OVER ( ORDER BY T.createtime ) AS Row ,
+                    T.*
+          FROM      TravelParts T
+          WHERE     TravelId = @TravelId  AND IsDelete=0
+        ) AS TT
+WHERE   tt.Row BETWEEN @startIndex AND @endIndex
+";
+            SqlParameter[] para =
+            {
+                new SqlParameter("@TravelId", SqlDbType.Int) { Value = travelid },
+                new SqlParameter("@startIndex",SqlDbType.Int){Value = startIndex}, 
+                new SqlParameter("@endIndex",SqlDbType.Int){Value = endIndex}
+            };
+
+            return DbHelperSQL.Query(sqlStr,para);
+	    }
 	}
 }
 

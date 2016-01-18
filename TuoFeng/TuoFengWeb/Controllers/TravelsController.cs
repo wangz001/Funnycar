@@ -364,5 +364,23 @@ namespace TuoFengWeb.Controllers
             }
             return string.Empty;
         }
+
+        /// <summary>
+        /// 游记浏览页
+        /// </summary>
+        /// <param name="travelid"></param>
+        /// <param name="partid"></param>
+        /// <param name="page">分页</param>
+        /// <returns></returns>
+        public ActionResult TravelDetail(int travelid,int? partid,int page)
+        {
+            const int count = 20;
+            if (travelid>0)
+            {
+                var travel = _travelsBll.GetModelByCache(travelid);
+                var travelPartLists = _travelPartsBll.GetModelListByTravelId(travelid,page,count);
+            }
+            return View();
+        }
     }
 }
