@@ -22,7 +22,7 @@ namespace TuoFengWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //solr搜索引擎
-            SolrNet.Startup.Init<SolrNetUtil.SearchVm2>("http://localhost:8080/solr/tuofeng");
+            //SolrNet.Startup.Init<SolrNetUtil.SearchVm2>("http://localhost:8080/solr/tuofeng");
         }
     }
 }

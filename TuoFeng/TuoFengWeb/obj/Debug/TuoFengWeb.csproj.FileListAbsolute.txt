@@ -92,8 +92,6 @@ D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\zh-Hans\System.Web.WebPages.
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\obj\Debug\TuoFengWeb.pdb
-D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
-D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-core.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-sts.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\aliyun-net-sdk-core.dll
@@ -104,3 +102,7 @@ D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\SolrNet.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\Microsoft.Practices.ServiceLocation.pdb
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\HttpWebAdapters.dll
 D:\GitHubProject\Funnycar\TuoFeng\TuoFengWeb\bin\SolrNet.DSL.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\EasyNet.Solr.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\HttpWebAdapters.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\SolrNet.dll
+D:\Documents\GitHub\Funnycar\TuoFeng\TuoFengWeb\bin\SolrNet.DSL.dll
