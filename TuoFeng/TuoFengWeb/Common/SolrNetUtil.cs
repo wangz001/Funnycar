@@ -1,7 +1,6 @@
 ﻿
 using System.Collections.Generic;
 using System.Data;
-using Microsoft.Practices.ServiceLocation;
 using SolrNet;
 using SolrNet.Commands.Parameters;
 using SolrNet.Impl;
@@ -15,7 +14,7 @@ namespace TuoFengWeb.Common
         public static List<SearchVm2> Query(string keyWord, int rowNum, int count)
         {
             //定义solr
-            ISolrOperations<SearchVm2> solr = ServiceLocator.Current.GetInstance<ISolrOperations<SearchVm2>>();
+            //ISolrOperations<SearchVm2> solr= ServiceLocator.Current.GetInstance<ISolrOperations<SearchVm2>>();
 
             //建立排序，条件.
             QueryOptions options = new QueryOptions();
@@ -38,10 +37,10 @@ namespace TuoFengWeb.Common
             var qTBO = new SolrMultipleCriteriaQuery(query, "OR");
 
             //执行查询,有5个重载
-            SolrQueryResults<SearchVm2> results = solr.Query(qTBO,options);
+            //SolrQueryResults<SearchVm2> results = solr.Query(qTBO,options);
 
 
-            return results;
+            return null;//results;
         }
 
         public class SearchVm2
