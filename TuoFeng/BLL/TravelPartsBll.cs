@@ -181,23 +181,6 @@ namespace TuoFeng.BLL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
-
-        /// <summary>
-        /// 根据id获取游记内容， 分页
-        /// </summary>
-        /// <param name="travelid"></param>
-        /// <param name="page"></param>
-        /// <param name="count"></param>
-        /// <returns></returns>
-	    public List<TravelParts> GetModelListByTravelId(int travelid, int page, int count)
-        {
-            var ds = dal.GetModelListByTravelId(travelid, page, count);
-            if (ds!=null&&ds.Tables[0]!=null&&ds.Tables[0].Rows.Count>0)
-            {
-                return DataTableToList(ds.Tables[0]);
-            }
-            return null;
-        }
 	}
 }
 
