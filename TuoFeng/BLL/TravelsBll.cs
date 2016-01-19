@@ -12,6 +12,7 @@ namespace TuoFeng.BLL
     public class TravelsBll
     {
         private readonly TravelsDal dal = new TravelsDal();
+        private readonly TravelPartsBll _travelPartsBll=new TravelPartsBll();
         public TravelsBll()
         { }
         #region  BasicMethod
@@ -265,7 +266,38 @@ namespace TuoFeng.BLL
             /// </summary>
             public string CoverImage { get; set; }
 
-
+        }
+        /// <summary>
+        /// 获取游记详细内容，分页获取
+        /// </summary>
+        /// <param name="travelid"></param>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public List<TravelVm> GetPartListsByTravelId(int travelid, int page, int count)
+        {
+            var resultList = new List<TravelVm>();
+            var travel = GetModelByCache(travelid);
+            var partLists = _travelPartsBll.GetPartListsByTravelId(travelid, page, count);
+            foreach (var part in partLists)
+            {
+                var vm = new TravelVm
+                {
+                    TravelName = travel.TravelName,
+                    TravelId = travel.Id,
+                    CoverImage = travel.CoverImage,
+                    Id = part.Id,
+                    Area = part.Area,
+                    Description = part.Description,
+                    PartUrl = part.PartUrl,
+                    Longitude = part.Longitude,
+                    Latitude = part.Latitude,
+                    Height = part.Height,
+                    CreateTime = part.CreateTime
+                };
+                resultList.Add(vm);
+            }
+            return resultList;
         }
     }
 }

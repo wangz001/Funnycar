@@ -181,6 +181,18 @@ namespace TuoFeng.BLL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public List<TravelParts> GetPartListsByTravelId(int travelid, int page, int count)
+	    {
+	        var startIndex = (page - 1)*count+1;
+	        var endIndex = page*count;
+	        var ds = dal.GetListByPage(" TravelId="+travelid, " CreateTime", startIndex, endIndex);
+	        if (ds!=null&&ds.Tables[0]!=null&&ds.Tables[0].Rows.Count>0)
+	        {
+	            return DataTableToList(ds.Tables[0]);
+	        }
+	        return null;
+	    }
 	}
 }
 

@@ -364,5 +364,24 @@ namespace TuoFengWeb.Controllers
             }
             return string.Empty;
         }
+
+        public ActionResult TravelPreview(int travelid)
+        {
+            const int page = 1;
+            const int  count = 20;
+            if (travelid>0)
+            {
+                var model = _travelsBll.GetPartListsByTravelId(travelid, page, count);
+            }
+
+            return View();
+        }
+
+
+        public string GetTravelPartsByTravelId(int page, int count, int travelId)
+        {
+
+            return string.Empty;
+        }
     }
 }
