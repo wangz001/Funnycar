@@ -193,8 +193,8 @@ namespace TuoFengWeb.Controllers
                                     ",\"thembCount\": \"@thembCount\"" +
                                     ",\"commentCount\": \"@commentCount\"" +
                                     "}";
-            var startIndex = (page - 1) * count;
-            var endIndex = startIndex + count - 1;
+            var startIndex = (page - 1) * count+1;
+            var endIndex = page*count;
             var travelParts = _travelPartsBll.GetListByPage("", "CreateTime desc", startIndex, endIndex);
             if (travelParts != null && travelParts.Tables[0].Rows.Count > 0)
             {
@@ -226,7 +226,7 @@ namespace TuoFengWeb.Controllers
                     }
                     str = str.Replace("@images", imagesStr);//图片或视频
                     str = str.Replace("@location", travelPart.Area);
-                    str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd hh:mm"));
+                    str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd HH:mm"));
                     str = str.Replace("@thembCount", _thumbBll.GetThembCountByPartId(travelPart.Id).ToString());//
                     str = str.Replace("@commentCount", _commentBll.GetCommentCountByPartId(travelPart.Id).ToString());//
                     resultArr.Add(str);
@@ -367,20 +367,63 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult TravelPreview(int travelid)
         {
-            const int page = 1;
-            const int  count = 20;
-            if (travelid>0)
+            var defaultImg="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg";
+            var travel = _travelsBll.GetModelByCache(travelid);
+            if (!string.IsNullOrEmpty(travel.CoverImage)&&defaultImg!=travel.CoverImage)
             {
-                var model = _travelsBll.GetPartListsByTravelId(travelid, page, count);
+                travel.CoverImage = _baseUrl + travel.CoverImage;
             }
-
+            else
+            {
+                travel.CoverImage = defaultImg;
+            }
+            ViewBag.travel = travel;
             return View();
         }
 
 
-        public string GetTravelPartsByTravelId(int page, int count, int travelId)
+        public string GetTravelPartsByTravelId(int page, int count, int travelid)
         {
-
+            var resultArr = new List<string>();
+            const string jsonItem = "{" +
+                                    "\"travelPartId\": \"@travelPartId\"" +
+                                    ",\"description\": \"@description\"" +
+                                    ",\"images\": \"@images\"" +
+                                    ",\"location\": \"@location\"" +
+                                    ",\"createTime\": \"@createTime\"" +
+                                    ",\"thembCount\": \"@thembCount\"" +
+                                    ",\"commentCount\": \"@commentCount\"" +
+                                    "}";
+            if (travelid > 0)
+            {
+                var lists = _travelsBll.GetPartListsByTravelId(travelid, page, count);
+                if (lists!=null&&lists.Count>0)
+                {
+                    foreach (TravelParts travelPart in lists)
+                    {
+                        var str = jsonItem.Replace("@travelPartId", travelPart.Id.ToString());
+                        str = str.Replace("@description", travelPart.Description);
+                        var imagesStr = string.Empty;
+                        if (!string.IsNullOrEmpty(travelPart.PartUrl))
+                        {
+                            var arr = travelPart.PartUrl.Split(',');
+                            var tempimg = arr[0];
+                            tempimg = tempimg.Replace("http://appimg.impinker.cn", "");
+                            imagesStr = _baseUrl + tempimg;
+                        }
+                        str = str.Replace("@images", imagesStr);//图片或视频
+                        str = str.Replace("@location", travelPart.Area);
+                        str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd hh:mm"));
+                        str = str.Replace("@thembCount", _thumbBll.GetThembCountByPartId(travelPart.Id).ToString());//
+                        str = str.Replace("@commentCount", _commentBll.GetCommentCountByPartId(travelPart.Id).ToString());//
+                        resultArr.Add(str);
+                    }
+                    if (resultArr.Count > 0)
+                    {
+                        return string.Format("[{0}]", string.Join(",", resultArr));
+                    }
+                }
+            }
             return string.Empty;
         }
     }

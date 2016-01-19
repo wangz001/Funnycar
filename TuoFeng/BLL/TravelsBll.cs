@@ -274,30 +274,11 @@ namespace TuoFeng.BLL
         /// <param name="page"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<TravelVm> GetPartListsByTravelId(int travelid, int page, int count)
+        public List<TravelParts> GetPartListsByTravelId(int travelid, int page, int count)
         {
-            var resultList = new List<TravelVm>();
-            var travel = GetModelByCache(travelid);
             var partLists = _travelPartsBll.GetPartListsByTravelId(travelid, page, count);
-            foreach (var part in partLists)
-            {
-                var vm = new TravelVm
-                {
-                    TravelName = travel.TravelName,
-                    TravelId = travel.Id,
-                    CoverImage = travel.CoverImage,
-                    Id = part.Id,
-                    Area = part.Area,
-                    Description = part.Description,
-                    PartUrl = part.PartUrl,
-                    Longitude = part.Longitude,
-                    Latitude = part.Latitude,
-                    Height = part.Height,
-                    CreateTime = part.CreateTime
-                };
-                resultList.Add(vm);
-            }
-            return resultList;
+
+            return partLists;
         }
     }
 }
