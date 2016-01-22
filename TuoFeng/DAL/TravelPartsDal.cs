@@ -364,35 +364,29 @@ namespace TuoFeng.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		{
-			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
-					};
-			parameters[0].Value = "TravelParts";
-			parameters[1].Value = "Id";
-			parameters[2].Value = PageSize;
-			parameters[3].Value = PageIndex;
-			parameters[4].Value = 0;
-			parameters[5].Value = 0;
-			parameters[6].Value = strWhere;	
-			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
-		}*/
-
 		#endregion  BasicMethod
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+	    public DataSet GetListByIdRange(int count,int partId, bool isPullUp)
+	    {
+            string sqlPullUp = "SELECT TOP "+count+" * FROM dbo.TravelParts WHERE IsDelete=0 AND  ID<@partId ORDER BY ID DESC";
+            string sqlPullDown = "SELECT TOP " + count + " * FROM dbo.TravelParts WHERE IsDelete=0 AND  ID>@partId ORDER BY ID DESC";
+	        SqlParameter[] para =
+	        {
+	            new SqlParameter("@countnum",SqlDbType.Int){Value = count},
+                new SqlParameter("@partId",SqlDbType.Int){Value = partId} 
+	        };
+	        if (isPullUp)
+	        {
+	            return DbHelperSQL.Query(sqlPullUp, para);
+	        }
+	        else
+	        {
+	            return DbHelperSQL.Query(sqlPullDown, para);
+	        }
+	    }
 	}
 }
 

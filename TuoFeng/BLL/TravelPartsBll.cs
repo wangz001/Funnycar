@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using TuoFeng.DAL;
 using TuoFeng.Model;
 
@@ -193,6 +194,19 @@ namespace TuoFeng.BLL
 	        }
 	        return null;
 	    }
+
+	    /// <summary>
+	    /// 首页，根据id来分页获取数据，防止重复
+	    /// </summary>
+	    /// <param name="minId"></param>
+	    /// <param name="count"></param>
+	    /// <param name="partId"></param>
+	    /// <param name="isPullUp">true 表示上拉分页。false表示下拉刷新</param>
+	    /// <returns></returns>
+	    public DataSet GetListByIdRange(int count,int partId, bool isPullUp)
+        {
+            return  dal.GetListByIdRange(count,partId,isPullUp);
+        }
 	}
 }
 

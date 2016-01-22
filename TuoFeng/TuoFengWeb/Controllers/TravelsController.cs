@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Maticsoft.Common;
+using SolrNet.Commands.Parameters;
 using TuoFeng.BLL;
 using TuoFeng.Model;
 
@@ -193,9 +195,9 @@ namespace TuoFengWeb.Controllers
                                     ",\"thembCount\": \"@thembCount\"" +
                                     ",\"commentCount\": \"@commentCount\"" +
                                     "}";
-            var startIndex = (page - 1) * count+1;
-            var endIndex = page*count;
-            var travelParts = _travelPartsBll.GetListByPage("", "CreateTime desc", startIndex, endIndex);
+            var startIndex = (page - 1) * count + 1;
+            var endIndex = page * count;
+            var travelParts = _travelPartsBll.GetListByPage(" IsDelete=0", "CreateTime desc", startIndex, endIndex);
             if (travelParts != null && travelParts.Tables[0].Rows.Count > 0)
             {
                 var lists = _travelPartsBll.DataTableToList(travelParts.Tables[0]);
@@ -239,6 +241,92 @@ namespace TuoFengWeb.Controllers
             return string.Empty;
         }
 
+        /// <summary>
+        /// 首页分页获取数据，用id来区分，不用page。userid用来统计用户行为
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="minId"></param>
+        /// <param name="maxId"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public string GetIndexLists(int count, int minId, int maxId, int? userid)
+        {
+            if (count > 20) count = 20;
+            if (count < 1) count = 10;
+
+            var resultArr = new List<string>();
+            const string jsonItem = "{" +
+                                    "\"userName\": \"@userName\"" +
+                                    ",\"userId\": \"@userId\"" +
+                                    ",\"headImage\": \"@headImage\"" +
+                                    ",\"sex\": \"@sex\"" +
+                                    ",\"travelId\": \"@travelId\"" +
+                                    ",\"travelName\": \"@travelName\"" +
+                                    ",\"travelPartId\": \"@travelPartId\"" +
+                                    ",\"description\": \"@description\"" +
+                                    ",\"images\": \"@images\"" +
+                                    ",\"location\": \"@location\"" +
+                                    ",\"createTime\": \"@createTime\"" +
+                                    ",\"thembCount\": \"@thembCount\"" +
+                                    ",\"commentCount\": \"@commentCount\"" +
+                                    "}";
+            DataSet travelParts;
+            if (minId > 0 && maxId == 0)
+            {
+                //上拉分页获取
+                travelParts = _travelPartsBll.GetListByIdRange(count, minId, true);
+            }
+            else if (minId == 0 && maxId > 0)
+            {
+                //下拉刷新
+                travelParts = _travelPartsBll.GetListByIdRange(count, maxId, false);
+            }
+            else
+            {
+                return string.Empty;
+            }
+            if (travelParts != null && travelParts.Tables[0].Rows.Count > 0)
+            {
+                var lists = _travelPartsBll.DataTableToList(travelParts.Tables[0]);
+                foreach (TravelParts travelPart in lists)
+                {
+                    int travelId = travelPart.TravelId ?? 0;
+                    var travelName = (travelId > 0) ? _travelsBll.GetModelByCache(travelId).TravelName : "";
+                    var userId = travelPart.UserId;
+                    var userModel = _userBll.GetModelByCache(userId);
+                    var userName = userModel.UserName;
+                    var headImage = "" + userModel.ImgUrl;
+                    var sex = userModel.Sex ? "男" : "女";
+                    var str = jsonItem.Replace("@userName", userName);
+                    str = str.Replace("@userId", userId.ToString());
+                    str = str.Replace("@headImage", headImage);
+                    str = str.Replace("@sex", sex);
+                    str = str.Replace("@travelId", travelId.ToString());
+                    str = str.Replace("@travelName", travelName);
+                    str = str.Replace("@travelPartId", travelPart.Id.ToString());
+                    str = str.Replace("@description", travelPart.Description);
+                    var imagesStr = string.Empty;
+                    if (!string.IsNullOrEmpty(travelPart.PartUrl))
+                    {
+                        var arr = travelPart.PartUrl.Split(',');
+                        var tempimg = arr[0];
+                        tempimg = tempimg.Replace("http://appimg.impinker.cn", "");
+                        imagesStr = _baseUrl + tempimg;
+                    }
+                    str = str.Replace("@images", imagesStr);//图片或视频
+                    str = str.Replace("@location", travelPart.Area);
+                    str = str.Replace("@createTime", travelPart.CreateTime.ToString("yy-MM-dd HH:mm"));
+                    str = str.Replace("@thembCount", _thumbBll.GetThembCountByPartId(travelPart.Id).ToString());//
+                    str = str.Replace("@commentCount", _commentBll.GetCommentCountByPartId(travelPart.Id).ToString());//
+                    resultArr.Add(str);
+                }
+                if (resultArr.Count > 0)
+                {
+                    return string.Format("[{0}]", string.Join(",", resultArr));
+                }
+            }
+            return string.Empty;
+        }
 
         public ActionResult MyTravels(int userid)
         {
@@ -271,7 +359,7 @@ namespace TuoFengWeb.Controllers
                                     "}";
             foreach (TravelsBll.TravelVm vm in lists)
             {
-                var str = jsonItem.Replace("@travelId",vm.TravelId==null?"0":vm.TravelId.ToString() );
+                var str = jsonItem.Replace("@travelId", vm.TravelId == null ? "0" : vm.TravelId.ToString());
                 str = str.Replace("@travelName", vm.TravelName);
                 str = str.Replace("@travelPartId", vm.Id.ToString());
                 str = str.Replace("@description", vm.Description);
@@ -288,7 +376,7 @@ namespace TuoFengWeb.Controllers
                     imagesStr = _baseUrl + tempimg;
                 }
                 str = str.Replace("@images", imagesStr);//图片或视频
-                
+
                 resultArr.Add(str);
             }
             if (resultArr.Count > 0)
@@ -367,9 +455,9 @@ namespace TuoFengWeb.Controllers
 
         public ActionResult TravelPreview(int travelid)
         {
-            var defaultImg="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg";
+            var defaultImg = "http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg";
             var travel = _travelsBll.GetModelByCache(travelid);
-            if (!string.IsNullOrEmpty(travel.CoverImage)&&defaultImg!=travel.CoverImage)
+            if (!string.IsNullOrEmpty(travel.CoverImage) && defaultImg != travel.CoverImage)
             {
                 travel.CoverImage = _baseUrl + travel.CoverImage;
             }
@@ -397,7 +485,7 @@ namespace TuoFengWeb.Controllers
             if (travelid > 0)
             {
                 var lists = _travelsBll.GetPartListsByTravelId(travelid, page, count);
-                if (lists!=null&&lists.Count>0)
+                if (lists != null && lists.Count > 0)
                 {
                     foreach (TravelParts travelPart in lists)
                     {
