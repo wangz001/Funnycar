@@ -12,3 +12,10 @@ D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\obj\Debug\TuoFeng.DBUtility.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\obj\Debug\TuoFeng.DBUtility.pdb
 D:\GitHubProject\Funnycar\TuoFeng\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\Funnycar\TuoFeng\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\GitProject\Funnycar\TuoFeng\DBUtility\bin\Debug\TuoFeng.DBUtility.dll
+D:\GitProject\Funnycar\TuoFeng\DBUtility\bin\Debug\TuoFeng.DBUtility.pdb
+D:\GitProject\Funnycar\TuoFeng\DBUtility\bin\Debug\MySql.Data.dll
+D:\GitProject\Funnycar\TuoFeng\DBUtility\bin\Debug\System.Data.SQLite.DLL
+D:\GitProject\Funnycar\TuoFeng\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+D:\GitProject\Funnycar\TuoFeng\DBUtility\obj\Debug\TuoFeng.DBUtility.dll
+D:\GitProject\Funnycar\TuoFeng\DBUtility\obj\Debug\TuoFeng.DBUtility.pdb

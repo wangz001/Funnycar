@@ -26,3 +26,17 @@ D:\Documents\GitHub\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.DBUtility.pdb
 D:\Documents\GitHub\Funnycar\TuoFeng\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\Funnycar\TuoFeng\BLL\obj\Debug\TuoFeng.BLL.dll
 D:\Documents\GitHub\Funnycar\TuoFeng\BLL\obj\Debug\TuoFeng.BLL.pdb
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.BLL.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.BLL.pdb
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\Maticsoft.Common.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.DAL.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.Model.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.DBUtility.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\System.Data.SQLite.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\MySql.Data.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.DAL.pdb
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.Model.pdb
+D:\GitProject\Funnycar\TuoFeng\BLL\bin\Debug\TuoFeng.DBUtility.pdb
+D:\GitProject\Funnycar\TuoFeng\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\GitProject\Funnycar\TuoFeng\BLL\obj\Debug\TuoFeng.BLL.dll
+D:\GitProject\Funnycar\TuoFeng\BLL\obj\Debug\TuoFeng.BLL.pdb
